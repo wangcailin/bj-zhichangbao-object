@@ -26,14 +26,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'username', title: __('Username')},
-                        {field: 'userpass', title: __('Userpass')},
                         {field: 'nickname', title: __('Nickname')},
-                        {field: 'avatar', title: __('Avatar')},
+                        {field: 'avatar', title: __('Avatar'), formatter: Table.api.formatter.image},
                         {field: 'mobile', title: __('Mobile')},
-                        {field: 'vip', title: __('Vip')},
+                        {field: 'vip', title: __('Vip'), formatter: Controller.api.formatter.vip},
                         {field: 'vip_time', title: __('Vip_time'), formatter: Table.api.formatter.datetime},
-                        {field: 'company', title: __('Company')},
-                        {field: 'card', title: __('Card')},
                         {field: 'realname', title: __('Realname')},
                         {field: 'create_time', title: __('Create_time'), formatter: Table.api.formatter.datetime},
                         {field: 'update_time', title: __('Update_time'), formatter: Table.api.formatter.datetime},
@@ -55,6 +52,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter: {
+                vip: function (value, row, index) {
+                    if (value == 0){
+                        return '<span class="label label-danger">否</span>';
+                    }else{
+                        return '<span class="label label-warning">是</span>';
+                    }
+                }
             }
         }
     };
