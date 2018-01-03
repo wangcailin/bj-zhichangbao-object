@@ -19,19 +19,80 @@ class User extends Backend
      * User模型对象
      */
     protected $model = null;
+    protected $searchFields = 'id,username,nickname,mobile,open_id';
+
 
     public function _initialize()
     {
         parent::_initialize();
         $this->model = model('User');
+        $this->view->assign("vipList", $this->model->getVipList());
 
     }
-    
-    /**
-     * 默认生成的控制器所继承的父类中有index/add/edit/del/multi五个方法
-     * 因此在当前控制器中可不用编写增删改查的代码,如果需要自己控制这部分逻辑
-     * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
-     */
-    
 
+    /**
+     * 详情
+     */
+    public function detail($ids)
+    {
+        $row = $this->model->get(['id' => $ids])->toArray();
+        if (!$row){
+            $this->error(__('No Results were found'));
+        }
+
+        foreach ($row as $k=>&$v){
+            if ($k == 'avatar'){
+                $v = '<img class="img-sm img-center" src="'.$v.'">';
+            }elseif($k == 'vip'){
+                switch ($v){
+                    case '1':
+                        $v = '普通会员';
+                    case '2':
+                        $v = 'VIP';
+                    case '3':
+                        $v = 'SVIP';
+                    default:
+                        $v = '注册会员';
+                }
+            }elseif($k == 'status'){
+                if ($v == 'normal'){
+                    $v = '正常';
+                }elseif ($v == 'hidden'){
+                    $v = '隐藏';
+                }
+            }
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
+    /**
+     * 搜索获取VIP类型
+     */
+    public function getVipListAjax()
+    {
+        $list = $this->model->getVipList();
+        $searchlist = [];
+        foreach ($list as $key => $value)
+        {
+            $searchlist[] = ['id' => $key, 'name' => $value];
+        }
+        $data = ['searchlist' => $searchlist];
+        $this->success('', null, $data);
+    }
+
+    public function getStatusListAjax()
+    {
+        $list = [
+            'normal' => '正常',
+            'hidden' => '隐藏',
+        ];
+        $searchlist = [];
+        foreach ($list as $key => $value)
+        {
+            $searchlist[] = ['id' => $key, 'name' => $value];
+        }
+        $data = ['searchlist' => $searchlist];
+        $this->success('', null, $data);
+    }
 }

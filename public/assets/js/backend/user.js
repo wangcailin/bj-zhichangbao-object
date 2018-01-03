@@ -24,19 +24,18 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
-                        {field: 'username', title: __('Username')},
-                        {field: 'userpass', title: __('Userpass')},
-                        {field: 'nickname', title: __('Nickname')},
-                        {field: 'avatar', title: __('Avatar')},
-                        {field: 'mobile', title: __('Mobile')},
-                        {field: 'vip', title: __('Vip')},
-                        {field: 'vip_time', title: __('Vip_time'), formatter: Table.api.formatter.datetime},
-                        {field: 'create_time', title: __('Create_time'), formatter: Table.api.formatter.datetime},
-                        {field: 'update_time', title: __('Update_time'), formatter: Table.api.formatter.datetime},
-                        {field: 'open_id', title: __('Open_id')},
-                        {field: 'status', title: __('Status'), formatter: Table.api.formatter.status},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'id', title: __('Id'), operate: false},
+                        {field: 'username', title: __('Username'), operate: false},
+                        {field: 'nickname', title: __('Nickname'), operate: false},
+                        {field: 'avatar', title: __('Avatar'), formatter: Table.api.formatter.image, operate: false},
+                        {field: 'mobile', title: __('Mobile'), operate: false},
+                        {field: 'vip', title: __('Vip'), searchList: $.getJSON('user/getVipListAjax'), formatter: Controller.api.formatter.vip},
+                        {field: 'vip_time', title: __('Vip_time'), operate: 'BETWEEN', type: 'datetime', addclass: 'datetimepicker', data: 'data-date-format="YYYY-MM-DD"', formatter: Table.api.formatter.datetime},
+                        {field: 'create_time', title: __('Create_time'), operate: 'BETWEEN', type: 'datetime', addclass: 'datetimepicker', data: 'data-date-format="YYYY-MM-DD"', formatter: Table.api.formatter.datetime},
+                        {field: 'status', title: __('Status'), searchList: $.getJSON('user/getStatusListAjax'), formatter: Table.api.formatter.status},
+                        {field: 'operate', title: __('Operate'), table: table, buttons: [
+                            {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'user/detail'}
+                        ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
             });
@@ -53,7 +52,20 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
-            }
+            },
+            formatter: {
+                vip: function (value, row, index) {
+                    if (value == '1'){
+                        return '<span class="label label-change">普通会员</span>';
+                    }else if (value == '2'){
+                        return '<span class="label label-editone">VIP</span>';
+                    }else if (value == '3'){
+                        return '<span class="label label-delone">SVIP</span>';
+                    }else {
+                        return '<span class="label label-primary">注册会员</span>';
+                    }
+                }
+            },
         }
     };
     return Controller;

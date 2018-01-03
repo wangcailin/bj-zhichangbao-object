@@ -17,35 +17,18 @@ class User extends Model
     protected $updateTime = false;
     
     // 追加属性
-    protected $append = [
-        'vip_time_text',
-        'create_time_text',
-        'update_time_text'
-    ];
-    
+    protected $append = [];
 
-    
+    protected $vipType = [0 => '注册会员', 1 => '普通会员', 2 => 'VIP', 3 => 'SVIP'];
 
 
-
-    public function getVipTimeTextAttr($value, $data)
+    /**
+     * 读取VIP列表
+     * @return array
+     */
+    public function getVipList()
     {
-        $value = $value ? $value : $data['vip_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
-    }
-
-
-    public function getCreateTimeTextAttr($value, $data)
-    {
-        $value = $value ? $value : $data['create_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
-    }
-
-
-    public function getUpdateTimeTextAttr($value, $data)
-    {
-        $value = $value ? $value : $data['update_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+        return $this->vipType;
     }
 
     protected function setVipTimeAttr($value)
