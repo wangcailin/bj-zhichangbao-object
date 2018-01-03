@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\admin\controller\order;
 
 use app\common\controller\Backend;
 
@@ -12,7 +12,7 @@ use think\Request;
  *
  * @icon fa fa-circle-o
  */
-class Order extends Backend
+class Index extends Backend
 {
     
     /**
@@ -25,7 +25,7 @@ class Order extends Backend
         parent::_initialize();
         $this->model = model('Order');
 
-
+    }
     
     /**
      * 默认生成的控制器所继承的父类中有index/add/edit/del/multi五个方法
