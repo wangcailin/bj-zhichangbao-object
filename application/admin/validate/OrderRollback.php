@@ -4,7 +4,7 @@ namespace app\admin\validate;
 
 use think\Validate;
 
-class Order extends Validate
+class OrderRollback extends Validate
 {
     /**
      * 验证规则

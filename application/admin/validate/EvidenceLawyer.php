@@ -4,7 +4,7 @@ namespace app\admin\validate;
 
 use think\Validate;
 
-class Safeguard extends Validate
+class EvidenceLawyer extends Validate
 {
     /**
      * 验证规则

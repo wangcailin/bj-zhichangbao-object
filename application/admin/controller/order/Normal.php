@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\admin\controller\order;
 
 use app\common\controller\Backend;
 
@@ -8,22 +8,22 @@ use think\Controller;
 use think\Request;
 
 /**
- * 维权列表管理
+ * 订单管理
  *
  * @icon fa fa-circle-o
  */
-class Safeguard extends Backend
+class Normal extends Backend
 {
     
     /**
-     * Safeguard模型对象
+     * Order模型对象
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = model('Safeguard');
+        $this->model = model('Order');
 
     }
     

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\controller\order;
+namespace app\admin\controller\evidence;
 
 use app\common\controller\Backend;
 
@@ -8,22 +8,22 @@ use think\Controller;
 use think\Request;
 
 /**
- * 订单管理
+ * 取证律助管理
  *
  * @icon fa fa-circle-o
  */
-class Index extends Backend
+class Lawyer extends Backend
 {
     
     /**
-     * Order模型对象
+     * EvidenceLawyer模型对象
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = model('Order');
+        $this->model = model('EvidenceLawyer');
 
     }
     

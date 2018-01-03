@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'order/index',
-                    add_url: 'order/add',
-                    edit_url: 'order/edit',
-                    del_url: 'order/del',
-                    multi_url: 'order/multi',
-                    table: 'order',
+                    index_url: 'order/rollback/index',
+                    add_url: 'order/rollback/add',
+                    edit_url: 'order/rollback/edit',
+                    del_url: 'order/rollback/del',
+                    multi_url: 'order/rollback/multi',
+                    table: 'order_rollback',
                 }
             });
 
@@ -25,13 +25,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'order_sn', title: __('Order_sn')},
-                        {field: 'user_id', title: __('User_id')},
-                        {field: 'amount', title: __('Amount')},
-                        {field: 'goods_id', title: __('Goods_id')},
-                        {field: 'status', title: __('Status'), formatter: Table.api.formatter.status},
-                        {field: 'add_time', title: __('Add_time'), formatter: Table.api.formatter.datetime},
-                        {field: 'pay_time', title: __('Pay_time'), formatter: Table.api.formatter.datetime},
+                        {field: 'order_id', title: __('Order_id')},
+                        {field: 'admin_id', title: __('Admin_id')},
+                        {field: 'time', title: __('Time'), formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

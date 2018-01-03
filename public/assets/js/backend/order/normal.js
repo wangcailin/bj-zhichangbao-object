@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'safeguard/index',
-                    add_url: 'safeguard/add',
-                    edit_url: 'safeguard/edit',
-                    del_url: 'safeguard/del',
-                    multi_url: 'safeguard/multi',
-                    table: 'safeguard',
+                    index_url: 'order/normal/index',
+                    add_url: 'order/normal/add',
+                    edit_url: 'order/normal/edit',
+                    del_url: 'order/normal/del',
+                    multi_url: 'order/normal/multi',
+                    table: 'order',
                 }
             });
 
@@ -25,23 +25,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'order_sn', title: __('Order_sn')},
                         {field: 'user_id', title: __('User_id')},
-                        {field: 'company', title: __('Company')},
-                        {field: 'company_address', title: __('Company_address')},
-                        {field: 'contact', title: __('Contact')},
-                        {field: 'contact_phone', title: __('Contact_phone')},
-                        {field: 'job_post', title: __('Job_post')},
-                        {field: 'job_address', title: __('Job_address')},
-                        {field: 'job_time', title: __('Job_time'), formatter: Table.api.formatter.datetime},
-                        {field: 'compact', title: __('Compact')},
-                        {field: 'rights_type', title: __('Rights_type')},
-                        {field: 'rights_money', title: __('Rights_money')},
-                        {field: 'email', title: __('Email')},
-                        {field: 'job_name', title: __('Job_name')},
-                        {field: 'job_age', title: __('Job_age')},
-                        {field: 'sex', title: __('Sex')},
-                        {field: 'registered', title: __('Registered')},
+                        {field: 'goods_id', title: __('Goods_id')},
+                        {field: 'amount', title: __('Amount')},
                         {field: 'status', title: __('Status'), formatter: Table.api.formatter.status},
+                        {field: 'add_time', title: __('Add_time'), formatter: Table.api.formatter.datetime},
+                        {field: 'pay_time', title: __('Pay_time'), formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

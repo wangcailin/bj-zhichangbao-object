@@ -4,10 +4,10 @@ namespace app\admin\model;
 
 use think\Model;
 
-class Safeguard extends Model
+class OrderRollback extends Model
 {
     // 表名
-    protected $name = 'safeguard';
+    protected $name = 'order_rollback';
     
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = false;
@@ -18,7 +18,7 @@ class Safeguard extends Model
     
     // 追加属性
     protected $append = [
-        'job_time_text'
+        'time_text'
     ];
     
 
@@ -26,13 +26,13 @@ class Safeguard extends Model
 
 
 
-    public function getJobTimeTextAttr($value, $data)
+    public function getTimeTextAttr($value, $data)
     {
-        $value = $value ? $value : $data['job_time'];
+        $value = $value ? $value : $data['time'];
         return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
     }
 
-    protected function setJobTimeAttr($value)
+    protected function setTimeAttr($value)
     {
         return $value && !is_numeric($value) ? strtotime($value) : $value;
     }
