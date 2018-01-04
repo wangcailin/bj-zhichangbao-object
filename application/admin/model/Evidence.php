@@ -17,22 +17,39 @@ class Evidence extends Model
     protected $updateTime = false;
     
     // 追加属性
-    protected $append = [
-        'job_time_text'
+    protected $append = [];
+
+    protected $statusType = [
+        0 => '进行中',
+        1 => '成功',
+        2 => '失败',
+        3 => '仲裁成功',
+        4 => '仲裁失败',
+        5 => '代发律师函进行中',
+        6 => '仲裁进行中',
+        7 => '律师函成功',
+        8 => '律师函失败'
     ];
-    
 
-    
-
+    protected $sexType = [0 => '保密', 1 => '男', 2 => '女'];
 
 
-    public function getJobTimeTextAttr($value, $data)
+    public function getStatusList()
     {
-        $value = $value ? $value : $data['job_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+        return $this->statusType;
+    }
+
+    public function getSexList()
+    {
+        return $this->sexType;
     }
 
     protected function setJobTimeAttr($value)
+    {
+        return $value && !is_numeric($value) ? strtotime($value) : $value;
+    }
+
+    protected function setEvidenceTimeAttr($value)
     {
         return $value && !is_numeric($value) ? strtotime($value) : $value;
     }

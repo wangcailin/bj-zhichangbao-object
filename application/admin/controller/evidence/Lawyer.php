@@ -34,4 +34,33 @@ class Lawyer extends Backend
      */
     
 
+    /**
+     * 查看
+     */
+    public function index()
+    {
+        //当前是否为关联查询
+        $this->relationSearch = true;
+        //设置过滤方法
+        $this->request->filter(['strip_tags', 'htmlspecialchars']);
+        if ($this->request->isAjax())
+        {
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $total = $this->model
+                    ->where($where)
+                    ->order($sort, $order)
+                    ->count();
+
+            $list = $this->model
+                    ->with('evidence')
+                    ->where($where)
+                    ->order($sort, $order)
+                    ->limit($offset, $limit)
+                    ->select();
+            $result = array("total" => $total, "rows" => $list);
+
+            return json($result);
+        }
+        return $this->view->fetch();
+    }
 }

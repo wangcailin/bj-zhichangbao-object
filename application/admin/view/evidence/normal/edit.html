@@ -1,12 +1,6 @@
 <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
 
     <div class="form-group">
-        <label for="c-user_id" class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-user_id" data-rule="required" data-source="user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="{$row.user_id}">
-        </div>
-    </div>
-    <div class="form-group">
         <label for="c-company" class="control-label col-xs-12 col-sm-2">{:__('Company')}:</label>
         <div class="col-xs-12 col-sm-8">
             <input id="c-company" data-rule="required" class="form-control" name="row[company]" type="text" value="{$row.company}">
@@ -51,7 +45,7 @@
     <div class="form-group">
         <label for="c-compact" class="control-label col-xs-12 col-sm-2">{:__('Compact')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-compact" data-rule="required" class="form-control" name="row[compact]" type="number" value="{$row.compact}">
+            {:build_radios('row[compact]', ['1'=>__('是'), '0'=>__('否')], $row.compact)}
         </div>
     </div>
     <div class="form-group">
@@ -99,13 +93,13 @@
     <div class="form-group">
         <label for="c-sex" class="control-label col-xs-12 col-sm-2">{:__('Sex')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-sex" class="form-control" name="row[sex]" type="number" value="{$row.sex}">
+            {:build_radios('row[sex]', ['0'=>__('保密'), '1'=>__('男'), '2'=>__('女')], $row.sex)}
         </div>
     </div>
     <div class="form-group">
         <label for="c-registered" class="control-label col-xs-12 col-sm-2">{:__('Registered')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-registered" class="form-control" name="row[registered]" type="number" value="{$row.registered}">
+            {:build_radios('row[registered]', ['0'=>__('农村'), '1'=>__('城镇')], $row.registered)}
         </div>
     </div>
     <div class="form-group">
@@ -117,7 +111,11 @@
     <div class="form-group">
         <label for="c-status" class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-status" data-rule="required" class="form-control" name="row[status]" type="number" value="{$row.status}">
+            <select id="c-status" data-rule="required" class="form-control selectpicker" name="row[status]">
+                {foreach name="statusList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.status"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
         </div>
     </div>
     <div class="form-group layer-footer">

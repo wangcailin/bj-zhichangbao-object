@@ -2,8 +2,31 @@
 
 return [
     'Evidence_id'  =>  '取证单ID',
+    'Lawyer_sn'  =>  '律助申请编号',
     'Lawyer_time'  =>  '申请律助时间',
     'Express_type'  =>  '快递公司',
     'Express_code'  =>  '快递号',
-    'Express_time'  =>  '发送时间'
+    'Express_time'  =>  '发送时间',
+    'Evidence.evidence_sn'  =>  '取证单编号',
+    'Evidence.user_id'  =>  '用户ID',
+    'Evidence.company'  =>  '公司名称',
+    'Evidence.company_address'  =>  '公司地址',
+    'Evidence.contact'  =>  '联系人',
+    'Evidence.contact_phone'  =>  '联系方式',
+    'Evidence.job_post'  =>  '工作职位',
+    'Evidence.job_address'  =>  '工作地址',
+    'Evidence.job_time'  =>  '入职时间',
+    'Evidence.compact'  =>  '合同',
+    'Evidence.rights_type'  =>  '维权类型',
+    'Evidence.rights_money'  =>  '维权金额',
+    'Evidence.email'  =>  '邮箱',
+    'Evidence.description'  =>  '情况描述',
+    'Evidence.ask'  =>  '期望解决办法',
+    'Evidence.job_name'  =>  '职工名称',
+    'Evidence.job_age'  =>  '工龄',
+    'Evidence.sex'  =>  '性别',
+    'Evidence.registered'  =>  '户口性质',
+    'Evidence.reconcile'  =>  '和解书',
+    'Evidence.status'  =>  '状态',
+    'Evidence.evidence_time'  =>  '取证单发起时间'
 ];

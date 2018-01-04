@@ -17,28 +17,7 @@ class EvidenceLawyer extends Model
     protected $updateTime = false;
     
     // 追加属性
-    protected $append = [
-        'lawyer_time_text',
-        'express_time_text'
-    ];
-    
-
-    
-
-
-
-    public function getLawyerTimeTextAttr($value, $data)
-    {
-        $value = $value ? $value : $data['lawyer_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
-    }
-
-
-    public function getExpressTimeTextAttr($value, $data)
-    {
-        $value = $value ? $value : $data['express_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
-    }
+    protected $append = [];
 
     protected function setLawyerTimeAttr($value)
     {
@@ -51,4 +30,8 @@ class EvidenceLawyer extends Model
     }
 
 
+    public function evidence()
+    {
+        return $this->belongsTo('Evidence', 'evidence_id', 'id')->setEagerlyType(0);
+    }
 }

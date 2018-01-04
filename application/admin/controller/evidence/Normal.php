@@ -24,14 +24,36 @@ class Normal extends Backend
     {
         parent::_initialize();
         $this->model = model('Evidence');
+        $this->view->assign("statusList", $this->model->getStatusList());
 
     }
-    
+
     /**
-     * 默认生成的控制器所继承的父类中有index/add/edit/del/multi五个方法
-     * 因此在当前控制器中可不用编写增删改查的代码,如果需要自己控制这部分逻辑
-     * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
+     * 详情
      */
-    
+    public function detail($ids)
+    {
+        $statusList = $this->model->getStatusList();
+        $sexList = $this->model->getSexList();
+
+        $row = $this->model->get(['id' => $ids])->toArray();
+        if (!$row){
+            $this->error(__('No Results were found'));
+        }
+
+        foreach ($row as $k=>&$v){
+            if ($k == 'compact'){
+                $v = $v == '0' ? '否' : '是';
+            }elseif($k == 'sex'){
+                $v = $sexList[$v];
+            }elseif($k == 'status'){
+                $v = $statusList[$v];
+            }elseif ($k == 'evidence_time'){
+                $v = date( 'Y-m-d H:i:s', $v);
+            }
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
 
 }

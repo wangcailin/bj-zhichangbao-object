@@ -35,6 +35,7 @@ class User extends Backend
      */
     public function detail($ids)
     {
+        $vipList = $this->model->getVipList();
         $row = $this->model->get(['id' => $ids])->toArray();
         if (!$row){
             $this->error(__('No Results were found'));
@@ -44,16 +45,7 @@ class User extends Backend
             if ($k == 'avatar'){
                 $v = '<img class="img-sm img-center" src="'.$v.'">';
             }elseif($k == 'vip'){
-                switch ($v){
-                    case '1':
-                        $v = '普通会员';
-                    case '2':
-                        $v = 'VIP';
-                    case '3':
-                        $v = 'SVIP';
-                    default:
-                        $v = '注册会员';
-                }
+                $v = $vipList[$v];
             }elseif($k == 'status'){
                 if ($v == 'normal'){
                     $v = '正常';
