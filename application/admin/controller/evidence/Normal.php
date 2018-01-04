@@ -37,6 +37,10 @@ class Normal extends Backend
         $sexList = $this->model->getSexList();
 
         $row = $this->model->get(['id' => $ids])->toArray();
+        if ($this->request->isAjax())
+        {
+            $this->success("Ajax请求成功", null, ['id' => $ids]);
+        }
         if (!$row){
             $this->error(__('No Results were found'));
         }

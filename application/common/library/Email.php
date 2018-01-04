@@ -126,6 +126,17 @@ class Email
     }
 
     /**
+     * 设置邮件附件
+     * @param string $attachment
+     * @return $this
+     */
+    public function attachment($attachment)
+    {
+        $this->options['attachment'] = $attachment;
+        return $this;
+    }
+
+    /**
      * 获取最后产生的错误
      */
     public function getError()
@@ -152,6 +163,7 @@ class Email
                 $this->mail->setFrom($this->options['from'], $this->options['from_name']);
                 $this->mail->addAddress($this->options['to'], $this->options['to_name']);
                 $this->mail->Subject = $this->options['subject'];
+                $this->mail->addAttachment($this->options['attachment']);
                 if ($this->options['ishtml'])
                 {
                     $this->mail->msgHTML($this->options['body']);

@@ -214,7 +214,8 @@ class Config extends Backend
         $email = new Email;
         $result = $email
                 ->to($receiver)
-                ->subject(__("This is a test mail"))
+                ->subject(__("测试邮件主题"))
+                ->attachment('/Users/wangcailin/Web/Work/zhichangbao/bj-zhichangbao-object/Public/assets/img/qrcode.png')
                 ->message('<div style="min-height:550px; padding: 100px 55px 200px;">' . __('This is a test mail content') . '</div>')
                 ->send();
         if ($result)
