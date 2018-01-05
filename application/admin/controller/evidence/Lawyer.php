@@ -27,13 +27,6 @@ class Lawyer extends Backend
         $this->assign('expressList', $this->model->getExpressList());
 
     }
-    
-    /**
-     * 默认生成的控制器所继承的父类中有index/add/edit/del/multi五个方法
-     * 因此在当前控制器中可不用编写增删改查的代码,如果需要自己控制这部分逻辑
-     * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
-     */
-    
 
     /**
      * 查看
@@ -129,6 +122,11 @@ class Lawyer extends Backend
         }
         if (!$row){
             $this->error(__('No Results were found'));
+        }
+        foreach ($row as $k=>&$v){
+            if ($k == 'lawyer_time' || $k == 'express_time'){
+                $v = date('Y-m-d H:i:s', $v);
+            }
         }
 
         $this->view->assign("row", $row);
