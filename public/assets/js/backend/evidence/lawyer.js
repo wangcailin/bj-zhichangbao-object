@@ -33,7 +33,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'evidence.user_id', title: __('Evidence.user_id')},
                         {field: 'evidence.email', title: __('Evidence.email')},
                         {field: 'evidence.evidence_time', title: __('Evidence.evidence_time'), formatter: Table.api.formatter.datetime},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table, buttons: [
+                            {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'evidence/lawyer/detail'},
+                            {name: 'express', text: '邮寄律师函', title: '邮寄律师函', icon: 'fa fa-flash', classname: 'btn btn-xs btn-info btn-dialog', url: 'evidence/lawyer/send'},
+                        ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
             });

@@ -3,6 +3,11 @@
     <div class="form-group">
         <label for="c-express_type" class="control-label col-xs-12 col-sm-2">{:__('Express_type')}:</label>
         <div class="col-xs-12 col-sm-8">
+            <select id="c-express_type" data-rule="required" class="form-control selectpicker" name="row[express_type]">
+                {foreach name="expressList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.express_type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
         </div>
     </div>
     <div class="form-group">
@@ -14,7 +19,7 @@
     <div class="form-group layer-footer">
         <label class="control-label col-xs-12 col-sm-2"></label>
         <div class="col-xs-12 col-sm-8">
-            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="submit" class="btn btn-success btn-embossed">{:__('OK')}</button>
             <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
         </div>
     </div>
