@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "19e4d13bea967f90d1b62c06cb9e9026",
+    "content-hash": "55ae4a56a38009195bec8809fb44ea8e",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -81,12 +81,12 @@
             "version": "1.9.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/endroid/QrCode.git",
+                "url": "https://github.com/endroid/qr-code.git",
                 "reference": "c9644bec2a9cc9318e98d1437de3c628dcd1ef93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/QrCode/zipball/c9644bec2a9cc9318e98d1437de3c628dcd1ef93",
+                "url": "https://api.github.com/repos/endroid/qr-code/zipball/c9644bec2a9cc9318e98d1437de3c628dcd1ef93",
                 "reference": "c9644bec2a9cc9318e98d1437de3c628dcd1ef93",
                 "shasum": ""
             },
@@ -134,6 +134,7 @@
                 "qrcode",
                 "symfony"
             ],
+            "abandoned": "endroid/qr-code",
             "time": "2017-04-08T09:13:59+00:00"
         },
         {
@@ -1020,6 +1021,58 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "riverslei/payment",
+            "version": "v4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/helei112g/payment.git",
+                "reference": "e8b0fdd2566d75c82686737fd14856c1e3006b75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/helei112g/payment/zipball/e8b0fdd2566d75c82686737fd14856c1e3006b75",
+                "reference": "e8b0fdd2566d75c82686737fd14856c1e3006b75",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "endroid/qrcode": "~1.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Payment\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "helei",
+                    "email": "dayugog@gmail.com",
+                    "homepage": "https://helei112g.github.io/categories/payment-3/"
+                }
+            ],
+            "description": "支付宝支付、微信支付、招商一网通支付php SDK。方便快速接入，最完整的开源支付 php sdk",
+            "homepage": "https://helei112g.github.io/categories/payment-3/",
+            "keywords": [
+                "alipay",
+                "weixin",
+                "一网通",
+                "微信支付",
+                "招商一网通",
+                "支付宝支付",
+                "集成支付接口SDK"
+            ],
+            "time": "2017-07-05T15:13:35+00:00"
         },
         {
             "name": "symfony/http-foundation",

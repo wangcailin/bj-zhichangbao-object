@@ -40,6 +40,7 @@ class ComposerStaticInit16670a0e1de544a42fedc5907fd20393
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Payment\\' => 8,
         ),
         'O' => 
         array (
@@ -120,6 +121,10 @@ class ComposerStaticInit16670a0e1de544a42fedc5907fd20393
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Payment\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/riverslei/payment/src',
         ),
         'Overtrue\\Socialite\\' => 
         array (
