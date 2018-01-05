@@ -31,9 +31,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'status', title: __('Status')},
                         {field: 'evidence_time', title: __('Evidence_time'), formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, buttons: [
-                            {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'evidence/normal/detail', callback: function (data) {
-                                Layer.alert("接收到回传数据：" + JSON.stringify(data), {title: "回传数据"});
-                            }},
+                            {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'evidence/normal/detail'},
                         ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

@@ -19,6 +19,9 @@ class EvidenceLawyer extends Model
     // 追加属性
     protected $append = [];
 
+    //protected $expressList = [0 => '保密', 1 => '男', 2 => '女'];
+
+
     protected function setLawyerTimeAttr($value)
     {
         return $value && !is_numeric($value) ? strtotime($value) : $value;
