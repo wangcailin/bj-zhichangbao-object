@@ -9,7 +9,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'your app_id',
+    'value' => 'wxa0afc75ebe2d5871',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
@@ -24,7 +24,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'your secret',
+    'value' => '75cbdd6b7e9b58e90f1c5e8c8de802f9',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
@@ -39,7 +39,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'your token',
+    'value' => '5_Dm2DZ6GMcy73jmJ0YTZIMLNsfG887ehyEWg_ttUntA4Rsf9-XqipQb4px6jY7byXxUs6JqVPW9VpNOQYCN2qfdFR4IyL-v5i8fLj1X7onbJMnT7HaiA-pPU54_FP6dIl5GK2P4p_wfxRkEvfVOQgABAJCE',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
