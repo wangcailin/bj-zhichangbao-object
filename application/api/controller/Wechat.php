@@ -13,6 +13,6 @@ class Wechat extends Api
 {
     public function test()
     {
-        print_r(WeChatAPP::user()->lists());
+        print_r(WeChatAPP::oauth());
     }
 }
