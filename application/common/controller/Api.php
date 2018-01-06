@@ -2,9 +2,9 @@
 
 namespace app\common\controller;
 
-use think\controller\Rest;
+use think\Controller;
 
-class Api extends Rest
+class Api extends Controller
 {
 
     public function _initialize()
