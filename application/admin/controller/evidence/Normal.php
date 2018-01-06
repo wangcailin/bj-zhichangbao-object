@@ -19,6 +19,8 @@ class Normal extends Backend
      * Evidence模型对象
      */
     protected $model = null;
+    protected $searchFields = 'id,title,options,answer,analysis';
+
 
     public function _initialize()
     {
@@ -58,6 +60,18 @@ class Normal extends Backend
         }
         $this->view->assign("row", $row);
         return $this->view->fetch();
+    }
+
+    public function getStatusList()
+    {
+        $statusList = $this->model->getStatusList();
+        $searchlist = [];
+        foreach ($statusList as $key => $value)
+        {
+            $searchlist[] = ['id' => $key, 'name' => $value];
+        }
+        $data = ['searchlist' => $searchlist];
+        $this->success('', null, $data);
     }
 
 }

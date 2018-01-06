@@ -9,7 +9,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'your key',
+    'value' => 'LTAI44OB24Xk3LCD',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
@@ -24,7 +24,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'your secret',
+    'value' => 'rykVd1RwSOBurdxNvE3ykHKtV31Ivg',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
@@ -39,7 +39,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'your sign',
+    'value' => '99540017',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',

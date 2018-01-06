@@ -1,4 +1,6 @@
 define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefined, Backend, Table, Form) {
+    var statusType = [];
+    statusType = $.getJSON('evidence/normal/getStatusList');
 
     var Controller = {
         index: function () {
@@ -24,12 +26,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
-                        {field: 'evidence_sn', title: __('Evidence_sn')},
-                        {field: 'user_id', title: __('User_id')},
-                        {field: 'email', title: __('Email')},
-                        {field: 'status', title: __('Status')},
-                        {field: 'evidence_time', title: __('Evidence_time'), formatter: Table.api.formatter.datetime},
+                        {field: 'id', title: __('Id'), operate: false},
+                        {field: 'evidence_sn', title: __('Evidence_sn'), operate: false},
+                        {field: 'user_id', title: __('User_id'), operate: false},
+                        {field: 'email', title: __('Email'), operate: false},
+                        {field: 'evidence_time', title: __('Evidence_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'status', title: __('Status'), searchList: statusType, formatter: Controller.api.formatter.status},
                         {field: 'operate', title: __('Operate'), table: table, buttons: [
                             {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'evidence/normal/detail'},
                         ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
@@ -49,6 +51,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter: {
+                status: function (value, row, index) {
+                },
             }
         }
     };

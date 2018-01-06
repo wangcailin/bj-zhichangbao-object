@@ -22,5 +22,5 @@ return [
     'Registered'  =>  '户口性质',
     'Reconcile'  =>  '和解书',
     'Status'  =>  '状态',
-    'Evidence_time'  =>  '取证单发起时间'
+    'Evidence_time'  =>  '发起时间'
 ];

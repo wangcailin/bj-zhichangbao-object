@@ -17,27 +17,13 @@ class Order extends Model
     protected $updateTime = false;
     
     // 追加属性
-    protected $append = [
-        'add_time_text',
-        'pay_time_text'
-    ];
-    
+    protected $append = [];
 
-    
+    protected $statusType = [0 => '未支付', 1 => '已支付', 2 => '申请退款', 3 => '退款成功', 4 => '退款失败'];
 
-
-
-    public function getAddTimeTextAttr($value, $data)
+    public function getStatusType()
     {
-        $value = $value ? $value : $data['add_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
-    }
-
-
-    public function getPayTimeTextAttr($value, $data)
-    {
-        $value = $value ? $value : $data['pay_time'];
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+        return $this->statusType;
     }
 
     protected function setAddTimeAttr($value)
