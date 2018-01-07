@@ -11,16 +11,20 @@ use Hooklife\ThinkphpWechat\Wechat as WeChatAPP;
  */
 class Wechat extends Api
 {
-    public function test()
+    public function _initialize()
     {
-        print_r(WeChatAPP::access_token());
-    }
+        parent::_initialize();
+        $oauth = WeChatAPP::oauth();
+        $oauth->user();
+//        $user  = $oauth->getUser();
+//        if (!$user->id) {
+//            //未登录，引导用户到微信服务器授权
+//            $oauth->redirect()->send();
+//        }else{
+//            //已登录状态，重定向到joomla首页
+//            $targetUrl = '';
+//            header('location:'. $targetUrl); // 跳转到业务页面
+//        }
 
-    /**
-     *  token验证
-     */
-    public function checkToken()
-    {
-        return WeChatAPP::access_token()->getToken();
     }
 }

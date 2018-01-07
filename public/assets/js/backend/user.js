@@ -56,11 +56,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             formatter: {
                 vip: function (value, row, index) {
                     if (value == '1'){
-                        return '<span class="label label-change">普通会员</span>';
+                        return '<span class="label label-info">普通会员</span>';
                     }else if (value == '2'){
-                        return '<span class="label label-editone">VIP</span>';
+                        return '<span class="label lable-maroon">VIP</span>';
                     }else if (value == '3'){
-                        return '<span class="label label-delone">SVIP</span>';
+                        return '<span class="label label-danger">SVIP</span>';
                     }else {
                         return '<span class="label label-primary">注册会员</span>';
                     }

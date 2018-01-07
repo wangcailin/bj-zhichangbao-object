@@ -2,9 +2,9 @@
 
 namespace app\wechat\controller;
 
-use app\common\controller\Api;
+use app\api\controller\Wechat;
 
-class Index extends Api
+class Index extends Wechat
 {
     public function index()
     {
