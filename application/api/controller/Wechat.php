@@ -2,6 +2,7 @@
 
 namespace app\api\controller;
 
+use think\Loader;
 use app\common\controller\Api;
 use wechat\js\JSSDK as WechatJssdk;
 use think\Request;
