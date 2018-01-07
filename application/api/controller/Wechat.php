@@ -20,7 +20,6 @@ class Wechat extends Api
 
         if(empty(session('user_open_id')) && empty(session('user_id'))){
             $this->wechatLogin();
-        }else{
         }
     }
 
@@ -104,8 +103,8 @@ class Wechat extends Api
         $userModel = model('User');
         if ($res = $userModel->where('open_id', $openid)->find()){
             session('user_id', $res->id);
-
             $user              = $userModel::get($res['id']);
+            $user->avatar      = $data['headimgurl'];
             $user->update_time = time();
             $user->save();
         }else{
@@ -120,7 +119,7 @@ class Wechat extends Api
                 'update_time'   => time(),
             ];
             $res = model('User')->save($data);
-            session('user_id', $res['id']);
+            session('user_id', $res->id);
             session('user_open_id', $openid);
         }
     }

@@ -12,7 +12,6 @@
             <li data-v-cb6b4808="" class="ucenter-table-view-cell">
                 <img data-v-cb6b4808="" id="head-img" width="50" height="50" class="ucenter-avatar" src="">
                 <div data-v-cb6b4808="" class="ucenter-media-body">
-                    {$data.nickname}
                     <p data-v-cb6b4808="" class="ucenter-ellipsis"></p>
                 </div>
             </li>
@@ -49,23 +48,23 @@
 </div>
 {include file="common/footer" /}
 <script type="text/javascript">
+    var user_id = {$Think.session.user_id};
     //头像,用户名Ajax
     function userAjax() {
         $.ajax({
-            url: 'URL',
+            url: '/wechat/user/getAjaxUserInfo',
             type: 'POST', //GET
             async: true, //或false,是否异步
-            data: {},
+            data: {uid:user_id},
             timeout: 5000, //超时时间
             dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
             success: function(data) {
-                var odata = eval("("+ data +")");
-                if(odata.code == "ok") {
-                    $("#head-img").attr("src",odata.data.avatar);
-                    $(".ucenter-media-body").html(odata.data.username+'<p data-v-cb6b4808="" class="ucenter-ellipsis"></p>');
+                if(data.code == "1") {
+                    $("#head-img").attr("src",data.avatar);
+                    $(".ucenter-media-body").html(data.nickname+'<p data-v-cb6b4808="" class="ucenter-ellipsis"></p>');
 
                     //需要一个字段判断会员是否过期，未过期动态显示"会员权益保障中"
-                    if(odata.data.guarantee) {
+                    if(data.guarantee) {
                         $(".me-guarantee").html('<i data-v-cb6b4808="" class="safing"></i>会员权益保障中');
                     }
 
