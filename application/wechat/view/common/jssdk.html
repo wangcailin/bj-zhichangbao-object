@@ -6,17 +6,12 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     function share(){
-        var imgUrl = "{$imgUrl}";
-        var link = "{$link}";
-        var title = "--------";
-        var descContent = "------------";
-        var shareTitle = "---------------";
         wx.config({
             debug: false,
-            appId: '{$appId}',
-            timestamp: '{$timestamp}',
-            nonceStr: '{$nonceStr}',
-            signature: '{$signature}',
+            appId: '{$signPackage.appId}',
+            timestamp: '{$signPackage.timestamp}',
+            nonceStr: '{$signPackage.nonceStr}',
+            signature: '{$signPackage.signature}',
             jsApiList: [
                 'onMenuShareTimeline',
                 'onMenuShareAppMessage',
