@@ -10,4 +10,9 @@ class User extends Api
     {
         return $this->view->fetch();
     }
+
+    public function user_edit()
+    {
+        return $this->view->fetch();
+    }
 }

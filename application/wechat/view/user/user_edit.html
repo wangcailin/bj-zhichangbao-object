@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://wx.zhichangbb.com/?a=2&uid=167&expire_time=1514345187#/uedit -->
+<html>
+
+<head>
+    {include file="common/meta" /}
+</head>
+
+<body>
+<div id="app">
+    <div data-v-a445f7d4="" class="user-edit">
+        <div data-v-a445f7d4="" class="form-input"><label data-v-a445f7d4="" for="tel">手机号</label>
+            <div data-v-a445f7d4="" class="mobile"></div>
+        </div>
+        <div data-v-a445f7d4="" class="form-input"><label data-v-a445f7d4="" for="name">公司名</label> <input data-v-a445f7d4="" type="text" id="name" placeholder="请输入公司名"></div>
+        <div data-v-a445f7d4="" class="form-btn">保存</div>
+        <div data-v-bf5fbef6="" data-v-a445f7d4="" class="dialog" style="display: none;"></div>
+    </div>
+</div>
+{include file="common/footer" /}
+<script type="text/javascript">
+    //电话Ajax
+    function mobileAjax() {
+        $.ajax({
+            url: 'URL',
+            type: 'POST', //GET
+            async: true, //或false,是否异步
+            data: {},
+            timeout: 5000, //超时时间
+            dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+            success: function(data) {
+                var odata = eval("("+ data +")");
+                if(odata.code == "ok") {
+                    $("mobile").html(odata.data.mobile);
+                }
+            },
+            error: function(xhr, textStatus) {
+                console.log(textStatus);
+            }
+        });
+    }
+
+    mobileAjax();
+    </body>
+
+    </html>

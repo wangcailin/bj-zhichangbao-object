@@ -5227,8 +5227,8 @@ body {
 
 @font-face {
 	font-family: iconfont;
-	src: url(__CDN__/assets/fonts/wechat/iconfont.2b1bee4.eot);
-	src: url(__CDN__/assets/fonts/wechat/iconfont.2b1bee4.eot#iefix) format("embedded-opentype"), url(__CDN__/assets/fonts/wechat/iconfont.b0fc1d1.ttf) format("truetype"), url(__CDN__/assets/fonts/wechat/iconfont.2f6db75.woff) format("woff"), url(/static/img/iconfont.1118af3.svg#iconfont) format("svg");
+	src: url(/static/fonts/iconfont.2b1bee4.eot);
+	src: url(/static/fonts/iconfont.2b1bee4.eot#iefix) format("embedded-opentype"), url(../fonts/iconfont.b0fc1d1.ttf) format("truetype"), url(/static/fonts/iconfont.2f6db75.woff) format("woff"), url(/static/img/iconfont.1118af3.svg#iconfont) format("svg");
 	font-weight: 400;
 	font-style: normal
 }
