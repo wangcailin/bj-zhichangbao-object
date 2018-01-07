@@ -1,9 +1,9 @@
 <?php
 
 namespace app\api\controller;
-require_once '../extend/wechat/js/jssdk';
-use think\Loader;
+
 use app\common\controller\Api;
+use wechat\js\JSSDK;
 use think\Request;
 
 /**
