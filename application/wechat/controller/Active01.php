@@ -45,7 +45,7 @@ class Active01 extends Api
             if ($res->vip == '0'){
                 $res::get($res->id);
                 $res->vip = 1;
-                $res->vip_time = strtotime('+3month'));
+                $res->vip_time = strtotime('+3month');
                 $res->save();
                 $data['code'] = 1;
                 return json($data);
