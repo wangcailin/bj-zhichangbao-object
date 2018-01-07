@@ -16,7 +16,7 @@ class Wechat extends Api
     public function _initialize()
     {
         parent::_initialize();
-        $this->wechatShare();
+        //$this->wechatShare();
 
         if(empty(session('user_open_id')) && empty(session('user_id'))){
             $this->wechatLogin();
