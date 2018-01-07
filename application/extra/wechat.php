@@ -16,10 +16,10 @@ return [
     /**
      * 账号基本信息，请从微信公众平台/开放平台获取
      */
-    'app_id'  => 'wxa0afc75ebe2d5871',         // AppID
-    'secret'  => '75cbdd6b7e9b58e90f1c5e8c8de802f9',     // AppSecret
-    'token'   => '',          // Token
-    'aes_key' => '',                    // EncodingAESKey，安全模式下请一定要填写！！！
+    'app_id'  => 'wxa0afc75ebe2d5871',  // AppID
+    'secret'  => '75cbdd6b7e9b58e90f1c5e8c8de802f9',  // AppSecret
+    'token'   => 'ye05YD0iquDpiHhf',  // Token
+    'aes_key' => 'pvgFYunQVE6zuEBrHKk4XyNMrBZ6jeTdZJmr2Kuk2Iu',  // EncodingAESKey，安全模式下请一定要填写！！！
     /**
      * 日志配置
      *

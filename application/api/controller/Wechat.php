@@ -13,6 +13,14 @@ class Wechat extends Api
 {
     public function test()
     {
-        print_r(WeChatAPP::oauth());
+        print_r(WeChatAPP::access_token());
+    }
+
+    /**
+     *  token验证
+     */
+    public function checkToken()
+    {
+        return WeChatAPP::access_token()->getToken();
     }
 }
