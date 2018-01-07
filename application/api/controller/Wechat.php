@@ -42,7 +42,7 @@ class Wechat extends Api
         sort($array);
         $tmpstr = sha1(implode('',$array));
         if($tmpstr == $signature){
-            echo $get['echostr'];
+            echo $echostr;
         }else{
             return false;
         }
