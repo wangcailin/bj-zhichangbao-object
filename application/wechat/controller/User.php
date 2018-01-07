@@ -33,6 +33,19 @@ class User extends Api
         return json($data);
     }
 
+    /**
+     * 查看权益期
+     */
+    public function getGuarantee($uid = null)
+    {
+        $data = $this->model->where('id', $uid)->find();
+        if ($data['vip'] != '0' && time() > $data['vip_time']){
+            $data['guarantee'] = 1;
+        }
+        $this->assign('data', $data);
+        return $this->view->fetch('guarantee');
+    }
+
     public function user_edit()
     {
         return $this->view->fetch();
