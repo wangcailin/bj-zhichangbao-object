@@ -80,11 +80,9 @@ class Wechat extends Api
         $res = curl_exec($ch);
         curl_close($ch);
         $arr = json_decode($res , true);
-        session('wechat_user', $arr["openid"]);
+        session('user_open_id', $arr["openid"]);
         $this -> getUserInfo($arr["access_token"],$arr["openid"]);
     }
-
-
     public function getUserInfo($accessToken , $openid){
         $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$accessToken&openid=$openid&lang=zh_CN";
         $ch = curl_init();
@@ -93,19 +91,7 @@ class Wechat extends Api
         $res = curl_exec($ch);
         curl_close($ch);
         $arr = json_decode($res , true);
-var_dump($arr);die;
         $this->checkUserInfo($openid, $arr);
-
-
-        echo "<h1>用户名：".$arr['nickname']."</h1>";
-        echo "<h1>头像：<img style='width: 10%;text-align: center' src=".$arr['headimgurl']."></h1>";
-        if($arr['sex'] == '1'){
-            $arr['sex'] = '男';
-        }else{
-            $arr['sex'] ='女';
-        }
-        echo "<h2>性别：".$arr['sex']."</h2>";
-        echo "<h3>国家：".$arr['country']."</h3>";
     }
 
     /**
@@ -116,8 +102,8 @@ var_dump($arr);die;
     protected function checkUserInfo($openid, $data)
     {
         $userModel = model('User');
-        if ($res = $userModel->with('info')->where('open_id', $openid)->find()){
-            session('user_id', $res['id']);
+        if ($res = $userModel->where('open_id', $openid)->find()){
+            session('user_id', $res->id);
 
             $user              = $userModel::get($res['id']);
             $user->update_time = time();
