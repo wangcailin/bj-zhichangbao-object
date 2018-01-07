@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>职场保</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/global.css"/>
+		<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/redPacket.css"/>
+	</head>
+	<body>
+		
+		<div class="zcb-wrapper" style="background-image: url('__CDN__/assets/img/wechat/active01/redPacketWrapper.jpg')">
+			<!--红包-->
+			<div class="red-packet-wrapper" style="background-image: url('__CDN__/assets/img/wechat/active01/redPacketBG.png')">
+				<div class="red-packet-avatar">
+					<img src="__CDN__/assets/img/wechat/active01/logo@2x.png"/>
+				</div>
+				<p class="red-packet-uname">职场保</p>
+				<p class="red-packet-info">这是<span class="share-user">职场保</span>送你的礼物</p>
+				<div class="open-btn">
+					<img src="__CDN__/assets/img/wechat/active01/openBtn.png"/>
+				</div>
+				
+				<!--关闭按钮-->
+				<div class="close-btn">
+					<img src="__CDN__/assets/img/wechat/active01/close@2x.png"/>
+				</div>
+			</div>
+			
+		</div>
+
+		{include file="common/footer" /}
+		<script type="text/javascript">
+			//开红包按钮动画,跳转到输手机号领取页面,URL填页面地址
+			$(".open-btn").click(function(){
+				$(this).addClass("btn-rotate");
+				setTimeout(function(){
+					$(location).attr('href', '/wechat/active01/zcbfree');
+				},2000);
+		});
+			
+			//关闭按钮,返回上一页
+			$(".close-btn").click(function(){
+				window.history.back();
+			});
+			
+			//"这是***送你的礼物"Ajax
+			function shareUser(){
+				$.ajax({
+				    url:'url',
+				    type:'POST', //GET
+				    async:true,    //或false,是否异步
+				    data:{},
+				    timeout:5000,    //超时时间
+				    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+				    success:function(data){
+						//字符串转json对象
+				        var dataObj = eval('(' + data + ')'); 
+				        
+				        if(dataObj.code == "ok"){
+				        	
+				        	$(".share-user").html(dataObj.data.user);
+				        	
+				        }
+				    },
+				    error:function(xhr,textStatus){
+				        console.log(textStatus)
+				    }
+				});
+			}
+			shareUser();
+		</script>
+		
+	</body>
+</html>

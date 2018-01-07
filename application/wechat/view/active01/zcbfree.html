@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>职场保</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/global.css"/>
+		<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/zcbfree.css"/>
+	</head>
+	<body>
+		
+		<div class="zcb-wrapper">
+			
+			<!--头部图片-->
+			<div class="free-header">
+				<img src="__CDN__/assets/img/wechat/active01/freeHeader.png" alt="限时免费领取职场保障"/>
+			</div>
+			
+			<!--输手机号领取-->
+			<div class="free-content">
+				<h2>输手机号 领取保障</h2>
+				<input type="text" name="telNum" id="telNum" value="" placeholder="请输入手机号" />
+				<input type="button" name="receiveBtn" id="receiveBtn" value="立即领取"/>
+			</div>
+			
+		</div>
+		
+		<div class="footer-patch"></div>
+		
+		<script type="text/javascript">
+			//根据屏幕高度计算内容高度
+			var clientH = document.body.clientHeight;
+			var headerH = document.getElementsByClassName("free-header")[0].clientHeight;
+			var freeH = clientH - headerH;
+			document.getElementsByClassName("free-content")[0].style.height = freeH + "px";
+			
+			//跳转到二维码页面,URL为页面地址
+			var receiveBtn = document.getElementById("receiveBtn");
+			receiveBtn.onclick = function(){
+				validatemobile()
+				if(validatemobile()){
+					window.location.href = "/wechat/active01/qrcode";
+				}
+			}
+			
+			//验证手机号
+			function validatemobile(){ 
+				var mobile = document.getElementById("telNum").value;
+		        if(mobile.length==0 || mobile.length!=11){ 
+		        	alert('请输入正确的手机号码！');
+		        	return false;
+		        }
+                $.ajax({
+                    url:'/wechat/active01/zcbfreeCheck',
+                    type:'POST', //GET
+                    async:true,    //或false,是否异步
+                    data:{mobile: mobile},
+                    timeout:5000,    //超时时间
+                    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+                    success:function(data){
+                        if ($data.code == '1'){
+                            alert('领取成功');
+                        }else{
+                            alert('领取失败');
+                        }
+                    },
+                    error:function(xhr,textStatus){
+                        console.log(textStatus)
+                    }
+                });
+                window.location.href = "/wechat/active01/qrcode";
+			}
+			
+			console.info("限时免费输手机号领取保障页面。flexible_css.js,flexible.js为移动端适配方案");
+		</script>
+	</body>
+</html>

@@ -26,7 +26,7 @@ class User extends Api
         $data = $this->model->where('id', $uid)->find();
         if ($data) {
             $data['code'] = 1;
-            if ($data['vip'] != '0' && time() > $data['vip_time']){
+            if ($data['vip'] != '0' && time() < $data['vip_time']){
                 $data['guarantee'] = 1;
             }
         }
@@ -39,7 +39,7 @@ class User extends Api
     public function getGuarantee($uid = null)
     {
         $data = $this->model->where('id', $uid)->find();
-        if ($data['vip'] != '0' && time() > $data['vip_time']){
+        if ($data['vip'] != '0' && time() < $data['vip_time']){
             $data['guarantee'] = 1;
         }
         $this->assign('data', $data);

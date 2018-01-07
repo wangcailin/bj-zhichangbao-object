@@ -1,0 +1,83 @@
+.zcb-wrapper{
+	width: 100%;
+	height: 100%;
+	max-width: 10rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background-size: 100% 100%;
+}
+
+/*红包*/
+.red-packet-wrapper{
+	width: 8rem;
+	height: 10.666rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -5.333rem;
+	margin-left: -4rem;
+	border-radius: 0.16rem;
+	background-size: 100% 100%;
+	text-align: center;
+	color: rgb(237,227,203);
+}
+.red-packet-avatar{
+	width: 1.066rem;
+	height: 1.066rem;
+	margin: 0 auto;
+	border-radius: 50%;
+	margin-top: 1.333rem;
+}
+.red-packet-avatar img{
+	width: 100%;
+	height: 100%;
+}
+.red-packet-uname{
+	font-size: 0.373rem;
+	margin-top: 0.266rem;
+}
+.red-packet-info{
+	font-size: 0.506rem;
+	margin-top: 1.013rem;
+}
+.open-btn{
+	width: 2.666rem;
+	height: 2.666rem;
+	/*position: absolute;
+	bottom: 2.88rem;
+	left: 0;
+	right: 0;*/
+	margin: 0 auto;
+	margin-top: 0.64rem;
+}
+.open-btn img{
+	width: 100%;
+	height: 100%;
+}
+
+/*开红包按钮动画*/
+.btn-rotate{
+	transform: rotateY(360deg);
+	-webkit-transform: rotateY(360deg);	/* Safari 和 Chrome */
+	-moz-transform: rotateY(360deg);	/* Firefox */
+	transition: transform 2s;
+	-moz-transition: transform 2s;	/* Firefox 4 */
+	-webkit-transition: transform 2s;	/* Safari 和 Chrome */
+	-o-transition: transform 2s;	/* Opera */
+}
+
+/*关闭按钮*/
+.close-btn{
+	position: absolute;
+	width: 0.32rem;
+	height: 0.32rem;
+	left: 0.32rem;
+	top: 0.32rem;
+}
+.close-btn img{
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,75 @@
+/*限时免费页面CSS*/
+
+.zcb-wrapper{
+	width: 100%;
+	height: 100%;
+	background: rgb(93,201,167);
+	overflow: hidden;
+}
+
+/*头部图片*/
+.free-header{
+	width: 100%;
+	height: 4.266rem;
+}
+.free-header img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/*输手机号*/
+.free-content{
+	width: 9.36rem;
+	margin: 0 auto;
+	background: #FFFFFF;
+	box-sizing: border-box;
+	text-align: center;
+}
+.free-content h2{
+	padding-top: 0.733rem;
+	color: rgb(51,51,51);
+	font-size: 0.4rem;
+	font-weight: bold;
+}
+.free-content input{
+	display: block;
+	width: 8rem;
+	height: 1.066rem;
+	margin: 0 auto;
+	border-radius: 0.08rem;
+	text-align: center;	
+	border: none;
+	box-sizing: border-box;
+}
+#telNum{
+	margin-top: 1.226rem;
+	font-size: 0.346rem;
+	border-width: 0.026rem;
+	border-style: solid;
+	border-color: rgb(187,187,187);
+}
+#receiveBtn{
+	margin-top: 0.933rem;
+	color: rgb(255,255,255);
+	font-size: 0.32rem;
+	background: rgb(93,201,167);
+}
+input::-webkit-input-placeholder{ color: rgb(187,187,187); } 
+input:-moz-placeholder{ color: rgb(187,187,187); } 
+input::-moz-placeholder{ color: rgb(187,187,187); } 
+input:-ms-input-placeholder{ color: rgb(187,187,187); } 
+
+/*footer hack*/
+.footer-patch{
+	width: 100%;
+	height: 1.12rem;
+	max-width: 10rem;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	background: rgb(93,201,167);
+}
+
