@@ -1,7 +1,7 @@
 <?php
 
 namespace app\api\controller;
-
+require_once '../extend/wechat/jssdk';
 use think\Loader;
 use app\common\controller\Api;
 use think\Request;
@@ -62,8 +62,6 @@ class Wechat extends Api
     //jssdk分享功能封装
     public function wechatShare()
     {
-        Loader::import('wechat\js\JSSDK', EXTEND_PATH);
-
         $jssdkObj = new JSSDK("wxa0afc75ebe2d5871", "75cbdd6b7e9b58e90f1c5e8c8de802f9");
         $signPackage = $jssdkObj->getSignPackage();
         $this->assign('signPackage', $signPackage);
