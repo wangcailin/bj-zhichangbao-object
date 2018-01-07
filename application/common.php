@@ -27,6 +27,30 @@ if (!function_exists('__'))
 
 }
 
+
+if (!function_exists('get_random_str'))
+{
+
+    /**
+     * 获取指定数量的随机字符串
+     * @param $size   字符串长度
+     * @return string
+     */
+    function get_random_str($size)
+    {
+
+        $str = "";
+        $str_pol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+        $max = strlen($str_pol) - 1;
+        for ($i = 0; $i < $size; $i++) {
+            $str .= $str_pol[mt_rand(0, $max)];
+        }
+        return $str;
+    }
+
+}
+
+
 if (!function_exists('format_bytes'))
 {
 

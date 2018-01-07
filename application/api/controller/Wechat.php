@@ -18,10 +18,9 @@ class Wechat extends Api
         parent::_initialize();
         $this->wechatShare();
 
-        if(empty($_SESSION['wechat_user'])){
+        if(empty(session('user_open_id')) && empty(session('user_id'))){
             $this->wechatLogin();
         }else{
-            print_r($_SESSION['wechat_user']);
         }
     }
 
@@ -69,31 +68,12 @@ class Wechat extends Api
         $this->assign('signPackage', $signPackage);
     }
 
-    public function checktoken(){
-        $request = Request::instance();
-        $get = $request->param();
-        $timestamp = $get['timestamp'];//timestamp其实就是一个时间戳
-        $nonce     = $get['nonce'];//nonce是一个随机参数
-        $token     = "zcb357951";//这个token填写你在微信公众平台上写的那个值
-        $signature = $get['signature'];//这个signature其实就是在微信公众平台已经加密好的字符串
-        $echostr   = $get['echostr'];
-        $array = [];
-        $array = array($token,$timestamp,$nonce);
-        sort($array);
-        $tmpstr = sha1(implode('',$array));
-        if($tmpstr == $signature){
-            echo $echostr;
-        }else{
-            return false;
-        }
-    }
 
     public function getCode(){
         $appid = 'wxa0afc75ebe2d5871';
         $secret = '75cbdd6b7e9b58e90f1c5e8c8de802f9';
         $code = $_GET['code'];
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appid."&secret=".$secret."&code=".$code."&grant_type=authorization_code";
-die;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url );
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1 );
@@ -113,6 +93,10 @@ die;
         $res = curl_exec($ch);
         curl_close($ch);
         $arr = json_decode($res , true);
+var_dump($arr);die;
+        $this->checkUserInfo($openid, $arr);
+
+
         echo "<h1>用户名：".$arr['nickname']."</h1>";
         echo "<h1>头像：<img style='width: 10%;text-align: center' src=".$arr['headimgurl']."></h1>";
         if($arr['sex'] == '1'){
@@ -122,5 +106,36 @@ die;
         }
         echo "<h2>性别：".$arr['sex']."</h2>";
         echo "<h3>国家：".$arr['country']."</h3>";
+    }
+
+    /**
+     * 微信用户是否存在
+     * @param $openid  微信用户ID
+     * @param $data    微信用户数据
+     */
+    protected function checkUserInfo($openid, $data)
+    {
+        $userModel = model('User');
+        if ($res = $userModel->with('info')->where('open_id', $openid)->find()){
+            session('user_id', $res['id']);
+
+            $user              = $userModel::get($res['id']);
+            $user->update_time = time();
+            $user->save();
+        }else{
+            $data = [
+                'username'      => 'Wx_'.get_random_str('10'),
+                'nickname'      => $data['nickname'],
+                'avatar'        => $data['headimgurl'],
+                'sex'           => $data['sex'],
+                'vip'           => 0,
+                'open_id'       => $openid,
+                'create_time'   => time(),
+                'update_time'   => time(),
+            ];
+            $res = model('User')->save($data);
+            session('user_id', $res['id']);
+            session('user_open_id', $openid);
+        }
     }
 }
