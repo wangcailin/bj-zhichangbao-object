@@ -1,0 +1,82 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        share();
+    });
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    function share(){
+        var imgUrl = "{$imgUrl}";
+        var link = "{$link}";
+        var title = "--------";
+        var descContent = "------------";
+        var shareTitle = "---------------";
+        wx.config({
+            debug: false,
+            appId: '{$appId}',
+            timestamp: '{$timestamp}',
+            nonceStr: '{$nonceStr}',
+            signature: '{$signature}',
+            jsApiList: [
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems'
+            ]
+        });
+        wx.ready(function(){
+            //朋友圈
+            wx.onMenuShareTimeline({
+                title: descContent,
+                link: link,
+                imgUrl: imgUrl,
+                trigger: function (res) {
+                },
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    //self.location= link;
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: shareTitle,
+                link: link,
+                desc: descContent,
+                imgUrl: imgUrl,
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    //self.location= link;
+                },
+                cancel: function () {
+                }
+            });
+            wx.onMenuShareQQ({
+                title: shareTitle,
+                desc: descContent,
+                link: link,
+                imgUrl: imgUrl,
+
+                success: function () {
+                    //self.location= link;
+                },
+                cancel: function () {
+                }
+            });
+            wx.onMenuShareWeibo({
+                title: shareTitle,
+                desc: descContent,
+                link: link,
+                imgUrl: imgUrl,
+                success: function () {
+                    //self.location= link;
+                },
+                cancel: function () {
+                }
+            });
+        });
+    }
+</script>

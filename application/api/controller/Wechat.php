@@ -3,7 +3,8 @@
 namespace app\api\controller;
 
 use app\common\controller\Api;
-use Hooklife\ThinkphpWechat\Wechat as WeChatAPP;
+use wechat\js\JSSDK;
+use think\Config;
 /**
  * 微信
  *
@@ -14,17 +15,15 @@ class Wechat extends Api
     public function _initialize()
     {
         parent::_initialize();
-        $oauth = WeChatAPP::oauth();
-        $oauth->user();
-//        $user  = $oauth->getUser();
-//        if (!$user->id) {
-//            //未登录，引导用户到微信服务器授权
-//            $oauth->redirect()->send();
-//        }else{
-//            //已登录状态，重定向到joomla首页
-//            $targetUrl = '';
-//            header('location:'. $targetUrl); // 跳转到业务页面
-//        }
+        $this->wechatShare();
 
+    }
+
+    //jssdk分享功能封装
+    public function wechatShare()
+    {
+        $jssdkObj = new JSSDK("wxa0afc75ebe2d5871", "75cbdd6b7e9b58e90f1c5e8c8de802f9");
+        $signPackage = $jssdkObj->getSignPackage();
+        $this->signPackage = $signPackage;
     }
 }
