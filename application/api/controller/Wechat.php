@@ -3,8 +3,8 @@
 namespace app\api\controller;
 
 use app\common\controller\Api;
-use wechat\js\JSSDK;
 use think\Request;
+use wechatJssdk\JSSDK;
 
 /**
  * 微信
