@@ -4,7 +4,6 @@ namespace app\api\controller;
 
 use app\common\controller\Api;
 use wechat\js\JSSDK;
-use think\Config;
 use think\Request;
 
 /**
@@ -18,8 +17,50 @@ class Wechat extends Api
     {
         parent::_initialize();
         $this->wechatShare();
+    }
+
+    public function index()
+
+    {
+        $echoStr=$_GET["echostr"];
+        if($this->checkSignature()){
+            echo $echoStr;
+            exit;
+        }
+    }
+    private function checkSignature()
+
+    {
+
+        $signature=$_GET["signature"];
+
+        $timestamp=$_GET["timestamp"];
+
+        $nonce=$_GET["nonce"];
+
+        $token= 'zcb357951';
+
+        $tmpArr= array($token, $timestamp, $nonce);
+
+
+        sort($tmpArr, SORT_STRING);
+
+        $tmpStr = implode( $tmpArr );
+
+        $tmpStr = sha1( $tmpStr );
+
+        if( $tmpStr == $signature ){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
 
     }
+
 
     //jssdk分享功能封装
     public function wechatShare()
@@ -48,11 +89,20 @@ class Wechat extends Api
         }
     }
 
+    public  function getOauthAccessToken() {
+
+        $appid='wxa0afc75ebe2d5871';
+        $redirect_uri = 'http://test.zhichangbb.com/api/wechat/getUserInfo';
+        $scope = 'snsapi_userinfo';//弹出授权页面 snsapi_base静默授权
+        $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=REDIRECT_URI&response_type=code&scope=".$scope."&state=STATE#wechat_redirect";
+        redirect($url);
+    }
+
     public function getCode(){
         $appid = 'wxa0afc75ebe2d5871';
         $secret = '75cbdd6b7e9b58e90f1c5e8c8de802f9';
         $code = $_GET['code'];
-        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code";
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appid."&secret=".$secret."&code=".$code."&grant_type=authorization_code";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url );
