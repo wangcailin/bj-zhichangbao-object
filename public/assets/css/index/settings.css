@@ -1,0 +1,16 @@
+.sig-head{height: 120px;text-align: center;background-color: #edf1f2;line-height: 120px;}
+.x-sig .am-container{min-height: 660px;margin: 0 auto;padding: 20px 0;}
+.x-sig .am-modal-bd{border-bottom:none;}
+.x-sig .am-container .wrap{padding: 27px 0 90px;}
+.x-sig .login-wrap{width: 365px;margin: 0 auto;}
+.x-sig .login-wrap .no-account{color: #787d82;}
+.x-sig .login-wrap .on-register{color: #e20c3e}
+.x-sig .login-wrap .on-register, .x-sig .login-wrap .no-account{font-size: 1.4rem;margin-top: 5px;}
+.x-sig .rl-modal .am-modal-hd span:hover{border-bottom: none; color: #787d82;}
+.sig-footer{color: #b5b9bc;background: #fff; font-size : 12px;line-height: 50px;text-align: center;font-size: 12px;}
+.forgot-send-result{text-align: center; display: none}
+.forgot-send-result i{display: inline-block; margin: 20px 0 10px -40px; width: 120px; height: 55px; background: url(../img/sendmail.png) no-repeat}
+.forgot-send-result .get-info{font-size: 14px; color: #c8cdd2;}
+.forgot-change-result i{font-size: 80px;color: #ccc;}
+.input-wrapper.posi-relative .yzm{position:absolute;top:0;right:0; border: 1px solid #c8c8c8; height: 32px; border-left: none;}
+.input-wrapper.posi-relative #sendsmsbtn{position: absolute; top: .7rem; right: 10px; margin: 0; font-size: 1.4rem; color: #ccc;}

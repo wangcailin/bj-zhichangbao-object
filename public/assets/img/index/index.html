@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.zhichangbb.com/profile -->
+<html lang="en" class="js cssanimations" xmlns="http://www.w3.org/1999/html">
+
+<body>
+<include file="Common:header"/>
+
+<div class="u-profile-wrap bg-white">
+	<div class="u-profile am-cf">
+		<div class="setting-left am-fl">
+
+
+
+			<div class="avator-wapper">
+				<div class="avator-mode">
+					<img class="avator-img" src="img/4(1).jpg" data-portrait="54584cb50001e5b302200220" width="92" height="92">
+					<div class="update-avator" style="bottom: -30px;">
+						<p><a href="javascript:void(0);" class="js-avator-link">更换头像</a></p>
+					</div>
+				</div>
+				<div class="des-mode">
+					<p>{$session.username}</p>
+					<dl class="js-auth-list clearfix auth-list">
+						<dd><i class="icon-set_sns "></i><div class="icon-tips hide" style="display: none;"><div class="triangle_border_up"><span></span></div>还未实名认证</div></dd>
+						<dd><i class="icon-set_phone am-text-danger"></i><div class="icon-tips hide" style="display: none;"><div class="triangle_border_up"><span></span></div>你已绑定手机</div></dd>
+						<dd class="active"><i class="icon-set_email "></i><div class="icon-tips hide" style="opacity: 0.468605;"><div class="triangle_border_up"><span></span></div>你未绑定邮箱</div></dd>
+					</dl>
+				</div>
+			</div>
+			<div class="list-wapper">
+				<h2>账户管理</h2>
+				<div class="line"></div>
+				<ul class="menu">
+					<li><a href="{:U('Profile/index')}" class="on am-link-muted">账号绑定<span class="arr"><i class="am-icon-angle-right"></i></span></a></li>
+					<li><a href="{:U('Personalinfo/index')}" class=" am-link-muted">个人信息<span class="arr"><i class="am-icon-angle-right"></i></span></a></li>
+					<li><a href="http://www.zhichangbb.com/goidentify" class=" am-link-muted">实名认证<span class="arr"><i class="am-icon-angle-right"></i></span></a></li>
+					<li><a href="http://www.zhichangbb.com/deliveryaddress" class=" am-link-muted">收货地址<span class="arr"><i class="am-icon-angle-right"></i></span></a></li>
+				</ul>
+			</div>
+			<script type="text/javascript">
+                $(function() {
+                    $(".avator-mode").mouseover(function() {
+                        $(".update-avator").css({"bottom":0});
+                    }).mouseleave(function() {
+                        $(".update-avator").css({"bottom":"-30px"});
+                    });
+                    $(this).find(".icon-tips").fadeOut("fast");
+                    $(".js-auth-list dd").hover(function() {
+                        $(this).find(".icon-tips").fadeIn("fast");
+                    }).on("mouseleave",function() {
+                        $(this).find(".icon-tips").fadeOut("fast");
+                    });
+                });
+			</script>
+		</div>
+		<div class="setting-right">
+			<div class="setting-right-wrap wrap-boxes settings">
+				<div class="page-settings x-acc-binding">
+					<div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+						<!--列表标题-->
+						<div class="am-list-news-hd am-cf acc-title">账号绑定</div>
+						<div class="am-list-news-bd">
+							<ul class="am-list">
+								<li class="am-g">
+									<div class="am-u-sm-1"><i class="icon-set_email acc-icon"></i></div>
+									<div class="am-u-sm-8">
+										<div>
+											<span class="acc-info-title">邮箱</span>
+											<span class="acc-sub-info">
+					                     <span class="am-text-danger">未绑定</span>
+					              </span>
+										</div>
+										<div class="acc-tip-info">可用邮箱加密码登录职场保，可用邮箱找回密码</div>
+									</div>
+									<div class="am-u-sm-3 am-text-right acc-info-oper">
+										<a href="javascript:;" class="am-btn am-btn-default am-block-inline js-mail" data-do="bind">立即绑定</a>
+									</div>
+								</li>
+								<li class="am-g">
+									<div class="am-u-sm-1"><i class="icon-set_phone acc-icon"></i></div>
+									<div class="am-u-sm-8">
+										<div>
+											<span class="acc-info-title">手机</span>
+											<span class="acc-sub-info">
+
+										  <?php
+										    $session=session('name');
+        									$mobile=$session['mobile'];
+        									$str="<font color='red'>*****</font>";
+        									$new_mobile = substr($mobile, 0, 3) .$str. substr($mobile, 8, strlen($mobile));
+											?>
+										  {$new_mobile}
+						              </span>
+										</div>
+										<div class="acc-tip-info">可用手机号加密码登录职场保，可通过手机号找回密码</div>
+									</div>
+									<div class="am-u-sm-3 am-text-right acc-info-oper">
+
+
+
+										<a href="javascript:;" class="am-btn am-btn-default am-block-inline js-mobile" data-do="change">更改</a>
+
+
+									</div>
+								</li>
+								<li class="am-g">
+									<div class="am-u-sm-1"><i class="icon-set_key acc-icon"></i></div>
+									<div class="am-u-sm-8">
+										<div>
+											<span class="acc-info-title">密码</span>
+											<span class="acc-sub-info">
+					                     已设置
+					              </span>
+										</div>
+										<div class="acc-tip-info">用于保护账号信息和登录安全</div>
+									</div>
+									<div class="am-u-sm-3 am-text-right acc-info-oper">
+										<a href="javascript:;" class="am-btn am-btn-default am-block-inline js-changepwd">修改</a>
+									</div>
+								</li>
+								<li class="am-g">
+									<div class="am-u-sm-1"><i class="icon-feedback acc-icon"></i></div>
+									<div class="am-u-sm-11">
+										<div>
+											<span class="acc-info-title">社交帐号</span>
+										</div>
+										<div class="acc-tip-info">绑定第三方帐号，可以直接登录，还可以将内容同步到以下平台，与更多好友分享</div>
+										<div class="acc-third-list">
+											<div class="am-inline-block am-cf acc-third-item">
+												<div class="am-fl"><i class="icon-weixin"></i></div>
+												<div class="am-fr acc-third-item-info">
+													<div class="third-title">微信</div>
+													<div class="third-status">未绑定</div>
+													<div class="third-btn"><a>添加绑定</a></div>
+												</div>
+											</div>
+											<div class="am-inline-block am-cf acc-third-item">
+												<div class="am-fl"><i class="icon-weibo"></i></div>
+												<div class="am-fr acc-third-item-info">
+													<div class="third-title">微博</div>
+													<div class="third-status">未绑定</div>
+													<div class="third-btn"><a>添加绑定</a></div>
+												</div>
+											</div>
+											<div class="am-inline-block am-cf acc-third-item">
+												<div class="am-fl"><i class="icon-qq"></i></div>
+												<div class="am-fr acc-third-item-info">
+													<div class="third-title">QQ</div>
+													<div class="third-status">未绑定</div>
+													<div class="third-btn"><a>添加绑定</a></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="am-modal rl-modal" tabindex="-1" id="identify-auth-modal">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd am-text-left"> 验证身份 <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+		</div>
+		<div class="am-modal-bd">
+			<div class="x-invite x-page am-u-md-centered am-margin-top-sm">
+				<div class="keybox"><i class="icon-key"></i></div>
+				<p>请输入登录密码验证身份<br></p>
+				<div class="am-g x-errorHintContainer">
+					<div class="am-u-sm-3"></div>
+					<div class="am-u-sm-9 am-text-left am-margin-top-sm am-text-danger">
+						<div class="am-text-danger errorBox"></div>
+					</div>
+				</div>
+				<form class="am-form am-form-horizontal am-text-left" action="http://www.zhichangbb.com/authValid">
+					<div class="am-form-group">
+						<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">密码:</label>
+						<div class="am-u-sm-9">
+							<input type="password" name="password" data-validate="require-password" class="ipt-pwd js-loginPassword js-pass-pwd" placeholder="请输入密码" maxlength="16" autocomplete="off">
+							<p class="rlf-tip-wrap errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！"></p>
+						</div>
+					</div>
+					<div class="am-form-group js-verify-row">
+						<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">验证码:</label>
+						<div class="am-u-sm-9">
+							<div class="am-u-sm-5">
+								<input type="text" name="verify" class="ipt ipt-verify js-emailverify" data-validate="require-string" data-callback="checkverity" maxlength="4" data-minlength="4" placeholder="请输入验证码">
+								<p class="rlf-tip-wrap errorHint am-text-danger" data-error-hint="验证码错误"></p>
+							</div>
+							<div class="am-u-sm-2">
+								<a href="javascript:void(0)" hidefocus="true" class="verify-img-wrap js-verify-refresh">
+									<img class="verify-img" src="js/saved_resource">
+								</a>
+							</div>
+							<div class="am-u-sm-2">
+								<a href="javascript:void(0)" hidefocus="true" class="am-icon-refresh js-verify-refresh"></a>
+							</div>
+						</div>
+					</div>
+					<div class="am-form-group">
+						<div class="am-u-sm-3"></div>
+						<div class="am-u-sm-9">
+							<button type="button" class="am-btn am-btn-primary f-btn am-margin-top-sm" data-callback="changeEmail">确定</button>
+							<button type="button" class="am-btn am-btn-default am-margin-top-sm" data-am-modal-close="">取消</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="am-modal" tabindex="-1" id="bind-mail-modal">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd am-text-left"> <label>邮箱绑定</label> <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+		</div>
+		<div class="am-modal-bd">
+			<div class="x-invite x-page am-u-md-centered am-margin-top-sm">
+				<div class="am-g x-errorHintContainer">
+					<div class="am-u-sm-3"></div>
+					<div class="am-u-sm-9 am-text-left am-margin-top-sm am-text-danger">
+						<div class="am-text-danger errorBox"></div>
+					</div>
+				</div>
+				<div class="am-g">
+					<div class="am-u-sm-12 am-u-sm-centered">
+						<form class="am-form am-form-horizontal" action="http://www.zhichangbb.com/ajax_bindemail">
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">邮箱地址:</label>
+								<div class="am-u-sm-9">
+									<input type="email" name="email" class="am-form-field am-input-lg email-address" placeholder="请输入邮箱地址" data-validate="require-email" data-errorhint="邮箱格式错误">
+								</div>
+							</div>
+							<div class="am-form-group">
+								<div class="am-u-sm-9 am-u-sm-offset-3">
+									<button type="button" class="am-btn am-btn-primary f-btn am-margin-top-sm" data-callback="afterBindEmail">绑定</button>
+									<button type="button" class="am-btn am-btn-default am-margin-top-sm" data-am-modal-close="">取消</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="am-modal am-modal-no-btn rl-modal" tabindex="-1" id="valid-mail-modal">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">
+			邮件验证 <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+		</div>
+		<div class="am-modal-bd">
+			<div class="x-invite x-page am-u-md-centered am-margin-top-sm">
+				<p class="rlf-tip-globle " id="signin-globle-error"></p>
+				<div class="user_header"></div>
+				<p class="title am-text-center">发送成功，请立即验证邮箱</p>
+				<p class="subtitle am-text-center">邮箱发送至
+					<span class="am-text-danger js-account breakall"></span>
+				</p>
+				<div class="am-g x-errorHintContainer">
+					<div class="am-u-sm-3"></div>
+					<div class="am-u-sm-9 am-text-left am-margin-top-sm am-text-danger">
+						<div class="am-text-danger errorBox"></div>
+					</div>
+				</div>
+				<div class="am-g">
+					<div class="am-u-sm-12 am-u-sm-centered">
+						<form class="am-form am-form-horizontal am-text-left" action="http://www.zhichangbb.com/ajax_validemail">
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">邮件验证码:</label>
+								<div class="am-u-sm-9">
+									<input type="text" name="code" class="am-form-field am-input-lg email-code" placeholder="请输入邮件验证码" data-validate="require-string" data-errorhint="邮件验证码错误">
+								</div>
+							</div>
+							<div class="am-form-group">
+								<div class="am-u-sm-3"></div>
+								<div class="am-u-sm-9">
+									<button type="button" class="am-btn am-btn-primary f-btn am-margin-top-sm" data-callback="afterValidEmail">验证</button>
+									<button type="button" class="am-btn am-btn-default am-margin-top-sm" data-am-modal-close="">暂不验证</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="am-modal rl-modal" tabindex="-1" id="bind-mobile-modal">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd am-text-left"> <label>手机绑定</label> <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+		</div>
+		<div class="am-modal-bd">
+			<div class="x-bindmobile x-page am-u-md-centered am-margin-top-sm">
+				<div class="am-g x-errorHintContainer">
+					<div class="am-u-sm-3"></div>
+					<div class="am-u-sm-9 am-text-left am-margin-top-sm am-text-danger">
+						<div class="am-text-danger errorBox"></div>
+					</div>
+				</div>
+				<div class="am-g">
+					<div class="am-u-sm-12">
+						<form class="am-form am-form-horizontal am-text-left" action="http://www.zhichangbb.com/ajax_bindmobile" id="bindmobileform">
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">手机号码:</label>
+								<div class="am-u-sm-9">
+									<input name="mobile" class="am-form-field am-input-lg mobile-number" type="text" placeholder="请输入手机号" data-validate="require-mobile-phone" data-errorhint="手机号格式错误">
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">图形验证码:</label>
+								<div class="am-u-sm-9 verify-container">
+									<input name="verify" class="am-form-field am-input-lg verify" type="text" placeholder="请输入验证码" data-validate="require-string" data-errorhint="验证码错误">
+									<img class="yzm" src="js/kaptcha" style="top:.2rem;right: .1rem;">
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">短信验证码:</label>
+								<div class="am-u-sm-9 phone-verify-container">
+									<input name="mobileverify" class="am-form-field am-input-lg mobile-number" type="text" placeholder="请输入短信验证码" data-validate="require-string" data-errorhint="短信验证码错误">
+									<span id="sendsmsbtn" style="top:.8rem;">获取短信验证码</span>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<div class="am-u-sm-3"></div>
+								<div class="am-u-sm-9">
+									<button type="button" class="am-btn am-btn-primary f-btn am-margin-top-sm" data-callback="afterBindMobile">绑定</button>
+									<button type="button" class="am-btn am-btn-default am-margin-top-sm" data-am-modal-close="">取消</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="am-modal rl-modal" tabindex="-1" id="change-pwd-modal">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd am-text-left"> <label>修改密码</label> <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+		</div>
+		<div class="am-modal-bd">
+			<div class="x-bindmobile x-page am-u-md-centered am-margin-top-sm">
+				<div class="am-g x-errorHintContainer">
+					<div class="am-u-sm-3"></div>
+					<div class="am-u-sm-9 am-text-left am-margin-top-sm am-text-danger">
+						<div class="am-text-danger errorBox"></div>
+					</div>
+				</div>
+				<div class="am-g">
+					<div class="am-u-sm-12">
+						<form class="am-form am-form-horizontal am-text-left" action="http://www.zhichangbb.com/ajax_changepwd" id="changepwdform">
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">输入原始密码:</label>
+								<div class="am-u-sm-9">
+									<input name="pwd1" class="ipt-pwd js-loginPassword js-pass-pwd" type="password" placeholder="请输入密码" data-validate="require-password">
+									<p class="rlf-tip-wrap errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！"></p>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">输入新密码:</label>
+								<div class="am-u-sm-9 verify-container">
+									<input name="pwd2" class="ipt-pwd js-loginPassword js-pass-pwd" type="password" placeholder="请输入密码" data-validate="require-password">
+									<p class="rlf-tip-wrap errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！"></p>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="doc-ipt-3-a" class="am-u-sm-3 am-form-label am-text-center">确认新密码:</label>
+								<div class="am-u-sm-9 phone-verify-container">
+									<input name="pwd3" class="ipt-pwd js-loginPassword js-pass-pwd" type="password" placeholder="请输入密码" data-validate="require-password">
+									<p class="rlf-tip-wrap errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！"></p>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<div class="am-u-sm-3"></div>
+								<div class="am-u-sm-9">
+									<button type="button" class="am-btn am-btn-primary f-btn am-margin-top-sm" data-callback="afterChangePwd">绑定</button>
+									<button type="button" class="am-btn am-btn-default am-margin-top-sm" data-am-modal-close="">取消</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">用户头像</div>
+		<div class="am-modal-bd">
+			<img class="am-circle js-avator-img" width="100" height="100" id="edit-s-img" src="img/4.jpg">
+			<form id="avatorform" action="http://www.zhichangbb.com/update_user_avator" method="post" class="pull-right">
+				<input type="hidden" name="avator" class="js-avator-path" value="/avator/4.jpg">
+				<p class="am-margin-top-sm">
+					<a href="javascript:void(0)" class="avator-btn-fake am-margin-top-sm am-text-sm js-change" data-defcnt="15">换一换</a>
+					<a href="javascript:void(0)" class="avator-btn-fake am-margin-top-sm am-text-sm js-upload am-margin-left-lg">上传头像</a>
+				</p>
+				<p class="am-text-danger editErr"></p>
+				<input class="am-hide upload" id="avator-file" type="file" title="上传头像" data-img="edit-s-img" data-type="img_avator" data-grp="avator" name="fileField" accept="image/gif,image/jpeg,image/jpg,image/png">
+			</form>
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-cancel="">取消</span>
+			<span class="am-modal-btn" data-am-modal-confirm="">提交</span>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        require(['app/profile']);
+    });
+
+</script>
+
+
+<include file='Common:footer'/>
+
+<script src="js/app.js"></script>
+
+
+</body></html>

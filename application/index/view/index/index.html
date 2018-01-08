@@ -1,217 +1,279 @@
 <!DOCTYPE html>
-<html>
-
-    <head>
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>FastAdmin - 基于ThinkPHP5和Bootstrap的极速后台开发框架</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="__CDN__/assets/css/index.css" rel="stylesheet">
-
-        <!-- Plugin CSS -->
-        <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="//cdn.bootcss.com/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
-            <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-
-    <body id="page-top">
-
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-menu">
-                        <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand page-scroll" href="#page-top"><img src="__CDN__/assets/img/logo.png" style="width:200px;" alt=""></a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbar-collapse-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://www.fastadmin.net">首页</a></li>
-                        <li><a href="http://www.fastadmin.net/store.html" title="FastAdmin插件市场">插件市场</a></li>
-                        <li><a href="http://www.fastadmin.net/service.html" title="FastAdmin增值服务">服务</a></li>
-                        <li><a href="http://www.fastadmin.net/download.html" title="FastAdmin下载">下载</a></li>
-                        <li><a href="http://www.fastadmin.net/demo.html" title="FastAdmin演示">演示</a></li>
-                        <li><a href="http://forum.fastadmin.net" title="FastAdmin交流社区">社区</a></li>
-                        <li><a href="http://doc.fastadmin.net" title="FastAdmin官方文档">文档</a></li>
-                        <li><a href="http://html.fastadmin.net" title="FastAdmin的HTML版">HTML版</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
-
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="header-content">
-                            <div class="header-content-inner">
-                                <h1>FastAdmin</h1>
-                                <h3>基于ThinkPHP5和Bootstrap的极速后台开发框架</h3>
-                                <a href="{:url('admin/index/login')}" class="btn btn-outline btn-xl page-scroll">登录后台</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <section id="features" class="features">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="section-heading">
-                            <h2>功能特性</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="feature-item">
-                                        <i class="icon-user text-primary"></i>
-                                        <h3>权限管理</h3>
-                                        <p class="text-muted">基于完善的Auth权限控制管理、无限父子级权限分组、可自由分配子级权限、一个管理员可同时属于多个组别</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="feature-item">
-                                        <i class="icon-screen-smartphone text-primary"></i>
-                                        <h3>响应式开发</h3>
-                                        <p class="text-muted">基于Bootstrap和AdminLTE进行二次开发,手机、平板、PC均自动适配,无需要担心兼容性问题</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="feature-item">
-                                        <i class="icon-present text-primary"></i>
-                                        <h3>多语言</h3>
-                                        <p class="text-muted">不仅仅后台开发支持多语言,同时视图部分和JS部分仍然共享同一个语言包,语法相同且自动加载</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="feature-item">
-                                        <i class="icon-layers text-primary"></i>
-                                        <h3>模块化开发</h3>
-                                        <p class="text-muted">控制器、模型、视图、JS一一对应,使用RequireJS进行JS模块化管理,采用Bower进行前端包组件管理</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="feature-item">
-                                        <i class="icon-docs text-primary"></i>
-                                        <h3>CRUD</h3>
-                                        <p class="text-muted">控制台进行一键生成控制器、模型、视图和JS文件,同时可一键生成后台权限节点和菜单栏</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="feature-item">
-                                        <i class="icon-puzzle text-primary"></i>
-                                        <h3>自由可扩展</h3>
-                                        <p class="text-muted">FastAdmin提供强大的扩展中心，可直接在线安装和卸载插件，同时支持命令行一键操作</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta">
-            <div class="cta-content">
-                <div class="container">
-                    <h2>不要犹豫<br>开始行动</h2>
-                    <a href="http://doc.fastadmin.net/docs/contributing.html" class="btn btn-outline btn-xl page-scroll">为FastAdmin贡献代码!</a>
-                </div>
-            </div>
-            <div class="overlay"></div>
-        </section>
-
-        <footer>
-            <div class="container">
-                <p>&copy; 2017 FastAdmin. All Rights Reserved.</p>
-                <ul class="list-inline">
-                    <li>
-                        <a href="https://gitee.com/karsonzhang/fastadmin">码云</a>
+<!-- saved from url=(0026)http://www.zhichangbb.com/ -->
+<html lang="en" class="js cssanimations">
+<link rel="alternate icon" type="/favicon.png" href="/favicon.png">
+<head>
+    {include file="common/meta" /}
+</head>
+<body>
+<div id="app" v-cloak>
+    {include file="common/header" /}
+    <div class="rollpic" style="position:relative;">
+        <div data-am-widget="slider" class="am-slider am-slider-a1 am-slider-default am-no-layout" data-am-slider="{}">
+            <div class="am-viewport" style="overflow: hidden; position: relative;">
+                <ul class="am-slides"
+                    style="width: 600%; transition-duration: 0s; transform: translate3d(-1583px, 0px, 0px);">
+                    <li class="clone" aria-hidden="true"
+                        style="width: 1583px; margin-right: 0px; float: left; display: block;">
+                        <img src="__CDN__/assets/img/index/banner2.png" draggable="false">
                     </li>
-                    <li>
-                        <a href="https://github.com/karsonzhang/fastadmin">Github</a>
+                    <li class="clone am-active-slide" aria-hidden="true"
+                        style="width: 1583px; margin-right: 0px; float: left; display: block;">
+                        <img src="__CDN__/assets/img/index/banner2.png" draggable="false">
                     </li>
-                    <li>
-                        <a href="http://shang.qq.com/wpa/qunwpa?idkey=46c326e570d0f97cfae1f8257ae82322192ec8841c79b2136446df0b3b62028c">QQ群</a>
+                    <li class="clone" aria-hidden="true"
+                        style="width: 1583px; margin-right: 0px; float: left; display: block;">
+                        <img src="__CDN__/assets/img/index/banner2.png" draggable="false">
                     </li>
                 </ul>
             </div>
-        </footer>
+            <ol class="am-control-nav am-control-paging"></ol>
+            <ul class="am-direction-nav">
+                <li class="am-nav-prev">
+                    <a class="am-prev am-disabled" href="index.html" tabindex="-1"> </a>
+                </li>
+                <li class="am-nav-next">
+                    <a class="am-next am-disabled" href="index.html" tabindex="-1"> </a>
+                </li>
+            </ul>
+        </div>
+        <div class="index-banner-box" v-show="isLogin">
+            <div class="index-login-box">
+                <div class="login_box">
+                    <div class="opacity_bg"></div>
+                    <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+                        <ul class="am-tabs-nav am-cf">
+                            <li>
+                                <i style="display: inline-block; background: url(https://open.weixin.qq.com/zh_CN/htmledition/res/assets/res-design-download/icon32_appwx_logo.png); height: 32px; width: 32px"></i><a style="display: inline-block; vertical-align: top; margin-left: 10px;" href="javascript:;">微信登录</a>
+                            </li>
+                        </ul>
+                        <div class="am-tabs-bd">
+                            <div>
+                                <form class="am-form" action="http://wx.zhichangbb.com/plugin/wxlogin/index/weixin_login.html" id="sininform"
+                                      method="get">
+                                    <button class="denglubtn" id="denglu">点击登录</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white">
+        <div class="am-g">
+        </div>
+        <div class="am-container" style="margin-bottom:50px">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <div class="level-1-title">职场保 为您的职场保驾护航</div>
+                    <div class="level-2-title normal" style="color:#000"><label class="r">6大保障全方位保障您的权益</label></div>
+                </div>
+            </div>
+            <ul class="am-g am-avg-md-3 u-list six" style="margin-top:50px;">
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_1.png">
+                        <div class="title">劳动法律咨询</div>
+                        <div class="sub-title">发生劳动纠纷，不知如何处理？<br>职场保为会员提供专业全面的<br>劳动法律咨询服务</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_2.png">
+                        <div class="title">辅助收集证据</div>
+                        <div class="sub-title">证据很重要却不懂如何收集？<br>职场保全程协助用户<br>进行证据收集</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_3.png">
+                        <div class="title">双方协调和解</div>
+                        <div class="sub-title">发生纠纷后，想和解<br>却不会谈，谈不拢？职场保协助<br>用户与公司进行协调和解</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_4.png">
+                        <div class="title">代发律师信函</div>
+                        <div class="sub-title">想委托律师发律师函<br>无奈费用太高不值得？<br>一年199，职场保代发律师信函</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_5.png">
+                        <div class="title">代理案件开庭</div>
+                        <div class="sub-title">专业律师收费太高<br>自己耗不起时间？<br>超低收费，职场保协助代理案件开庭</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_6.png">
+                        <div class="title">推荐入职机会</div>
+                        <div class="sub-title">新入职场，好工作难寻？<br>三十万企业<br>为职场保会员提供就业岗位</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="am-g zy-container sp1">
+            <div class="am-u-sm-12">
+                <div class="level-1-title white">因为专业 所以优秀</div>
+                <div class="level-2-title normal">金牌的团队＋专业的服务＋强大职场保障</div>
+                <ul data-am-widget="gallery" class="am-gallery am-avg-md-3 am-gallery-default ad am-no-layout">
+                    <li class="am-u-md-4 am-u-lg-4">
+                        <div class="am-gallery-item">
+                            <a href="__CDN__/assets/img/index/icon_zhuanye.png" class="">
+                                <img src="__CDN__/assets/img/index/icon_zhuanye.png" alt="远方 有一个地方 那里种有我们的梦想">
+                                <h3 class="am-gallery-title">金牌律师团队</h3>
+                                <div class="am-gallery-desc">经验丰富的劳动律师团队，优中选优</div>
+                                <div class="am-gallery-desc">金牌律师团队，为您提供专属法律服务</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="am-u-md-4 am-u-lg-4">
+                        <div class="am-gallery-item ">
+                            <a href="__CDN__/assets/img/index/icon_zhuanye.png" class="">
+                                <img src="__CDN__/assets/img/index/icon_zhuanye.png" alt="远方 有一个地方 那里种有我们的梦想">
+                                <h3 class="am-gallery-title">专业法律服务</h3>
+                                <div class="am-gallery-desc">劳动法咨询，协助手机证据</div>
+                                <div class="am-gallery-desc">发律师函、代理案件开庭</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="am-u-md-4 am-u-lg-4">
+                        <div class="am-gallery-item ">
+                            <a href="__CDN__/assets/img/index/icon_zhuanye.png" class="">
+                                <img src="__CDN__/assets/img/index/icon_zhuanye.png" alt="远方 有一个地方 那里种有我们的梦想">
+                                <h3 class="am-gallery-title">强大职场保障</h3>
+                                <div class="am-gallery-desc">职场专业学习，30万名企提供岗位</div>
+                                <div class="am-gallery-desc">强大职场保障，让您在职场一路坦途</div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="am-g rely-container">
+            <div class="am-u-sm-12 trust">
+                <div class="level-1-title">专业品质 值得信赖</div>
+                <div class="level-2-title normal" style="color:#000">为<label
+                        class="r">千万劳动者</label>提供劳动法律咨询与劳动纠纷法律服务<br>为<label class="r">百万家企业</label>提供人力资源服务
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-cf ">
+                <!-- class="am-u-sm-12 am-cf -->
+                <div class="rely-desc">
+                    <div class="am-u-md-4 am-u-lg-6 idx-logo"><img src="__CDN__/assets/img/index/idx-logo.png" style="width:35%"></div>
+                    <div class="am-text-right am-u-md-4 am-u-lg-6 rely-desc-p">
+                        <p>职场保，一家面向职场个人</p>
+                        <p>处理劳动过程中涉及法律相关纠纷的会员制平台</p>
+                        <p>服务包括劳动法律实时在线咨询</p>
+                        <p>协助进行调查取证、协助进行劳动纠纷的谈判与协商</p>
+                        <p>代理劳动纠纷案件开庭诉讼，为平台会员提供就业岗位等服务</p>
+                        <p>作为国内首家专注于解决劳动法律纠纷的互联网平台</p>
+                        <p>职场保拥有一批有丰富劳动合同纠纷解决经验的律师</p>
+                        <p>结合先进的互联网技术</p>
+                        <p>为劳动者提供一站式劳动纠纷解决方案</p>
+                        <p>给职场人的职场保驾护航</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g zy-container sp2">
+            <div class="am-u-sm-12">
+                <div class="level-1-title white">职场保 您的职场权益保障专家</div>
+                <div class="level-2-title normal">
+                    <p>金牌团队，解决职场劳务纠纷</p>
+                    <p>强大资源，提供职业发展保障</p>
+                </div>
+                <div class="bofang">
 
-        <!-- jQuery -->
-        <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+                    <img src="__CDN__/assets/img/index/fang.png">
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <!-- Plugin JavaScript -->
-        <script src="//cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
-        <script>
-            $(function () {
-                $(window).on("scroll", function () {
-                    $("#mainNav").toggleClass("affix", $(window).height() - $(window).scrollTop() <= 50);
-                });
-
-
-                //发送版本统计信息
-                try {
-                    var installed = localStorage.getItem("installed");
-                    console.log(installed);
-                    if (!installed) {
-                        $.ajax({
-                            url: "{$Think.config.fastadmin.api_url}/statistics/installed",
-                            data: {
-                                version: "{:config('fastadmin.version')}",
-                                os: "{$Think.PHP_OS}",
-                                sapi: "{$Think.PHP_SAPI}",
-                                tpversion: "{$Think.THINK_VERSION}",
-                                phpversion: "{$Think.PHP_VERSION}",
-                                software: "{$Request.server.SERVER_SOFTWARE}",
-                                url: location.href,
-                            },
-                            dataType: 'jsonp',
-                        });
-                        localStorage.setItem("installed", true);
-                    }
-                } catch (e) {
-
-                }
-
-            });
-        </script>
-
-        <script>
-            var _hmt = _hmt || [];
-            (function () {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?f8d0a8c400404989e195270b0bbf060a";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
-
-    </body>
-
-</html>
+                </div>
+            </div>
+        </div>
+        <div class="am-container">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <div class="level-1-title">选择我们的理由</div>
+                    <div class="level-2-title normal" style="color:#000">2016年成立之后为千万劳动者提供法律保障</div>
+                </div>
+            </div>
+            <ul class="am-g am-avg-md-3 u-list sel" style="margin-top:50px;">
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_1(1).png">
+                        <div class="title">更专业</div>
+                        <div class="sub-title">建立最全面的劳动法律知识库<br>与全国400多家律所合作<br>为全国上百万劳动者提供专业劳动法律咨询</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_2(1).png">
+                        <div class="title">更简单</div>
+                        <div class="sub-title">借助专业的法律知识及丰富经验<br>提出劳动纠纷解决方案<br>用最简单最有效的方式维护劳动者权利</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_3(1).png">
+                        <div class="title">更高效</div>
+                        <div class="sub-title">依托于专业法律知识和丰富经验<br>以最快捷的方式<br>迅速结束劳动纠纷战役</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_4(1).png">
+                        <div class="title">积人脉</div>
+                        <div class="sub-title">平台为会员建立“职场圈”并定期组织会员活动<br>享有职场保障之外<br>还可与志同道合的小伙伴共同玩耍，积累人脉</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_5(1).png">
+                        <div class="title">最省钱</div>
+                        <div class="sub-title">成为职场保会员<br>仅需199元/年即享劳动权益六大保障<br>解决职场纠纷也能既省心，又省钱</div>
+                    </div>
+                </li>
+                <li class="am-u-md-4 am-u-lg-4">
+                    <div>
+                        <img src="__CDN__/assets/img/index/icon_6(1).png">
+                        <div class="title">助发展</div>
+                        <div class="sub-title">平台为百万职场人、三十万家企业提供服务<br>可为平台会员提供名企工作岗位<br>助力职场人职业发展</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="am-g zy-container hez sp3 am-u-sm-centered" id="bgtu">
+            <div class="collaborate">
+                <p style="font-size: 30px">战略合作</p>
+                <p>职场保与多家名企达成战略合作</p>
+                <p>改变劳动纠纷取证难、诉讼难、成本高、时间久现状</p>
+                <p>维护劳动者正当权益</p>
+            </div>
+            <div class="hez-list">
+                <div class="am-g">
+                    <ul>
+                        <li class="am-u-md-6 am-u-lg-3">
+                            <a href="http://niuzhipin.com/" target="_blank"><img class="am-thumbnail" src="__CDN__/assets/img/index/1.png"
+                                                                                 alt="牛直聘"></a>
+                        </li>
+                        <li class="am-u-md-6 am-u-lg-3">
+                            <a href="http://www.hubwiz.com/" target="_blank"><img class="am-thumbnail" src="__CDN__/assets/img/index/2.png"
+                                                                                  alt="慧智网"></a>
+                        </li>
+                        <li class="am-u-md-6 am-u-lg-3">
+                            <a href="http://mp.weixin.qq.com/s?__biz=MzI4NjU3NTU1NQ==&mid=100000029&idx=1&sn=e402fe6825ed31bab91f8f3652d071b6&chksm=6bdb9fb15cac16a71b83d0b93eb3fe0325f3ca60274912143276f23ac39efdd67069be6d15de&mpshare=1&scene=1&srcid=0810yOcAA9qo7HoqSyYeOsCQ#rd"
+                               target="_blank"><img class="am-thumbnail" src="__CDN__/assets/img/index/3.png" alt="时光大学"></a>
+                        </li>
+                        <li class="am-u-md-6 am-u-lg-3">
+                            <a href="http://www.vanber.cn/" target="_blank"><img class="am-thumbnail" src="__CDN__/assets/img/index/4.png"
+                                                                                 alt="万博云信"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {include file="common/footer" /}

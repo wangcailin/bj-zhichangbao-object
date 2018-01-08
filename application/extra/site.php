@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => 'FastAdmin',
+  'name' => '职场保',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.1',
@@ -35,4 +35,5 @@ return array (
   'mail_smtp_pass' => 'eachhihkelvebege',
   'mail_verify_type' => '2',
   'mail_from' => '825268388@qq.com',
+  'wechat_access_token' => '',
 );

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://www.zhichangbb.com/applyarbitrate -->
+<html lang="en" class="js cssanimations">
+
+<body>
+<include file="Common:header"/>
+
+<div class="toppic zcb"></div>
+<div class="am-g am-g-fixed zcb-main">
+   <div class="am-u-sm-2">
+<ul class="am-list am-list-static am-list-border zcb-content left-menu">
+		  <li class=""><a href="{:U('Wq/consult')}">我要咨询</a></li>
+		  <li class=""><a href="{:U('Wq/evidence')}" id="zj">收集证据</a></li>
+		  <li class=""><a href="http://www.zhichangbb.com/sendlawletter">申请律师函</a></li>
+		  <li class="selected"><a href="{:U('Wq/arbitration')}">申请仲裁</a></li>
+</ul>
+   </div>
+   <div class="am-u-sm-10">
+     <div class="zcb-content right-side am-text-center" style="padding-top:200px;">
+          如果您确定要申请仲裁，请联系我们的律师团队：<br>
+		  联系方式：400-89-51551&nbsp;或010-85577883&nbsp;<br>
+          我们会为您提供最安全、快捷的法律服务！
+	</div>
+   </div>
+</div>
+
+
+<include file="Common:footer"/>
+<script src="js/app.js"></script>
+<script type="text/javascript">
+
+    //判断是否登录
+    $('#zj').click(function () {
+        var uid='{$session.id}';
+        if(uid==''){
+            alert('请先登录');
+            return false;
+        }
+    })
+
+</script>
+
+
+</body></html>

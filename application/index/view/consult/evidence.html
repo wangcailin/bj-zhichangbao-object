@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="js cssanimations">
+<link rel="alternate icon" type="/favicon.png" href="/favicon.png">
+    <head>
+        {include file="common/meta" /}
+    </head>
+<body>
+<div id="app" v-cloak>
+    {include file="common/header" /}
+    <!-- 中间开始 -->
+    <div class="banner_img">
+        <img src="__CDN__/assets/img/index/14.png">
+    </div>
+<div class="wrap">
+    <div class="yd-timeline demo-small-pitch">
+    <ul class="yd-timeline-content">
+        <li class="yd-timeline-item">
+            <em class="yd-timeline-icon active"></em>
+            <p class="text-active"><a href="consult.html">我要咨询</a></p>
+        </li>
+        <li class="yd-timeline-item">
+            <em class="yd-timeline-icon"></em>
+            <p class=""><a href="/index/consult/evidence">收集证据</a></p>
+        </li>
+        <li class="yd-timeline-item">
+            <em class="yd-timeline-icon"></em>
+            <p class=""><a href="compromise.html">辅助和解</a></p>
+        </li>
+        <li class="yd-timeline-item">
+            <em class="yd-timeline-icon"></em>
+            <p class=""><a href="lawyerletter.html">代发律师函</a></p>
+        </li>
+        <li class="yd-timeline-item">
+            <em class="yd-timeline-icon"></em>
+            <p class=""><a href="arbitration.html">申请仲裁</a></p>
+        </li>
+    </ul>
+</div>
+    <div class="divs">
+        <!-- 收集证据 -->
+        <div class="div2">
+            <div class="div2_div">
+                <p class="biaotou2">取证单</p>
+                <p class="biaotou">基本信息</p>
+                <div class="fromss">
+                    <div class="xinxi1">
+                        <div><span>*1.公司名称：</span><input type="text" v-model="rightevidence.company" placeholder="请输入公司名称"></div>
+                        <div><span>*2.公司地址：</span><input type="text" v-model="rightevidence.company_address" placeholder="请输入公司地址"></div>
+                        <div><span>*3.联系人：</span><input type="text" v-model="rightevidence.contact" plrightevidence.aceholder="请输入联系人"></div>
+                        <div><span>*4.联系方式：</span><input type="text" v-model="rightevidence.contact_phone" placeholder="请输入联系人电话"></div>
+                        <div><span>*5.工作地点：</span><input type="text" v-model="rightevidence.job_address" placeholder="请输入工作地点"></div>
+                        <div><span>*6.工作职位：</span><input type="text" v-model="rightevidence.job_post" placeholder="请输入工作职位"></div>
+                        <div><span>*7.入职时间：</span><input type="text" v-model="rightevidence.join_time" placeholder="请输入入职时间"></div>
+                        <div>
+                            <span>*8.是否有书面合同：</span>
+                            <select name="" v-model="rightevidence.is_shu_mian_he_tong">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span>*9维权类型：</span>
+                            <select v-model="rightevidence.rights_type">
+                                <option value="0">拖欠工资</option>
+                                <option value="1">劳动纠纷</option>
+                                <option value="2">五险一金</option>
+                                <option value="3">加班休假</option>
+                                <option value="4">产假婚假</option>
+                                <option value="5">岗位调动</option>
+                                <option value="6">辞退开除</option>
+                                <option value="7">绩效工资</option>
+                                <option value="8">其他</option>
+                            </select>
+                        </div>
+                        <div><span>*10.维权金额：</span><input type="text" v-model="rightevidence.rights_money" placeholder="维权金额"></div>
+                        <div><span>*11.邮箱：</span><input type="text" v-model="rightevidence.email" placeholder="邮箱"></div>
+                        <div><span>*12.你的情况：</span><textarea v-model="rightevidence.description" id="aa" cols="30" rows="5"></textarea></div>
+                        <div><span>*13.期望解决办法：</span><textarea v-model="rightevidence.ask" id="bb" cols="30" rows="5"></textarea></div>
+                    </div>
+                    <div class="kexuan">
+                         <p>可选：</p>
+                         <div><span>1.职工名称：</span><input type="text" v-model="rightevidence.job_name" placeholder="请输入"></div>
+                        <div><span>2.工龄：</span><input type="text" v-model="rightevidence.job_age" id="job_age" placeholder="请输入"></div>
+                        <div>
+                            <span>3.性别：</span>
+                            <select v-model="rightevidence.sex">
+                                <option value="0">保密</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span>4.户口性质：</span>
+                            <select v-model="rightevidence.registered">
+                                <option value="0">农村户口</option>
+                                <option value="1">城镇户口</option>
+                            </select>
+                        </div>
+                    </div>
+                 </div>
+                    <button class="quzheng" @click.stop="gotoassist">生成取证单</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 中间结束 -->
+    {include file="common/footer" /}

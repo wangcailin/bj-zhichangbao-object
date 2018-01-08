@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+.rl-modal{}
+.rl-modal .am-modal-hd h1{font-size: 16px; line-height: 49px; height: 49px; color: #787d82; border-bottom: 1px solid #d0d6d9; margin-bottom:0rem;}
+.rl-modal .am-modal-hd h1 span{float: left; width: 80px; text-align: center; height: 49px; line-height: 49px; cursor: pointer;}
+.rl-modal .am-modal-hd .rl-showSignin{}
+.rl-modal .am-modal-hd .rl-showSignup{}
+.rl-modal .am-modal-hd .rl-activeTitle,.rl-modal .am-modal-hd span:hover{border-bottom: 1px solid #f01400;color: #f01400;}
+.rl-modal .rl-autoin label,.rl-modal .rlf-forget,.rl-modal .rl-other-login{font-size:14px;}
+.rl-modal .rl-other-login{margin-top:5px;}
+.rl-modal .rl-autoin label,.rl-modal .rlf-forget,.rl-modal .rl-other-login,.rl-modal .am-icon-qq,.rl-modal am-icon-weixin,.rl-modal .am-icon-weibo{color: #787d82;font-weight:normal;}
+.rl-modal .verify-img{margin-left:10px;}
+.rl-modal .am-modal-bd{padding:0px 20px 20px 20px;}
+.rl-modal .btn-full{height:50px;}
+.rl-modal .am-icon-btn{width: 30px;height: 30px;font-size: 17px;line-height: 30px;margin-right:20px;}
+.rl-modal .am-icon-refresh{color: #b5b9bc;font-size: 23px;display: inline-block;-webkit-transition: .4s linear;transition: .4s ease-in}
+.rl-modal .am-icon-refresh:hover{color: #787d82;transform: rotate(360deg);-webkit-transform: rotate(360deg);-moz-transform: rotate(360deg);-o-transform: rotate(360deg);-ms-transform: rotate(360deg)}
+.rl-modal .rl-tip-wrap{font-size: 12px;height: 20px;clear: both;}
+.rl-modal .ipt-verify{margin-right: 10px;width: 120px!important;}
+.rl-modal .errorHint{height: 3px;line-height: 20px;font-size: 12px;color: #f01414;margin: 0px;padding: 0px;}
+.rl-modal .rlf-tip-globle{font-size:14px;height:10px;}
+.rl-modal .proclaim-btn{font-size: 23px; color: #b5b9bc; position: absolute; top: 8px; right: 8px;}
+.phoneVerityBox .title{margin-bottom: 12px; color: #13181E; font-size: 18px; height:18px;}
+.rl-modal-bd .active{color: #13181E!important; cursor: pointer;}
+.rl-modal .user_header{width: 76px; background: url(../img/default_user.png) no-repeat; height: 76px; margin: 40px auto auto;}
+.phoneVerityBox .subtitle{color: #777C81; font-size: 14px; margin-bottom: 25px;}
+.phoneVerityBox .reSend{color: #B4B8BB; top: -10px; right: 15px; border-left: 1px solid #B4B8BB; padding-left: 12px; font-size:14px; position:absolute;}
+.phoneVerityBox .backNotify{color:#777C81; margin-top:15px; cursor:pointer; font-size:14px;}
+.autoul{width: 325px; padding: 0; border: 1px solid #98a1a6; border-top: 0 none; position: absolute; height: 156px; overflow: hidden; background-color: #fff; z-index: 10000;}
+.autoul .autoli{color: #787d82; height: 39px; line-height: 39px; text-align: left; cursor: pointer; font-size: 14px; padding: 0 10px; overflow: hidden; text-overflow: ellipsis;}
+.autoul .lihover{background-color: #edf1f2}
+.autoul .showli{display: block}

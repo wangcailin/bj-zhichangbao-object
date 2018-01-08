@@ -44,6 +44,8 @@ class User extends Backend
         foreach ($row as $k=>&$v){
             if ($k == 'avatar'){
                 $v = '<img class="img-sm img-center" src="'.$v.'">';
+            }elseif($k == 'create_time' || $k == 'update_time'){
+                $v = date('Y-m-d H:i:s', $v);
             }elseif($k == 'vip'){
                 $v = $vipList[$v];
             }elseif($k == 'status'){

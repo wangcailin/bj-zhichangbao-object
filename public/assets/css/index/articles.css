@@ -1,0 +1,178 @@
+
+/*我的案例*/
+.banner_img{
+	width: 100%;
+}
+.zcb_main{
+	display: flex;
+	justify-content: space-between;
+	width: 65%;
+	margin: 52px auto;
+}
+
+.anli_div{
+	display: flex;
+}
+.ul_anli{
+	width:23%;
+}
+.ul_anli li{
+	width: 100%;
+	height: 73px;
+}
+.ul_anli li a{
+	display: flex;
+	width: 100%;
+	color: black;
+	font-size: 16px;
+}
+.ul_anli li a:hover{
+	text-decoration: none
+}
+.ul_anli li a img{
+	width: 20px;
+	height: 20px;
+}
+.ul_anli li a p{
+	margin-left: 10px;
+}
+/*右边显示*/
+.zcb_right{
+	margin-top: 5px;
+
+	
+}
+.zcb_right li{
+	padding-bottom: 10px;
+	padding-top: 20px;
+
+	border-bottom: 1px solid #eee;
+
+}
+.zcb_rightp{
+	height:40px;
+	overflow: hidden;
+}
+/*搜发条*/
+.soufa{
+	width: 100%;
+	margin-top: 20px;
+}
+.souduokuang{
+	width: 90%;
+	height: 54px;
+	position: relative;
+}
+.souduokuang input{
+	width: 100%;
+	height: 54px;
+	border: 1px solid #bbb;
+	border-radius: 25px;
+	padding-left: 20px;
+	outline:none;
+
+}
+.souduokuang img{
+	position: absolute;
+	top: 8px;
+	right: 19px;
+}
+.lvtiao{
+	font-size: 17px;
+	font-weight: bold;
+	margin-top: 57px;
+}
+.guiding li{
+	
+		
+}
+.guiding a{
+	color: black;
+	font-size: 12px;
+}
+/*经典文献*/
+.zcb_right2 {
+	width: 100%;
+	margin-top: 20px;
+}
+.zcb_right2 li{
+	display: flex;
+	width: 100%;
+	margin-bottom: 10px;
+	justify-content: space-between;	
+}
+.zcb_img{
+	width: 30%;
+	height: 170px;
+}
+.zcb_img img{
+	width: 100%;
+	height: 100%;
+}
+.zcb_p{
+	width: 68%;
+}
+.zcb_biaoti{
+	text-align: left;
+	font-size: 20px;
+	margin-left: 10px;
+
+}
+.zcb_biaoti a{
+	color:#000;
+}
+.time{
+	text-align: right;
+}
+.liebiao_biaoti{
+	font-size: 24px;
+	height: 40px;
+}
+.liebiao_biaoti a{
+	color: black;
+}
+.liebiao_neirong{
+	color: #666;
+	width: 100%;
+	height: 79px;
+	overflow:hidden; 
+
+}
+.liebiao{
+	width: 80%;
+	/*border:1px solid red;*/
+	padding-top: 73px;
+}
+.liebiao_div{
+	display: flex;
+	padding-bottom: 33px;
+}
+
+.liebiao_img{
+	width: 50%;
+	height: 201px;
+}
+.liebiao_img img{
+	width: 100%;
+	height: 100%;
+}
+.liebiao_zuo{
+	width: 100%;
+	/*border:1px solid red;*/
+	padding-left:25px;
+}
+.chakan{
+	display: flex;
+	width: 100%;
+	/*border:1px solid red;*/
+	
+}
+.chakan p{
+	/*display: flex;*/
+	padding-left: 77%;
+	padding-top: 30px;
+}
+.chakan p span{
+	margin-left: 10px;
+	margin-right: 10px;
+}

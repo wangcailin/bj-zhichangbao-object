@@ -1,0 +1,158 @@
+.main_order{
+	width: 80%;
+	padding-bottom: 100px;
+	margin: 30px auto;
+}
+.orderp{
+	font-size: 22px;
+}
+.order_li{
+	display: flex;
+}
+.order_li li{
+	width: 9%;
+	margin-right: 5%;
+	text-align: center;
+	font-size: 16px;
+}
+.order_li li a{
+	color: #000;
+}
+.details_p{
+	display: flex;
+}
+.details_p span{
+	display: block;
+	line-height: 30px;
+	text-align: center;
+
+}
+.myorder div{
+	margin-top: 15px;
+}
+.myorder_no{
+	width: 100%;
+	padding: 0px 20px 20px 10px;
+	border: 1px solid #ccc;
+}
+.order_hao{
+	color: #999;
+	line-height: 30px;
+	text-align: left;
+}
+.myorder_dan{
+	display: flex;
+}
+.mylogo{
+	border: 1px solid #ccc;
+	width: 175px;
+	line-height: 100px;
+	text-align: center;
+}
+.mylogo img{
+
+}
+.myorder_vip{
+	margin-left: 20px;
+	width: 30%;
+}
+.myorder_vip p{
+	width: 100%;
+	line-height: 30px;
+	text-align: left;
+	font-weight: bold;
+	margin-top: 10px;
+}
+.myorder_price{
+	display: flex;
+	width: 30%;
+}
+.myorder_price p{
+	width: 100%;
+	line-height: 100px;
+	text-align: center;
+	margin-top: 0px;
+	font-weight: bold;
+
+}
+.order_btn{
+	height: 100px;
+	margin-left: 7%;
+	text-align: center;
+}
+.paybtn{
+	width: 120px;
+	height: 30px;
+	background: #f71f43;
+	border: 1px solid #f71f43;
+	outline: none;
+	color: #fff;
+	border-radius: 3px;
+	margin-top: 20px;
+}
+.offbtn{
+	background: #fff;
+	border: 1px solid #fff;
+	color: #003399;
+	margin-top: 5px;
+	outline: none;
+	border-bottom: 1px solid #003399;
+
+}
+.prepaid{
+	width: 100%;
+	/*margin-top: 15px;*/
+	padding: 0px 20px 20px 10px;
+	border: 1px solid #ccc;
+}
+.prepaidbtn{
+	width: 120px;
+	height: 30px;
+	background: #f71f43;
+	border: 1px solid #f71f43;
+	outline: none;
+	color: #fff;
+	border-radius: 3px;
+	margin-top: 20px;
+}
+.offbtn{
+	background: #fff;
+	border: 1px solid #fff;
+	color: #003399;
+	margin-top: 5px;
+	outline: none;
+	border-bottom: 1px solid #003399;
+
+}
+.obligation_order{
+	width: 100%;
+	padding: 0px 20px 20px 10px;
+	border: 1px solid #ccc;
+
+
+}
+.obligation_div div{
+	margin-top: 15px;
+
+}
+.obligation_div{
+	display: none;
+}
+/*邀请好友*/
+.main_invite{
+	width: 40%;
+	margin: 50px auto;
+	text-align: center;
+	padding-bottom: 30%;
+}
+.main_invite p{
+	font-size: 16px;
+	text-align: left;
+}
+.main_invite a{
+	color: #000;
+	width: 100%;
+	font-size: 16px;
+	
+}
+

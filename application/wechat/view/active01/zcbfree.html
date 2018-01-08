@@ -40,9 +40,9 @@
 			var receiveBtn = document.getElementById("receiveBtn");
 			receiveBtn.onclick = function(){
 				validatemobile()
-				if(validatemobile()){
-					window.location.href = "/wechat/active01/qrcode";
-				}
+//				if(validatemobile()){
+//					window.location.href = "/wechat/active01/qrcode";
+//				}
 			}
 			
 			//验证手机号
@@ -60,19 +60,20 @@
                     timeout:5000,    //超时时间
                     dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
                     success:function(data){
-                        if ($data.code == '1'){
+
+                        if (data.code == '1'){
                             alert('领取成功');
+                            window.location.href = "/wechat/active01/qrcode";
                         }else{
                             alert('领取失败');
+                            window.location.href = "/wechat/active01/qrcode";
                         }
                     },
                     error:function(xhr,textStatus){
                         console.log(textStatus)
                     }
                 });
-                window.location.href = "/wechat/active01/qrcode";
 			}
-			
 			console.info("限时免费输手机号领取保障页面。flexible_css.js,flexible.js为移动端适配方案");
 		</script>
 	</body>

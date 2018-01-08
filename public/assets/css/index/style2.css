@@ -1,0 +1,179 @@
+@media screen and (max-width: 414px){
+	textarea{
+		resize: none;
+	}
+	/*劳法案例*/
+	.amz-container{
+		padding-left: 0px;
+	}
+	.zcb_main {
+		width: 90%;
+		margin:50px auto;
+		
+	}
+	.banner_img{
+		display: none;
+	}
+	.ul_anli,.am-u-sm-2{
+		display: none;
+	}
+	.zcb_right{
+		width: 97%;
+	}
+	.zcb_rightp{
+		width: 100%;
+	}
+	.liebiao{
+		width: 100%;
+		
+	}
+	.liebiao_div{
+		width: 100%;
+	}
+	.liebiao_img{
+		display: none;
+	}
+
+	.liebiao_zuo{
+		padding-left: 0;
+		font-size: 12px;
+	}
+	/*经典文献*/
+	.zcb_img{
+		display: none;
+	}
+	.zcb_p {
+	    width: 100%;
+	    text-align: right;
+	}
+	.liebiao_biaoti{
+		font-size: 20px;
+	}
+	/*我要维权*/
+	.list{
+		display: none;
+	}
+
+	/*我要咨询*/
+	.wrap{
+		width: 90%;
+	}
+	.divs{
+		width: 100%;
+		padding-left: 0%;
+		text-align:left;
+	}
+	.div1{
+		padding-left: 0;
+		width: 100%;
+	}
+	.div1_div {
+	    padding-left: 0px;
+	}
+	/*收集证据*/
+	.fromss{
+		flex-wrap: wrap;
+	}
+	.jibens{
+		width:90%;
+	}
+	.jibens span{
+		width: 30%;
+
+	}
+	.kexuan{
+		margin-top: 10px;
+		margin-left: 0;
+	}
+	.zhuanxiang{
+		flex-wrap: wrap;
+	}
+	.zx_div{
+		width: 100%;
+	}
+	.zx_div2{
+		width: 100%;
+	}
+	.file {
+	    width: 40%;
+	    height: 25px;
+	    line-height: 25px;
+	    text-align: center;
+	    font-size: 12px;
+	}
+	.zx_div span {
+	    width: 70%;
+	
+	}
+	.zhengmings span{
+		width: 70%;
+	}
+	.zx_div2 span {
+	    width: 70%;
+	 
+	}
+	.fuzhu{
+		width: 100%;
+		flex-wrap: wrap;
+	}
+	.miaoshu {
+	    margin-top: 10px;
+	 
+	    width: 100%;
+	    height: 25px;
+	}
+	.quzheng {
+	    
+	    margin-left: 25%;
+	   
+	}
+	/*申请和解*/
+	.hejie{
+		width: 90%;
+		margin-left: 5%;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.hejie input {
+	    margin-left: 10px;
+	    height: 40px;
+	    width: 60%;
+	}
+	.hejie button {
+	    width: 173px;
+	    margin-top: 30px;
+	    margin-left: 27%;
+	}
+	.issuingbtn,.arbitrationbtn{
+		margin-left: 30%;
+	}
+	/*首页*/
+
+	.index-banner-box {
+		position: absolute;
+		left: 6.5%;
+		top: 5px;
+		width: 315px;
+		height: 400px;
+		overflow: hidden;
+		background: #474747;
+		background: rgba(0,0,0,0.6);
+		border-radius: 8px;
+		z-index: 0;
+	}
+	.am-slides{
+		display: none;
+	}
+
+	.am-container{
+		margin-top: 420px;
+	}
+	footer{
+		display:none;
+	}
+	.divs{
+		padding-bottom: 0;
+	}
+
+	
+}
