@@ -2,9 +2,10 @@
 
 namespace app\index\controller;
 
+
 use app\common\controller\Frontend;
 
-class Index extends Frontend
+class About extends Frontend
 {
 
 

@@ -2,9 +2,10 @@
 
 namespace app\index\controller;
 
-use think\Controller;
+use app\common\controller\Frontend;
 
-class Consult extends Controller
+
+class Consult extends Frontend
 {
 
 

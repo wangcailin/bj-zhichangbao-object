@@ -231,7 +231,7 @@ input[type=search]::-ms-clear {
 .about-us .us-history {
     width: 717px;
     height: 634px;
-    background: url(../img/guanyu.png) no-repeat center center;
+    background: url(/assets/img/index/guanyu.png) no-repeat center center;
     background-size: 80%;
     margin: 0 auto;
 }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="js cssanimations">
+<link rel="alternate icon" type="/favicon.png" href="/favicon.png">
+<head>
+    {include file="common/meta" /}
+</head>
+<body>
+<div id="app" v-cloak>
+    {include file="common/header" /}
+    <!-- 蒙版 -->
+    <div class="mask">
+        <!-- 邮箱 -->
+        <div class="mask_mail">
+            <p class="mask_p">验证邮箱</p>
+            <div class="mail_img"><img src="__CDN__/assets/img/index/youxiang.png"></div>
+            <div class="mail_hao"><span>邮箱号：</span><input type="text" name="email"></div>
+            <div class="mail_hao1"><span>验证码：</span><input type="text" name="emailcode"><input type="button"
+                                                                                               value="获取验证码"
+                                                                                               class="mask_yanzheng getemailCode">
+            </div>
+            <div class="mail_btn">
+                <button class="mail_yong email_sure">确定</button>
+                <button class="mail_yong1">取消</button>
+            </div>
+        </div>
+    </div>
+    <div class="mask2" v-show="showTel">
+        <!-- 绑定手机 -->
+        <div class="mask_mail">
+            <p class="mask_p">验证手机</p>
+            <div class="mail_img"><img src="img/shouji.png"></div>
+            <div class="mail_hao"><span>手机号：</span><input type="text" name="mobile" v-model="mobile"></div>
+            <div class="mail_btn">
+                <button class="mail_yong" @click.stop="setMobile" id="photo">确定</button>
+                <button class="mail_yong1" @click.stop="showTel=false">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- 更换头像 -->
+    <div class="banner_img">
+        <img src="__CDN__/assets/img/index/14.png">
+    </div>
+    <!-- 中间开始 -->
+    <div class="u-profile-wrap bg-white">
+        <div class="u-profile am-cf">
+            <div class="setting-left am-fl">
+
+                <div class="avator-wapper">
+    <div class="avator-mode">
+        <img class="avator-img" v-if="UserInfo.avatar" :src="UserInfo.avatar" width="92" height="92">
+        <img class="avator-img" v-else src="img/touxiang.png" width="92" height="92">
+        <div class="update-avator" style="bottom: -30px;">
+            <p><a href="javascript:void(0)" class="js-avator-link">更换头像</a></p>
+        </div>
+    </div>
+    <div class="des-mode">
+        <p class="des_p" v-if="UserInfo.mobile">{{UserInfo.mobile}}</p>
+        <p class="des_p" v-else>未绑定</p>
+        <p v-if="UserInfo.is_vip === 1" class="des_p">会员</p>
+        <p v-else class="des_p" style="font-size:14px;color:#E50039">非会员</p>
+    </div>
+</div>
+                <div class="list-wapper">
+                    <h2>账户管理</h2>
+                    <ul class="menu">
+                        <!--<li>-->
+                            <!--<a href="/member.html" target="_blank" class=" am-link-muted">成为会员<span class="arr"></span></a>-->
+                        <!--</li>-->
+                        <li>
+                            <a href="/uindex.html" target="_blank"
+                               style="color: #e50039;border-left: 3px solid #e50039">账号绑定<span
+                                    class="arr" style="color: #e50039">></span></a>
+                        </li>
+                        <li>
+                            <a href="/uinfo.html" target="_blank" class=" am-link-muted">个人信息<span
+                                    class="arr"></span></a></li>
+                        <!--<li>-->
+                        <!--<a href="" target="_blank"-->
+                        <!--class=" am-link-muted">实名认证<span class="arr"></span></a></a>      </li>-->
+
+                        <!--<li>-->
+                        <!--<a href="" target="_blank"-->
+                        <!--class=" am-link-muted">订单中心<span class="arr"></span></a></a>      </li>-->
+                        <li>
+                            <a href="/ucase.html" target="_blank" class=" am-link-muted">我的案件<span
+                                    class="arr"></span></a></a>      </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="setting-right">
+                <div class="setting-right-wrap wrap-boxes settings">
+                    <div class="page-settings x-acc-binding">
+                        <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+                            <!--列表标题-->
+                            <div class="am-list-news-hd am-cf acc-title">绑定账号</div>
+                            <div class="am-list-news-bd">
+                                <ul class="am-list">
+                                    <li class="am-g">
+                                        <!--<div class="am-u-sm-1"><img src="img/shezhi5.png">-->
+                                            <!--<img v-show="UserInfo.mobile" src="img/shezhi4.png" class="bang"></div>-->
+                                        <!--<div class="am-u-sm-8">-->
+                                            <!--<div>-->
+                                                <!--<span class="acc-info-title">手机绑定</span>-->
+                                                <!--<span v-if="UserInfo.mobile" class="am-text-danger">已绑定</span>-->
+                                                <!--<span v-else class="am-text-danger">未绑定</span>-->
+                                            <!--</div>-->
+                                            <!--<div class="acc-tip-info">可用手机号加密码登录职场保，可通过手机号找回密码</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="am-u-sm-3 am-text-right acc-info-oper">-->
+                                            <!--<button @click.stop="showTel=true" class="gai_btn mobile">更改绑定手机</button>-->
+                                        <!--</div>-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间结束 -->
+    {include file="common/footer" /}
