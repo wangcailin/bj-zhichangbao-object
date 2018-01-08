@@ -13,6 +13,10 @@ use wechat\js\JSSDK;
  */
 class Wechat extends Api
 {
+
+    protected $AppID = 'wxa0afc75ebe2d5871';
+    protected $AppSecret = '75cbdd6b7e9b58e90f1c5e8c8de802f9';
+
     public function _initialize()
     {
         parent::_initialize();
@@ -26,7 +30,7 @@ class Wechat extends Api
     public function wechatLogin()
     {
         $appid = "wxa0afc75ebe2d5871";
-        $redirect_uri = 'http://test.zhichangbb.com/api/wechat/getCode';
+        $redirect_uri = 'http://www.zhichangbb.com/api/wechat/getCode';
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$appid.'&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
         header("Location:".$url);
     }
@@ -123,34 +127,22 @@ class Wechat extends Api
             session('user_id', $res->id);
             session('user_open_id', $openid);
         }
+        header("Location:http://www.zhichangbb.com/wechat/index");
+
     }
 
-    public function weixin_login(){
-
-        $AppID = 'wxd86cbee2061646c9';
-        $AppSecret = 'd08df3b58b77162fb3d34e375ded03e2';
-
-        $params = $this->request->param();
-        $data = [];
-        if (array_key_exists("url", $params)) {
-            $url = htmlspecialchars_decode($params['url']);
-            $data['url'] = str_replace("/", "_", base64_encode($url));
-        }
-        $callback = 'http://test.zhichangbb.com/api/wechat/weixin_callback';//回调地址
-
-        $callback = urlencode($callback);
-        $wxurl = "https://open.weixin.qq.com/connect/qrconnect?appid=".$AppID."&redirect_uri={$callback}&response_type=code&scope=snsapi_login&state=zhichangbao#wechat_redirect";
-        header("Location: $wxurl");
+    public function weixin_login()
+    {
+        $callback = 'http://www.zhichangbb.com/api/wechat/weixin_callback';
+        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->AppID.'&redirect_uri='.$callback.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+        header("Location: ".$url);
     }
 
     public function weixin_callback(){
 
-        $AppID = 'wxd86cbee2061646c9';
-        $AppSecret = 'd08df3b58b77162fb3d34e375ded03e2';
-
         $params = $this->request->param();
 
-        $url='https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$AppID.'&secret='.$AppSecret.'&code='.$_GET['code'].'&grant_type=authorization_code';
+        $url='https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->AppID.'&secret='.$this->AppSecret.'&code='.$_GET['code'].'&grant_type=authorization_code';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
