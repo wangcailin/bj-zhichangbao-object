@@ -48,7 +48,8 @@ class Active01 extends Api
                 $res->vip_time = strtotime('+3month');
                 $res->save();
                 $data['code'] = 1;
-                return json($data);
+            }else{
+                $data['code'] = 0;
             }
         }else{
             $data = [
@@ -61,7 +62,7 @@ class Active01 extends Api
             ];
             $userModel->save($data);
             $data['code'] = 1;
-            return json($data);
         }
+        return json($data);
     }
 }
