@@ -19,7 +19,7 @@ class Wechat extends Api
         //$this->wechatShare();
 
         if(empty(session('user_open_id')) && empty(session('user_id'))){
-            $this->wechatLogin();
+            $this->weixin_login();
         }
     }
 
@@ -82,6 +82,7 @@ class Wechat extends Api
         session('user_open_id', $arr["openid"]);
         $this -> getUserInfo($arr["access_token"],$arr["openid"]);
     }
+
     public function getUserInfo($accessToken , $openid){
         $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$accessToken&openid=$openid&lang=zh_CN";
         $ch = curl_init();
@@ -123,4 +124,65 @@ class Wechat extends Api
             session('user_open_id', $openid);
         }
     }
+
+    public function weixin_login(){
+
+        $AppID = 'wxd86cbee2061646c9';
+        $AppSecret = 'd08df3b58b77162fb3d34e375ded03e2';
+
+        $params = $this->request->param();
+        $data = [];
+        if (array_key_exists("url", $params)) {
+            $url = htmlspecialchars_decode($params['url']);
+            $data['url'] = str_replace("/", "_", base64_encode($url));
+        }
+        $callback = 'http://test.zhichangbb.com/api/wechat/weixin_callback';//回调地址
+
+        $state  = md5(uniqid(rand(), TRUE));
+        session('wx_state') = $state;
+        $callback = urlencode($callback);
+        $wxurl = "https://open.weixin.qq.com/connect/qrconnect?appid=".$AppID."&redirect_uri={$callback}&response_type=code&scope=snsapi_login&state={$state}#wechat_redirect";
+        header("Location: $wxurl");
+    }
+
+    public function weixin_callback(){
+
+        $AppID = 'wxd86cbee2061646c9';
+        $AppSecret = 'd08df3b58b77162fb3d34e375ded03e2';
+
+        $params = $this->request->param();
+
+        $url='https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$AppID.'&secret='.$AppSecret.'&code='.$_GET['code'].'&grant_type=authorization_code';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $json =  curl_exec($ch);
+        curl_close($ch);
+
+        //得到 access_token 与 openid
+        $arr = json_decode($json,1);
+
+
+        //得到用户信息
+        $url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$arr['access_token'].'&openid='.$arr['openid'].'&lang=zh_CN';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $json = curl_exec($ch);
+        curl_close($ch);
+        $userinfo = json_decode($json,1);
+        $openid = $userinfo['openid'];
+
+        if ($openid == "") {
+            echo "登录失败";
+            die();
+        }
+        $this->checkUserInfo($openid, $userinfo);
+
+    }
+
+}
 }
