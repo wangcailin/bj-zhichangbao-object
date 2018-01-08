@@ -138,7 +138,8 @@ class Wechat extends Api
         }
         $callback = 'http://test.zhichangbb.com/api/wechat/weixin_callback';//回调地址
 
-        $state  = md5(uniqid(rand(), TRUE));
+        $uniqid = uniqid(rand(), TRUE);
+        $state  = md5($uniqid);
         session('wx_state') = $state;
         $callback = urlencode($callback);
         $wxurl = "https://open.weixin.qq.com/connect/qrconnect?appid=".$AppID."&redirect_uri={$callback}&response_type=code&scope=snsapi_login&state={$state}#wechat_redirect";
