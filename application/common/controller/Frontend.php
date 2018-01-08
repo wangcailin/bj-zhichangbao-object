@@ -9,5 +9,5 @@ use think\Lang;
 
 class Frontend extends Controller
 {
-
+    
 }

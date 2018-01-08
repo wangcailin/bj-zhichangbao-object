@@ -12,6 +12,7 @@ class About extends Frontend
     public function _initialize()
     {
         parent::_initialize();
+        $this->assign('menu', 'about');
     }
 
     public function index()

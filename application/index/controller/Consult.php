@@ -12,6 +12,8 @@ class Consult extends Frontend
     public function _initialize()
     {
         parent::_initialize();
+        $this->assign('menu', 'consult');
+
     }
 
     public function index()

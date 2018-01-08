@@ -11,6 +11,7 @@ class Index extends Frontend
     public function _initialize()
     {
         parent::_initialize();
+        $this->assign('menu', 'index');
     }
 
     public function index()

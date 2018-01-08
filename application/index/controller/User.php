@@ -11,6 +11,8 @@ class User extends Frontend
     public function _initialize()
     {
         parent::_initialize();
+        $this->assign('menu', 'user');
+
     }
 
     public function index()
