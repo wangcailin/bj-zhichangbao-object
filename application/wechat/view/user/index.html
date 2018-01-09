@@ -79,7 +79,7 @@
     userAjax();
 
     $(".ucenter-table-view-media").click(function(){
-        $(location).attr('href', '/wechat/user/user_edit');
+        $(location).attr('href', '/wechat/user/user_edit/uid/{$Think.session.user_id}');
     });
 </script>
 </body>

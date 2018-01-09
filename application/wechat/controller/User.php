@@ -3,6 +3,8 @@
 namespace app\wechat\controller;
 
 use app\common\controller\Api;
+use \app\common\model\User as UserModel;
+use \app\common\model\UserInfo as UserInfoModel;
 
 class User extends Api
 {
@@ -11,7 +13,7 @@ class User extends Api
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = model('User');
+        $this->model = new UserModel();
         $this->assign('menu', 'user');
     }
 
@@ -46,8 +48,40 @@ class User extends Api
         return $this->view->fetch('guarantee');
     }
 
-    public function user_edit()
+    public function user_edit($uid = null)
     {
+        if ($res = $this->model->get($uid, 'info')){
+            $this->assign('user' ,$res);
+            $this->assign('userinfo' ,$res->info);
+        }
         return $this->view->fetch();
+    }
+
+    public function userEditCheck()
+    {
+        $code       = 0;
+        $uid        = input('uid');
+        $mobile     = input('mobile') ? input('mobile') : '';
+        $company    = input('company') ? input('company') : '';
+        $card       = input('card') ? input('card') : '';
+        $realname   = input('realname') ? input('realname') : '';
+        $user       = $this->model->get($uid, 'info');
+
+        if ($mobile){
+            if ($res = $this->model->checkMobile($mobile)){
+                $user->vip = $res->vip;
+                $user->vip_time = $res->vip_time;
+                $user->create_time = $res->create_time;
+            }
+            $user->mobile = $mobile;
+            if ($user->save()) $code = 1;
+        }
+        if ($card || $company || $realname){
+            $user->info->card = $card;
+            $user->info->company = $company;
+            $user->info->realname = $realname;
+            if ($user->info->save()) $code = 1;
+        }
+        return $code;
     }
 }

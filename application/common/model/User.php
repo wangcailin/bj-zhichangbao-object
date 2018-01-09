@@ -31,6 +31,26 @@ class User extends Model
         return $this->vipType;
     }
 
+    /**
+     * 微信手机用户合并
+     * @param $mobile
+     * @return array|bool|false|\PDOStatement|string|Model
+     */
+    public function checkMobile($mobile)
+    {
+        if($data = $res = $this->where('mobile', $mobile)->find()){
+            if ($data->open_id == ''){
+                $res->delete();
+            }
+            return $data;
+        }
+        return false;
+    }
+
+    public function getUserInfo($uid){
+        return $this->with('info')->where('user.id', $uid)->find();
+    }
+
     protected function setVipTimeAttr($value)
     {
         return $value && !is_numeric($value) ? strtotime($value) : $value;

@@ -20,6 +20,8 @@ class UserInfo extends Model
     protected $append = [];
 
 
-
-
+    public function user()
+    {
+        return $this->belongsTo('User', 'id', 'user_id');
+    }
 }

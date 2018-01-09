@@ -9,12 +9,31 @@
 <body>
 <div id="app">
     <div data-v-a445f7d4="" class="user-edit">
-        <div data-v-a445f7d4="" class="form-input">
-            <label data-v-a445f7d4="" for="name">手机号</label>
-            <input data-v-a445f7d4="" type="text" name="mobile" id="name" placeholder="请输入手机号">
-        </div>
-        <div data-v-a445f7d4="" class="form-btn">保存</div>
-        <div data-v-bf5fbef6="" data-v-a445f7d4="" class="dialog" style="display: none;"></div>
+        <form id="userForm" action="">
+            <div data-v-a445f7d4="" class="form-input">
+                <label data-v-a445f7d4="" for="name">用户名</label>
+                <input type="hidden" name="uid" value="{$user.id}">
+                <input data-v-a445f7d4="" type="text" name="username" id="name" value="{$user.username}" disabled>
+            </div>
+            <div data-v-a445f7d4="" class="form-input">
+                <label data-v-a445f7d4="" for="name">手机号</label>
+                <input data-v-a445f7d4="" type="text" name="mobile" id="name" value="{$user.mobile}" placeholder="请输入手机号">
+            </div>
+            <div data-v-a445f7d4="" class="form-input">
+                <label data-v-a445f7d4="" for="name">公司名称</label>
+                <input data-v-a445f7d4="" type="text" name="company" id="name" value="{notempty name='userinfo.company'}{$userinfo.company}{/notempty}" placeholder="请输入公司名称">
+            </div>
+            <div data-v-a445f7d4="" class="form-input">
+                <label data-v-a445f7d4="" for="name">身份证</label>
+                <input data-v-a445f7d4="" type="text" name="card" id="name" value="{notempty name='userinfo.card'}{$userinfo.card}{/notempty}" placeholder="请输入身份证">
+            </div>
+            <div data-v-a445f7d4="" class="form-input">
+                <label data-v-a445f7d4="" for="name">真实姓名</label>
+                <input data-v-a445f7d4="" type="text" name="realname" id="name" value="{notempty name='userinfo.realname'}{$userinfo.realname}{/notempty}" placeholder="请输入真实姓名">
+            </div>
+            <div data-v-a445f7d4="" class="form-btn" onclick="mobileAjax();">保存</div>
+            <div data-v-bf5fbef6="" data-v-a445f7d4="" class="dialog" style="display: none;"></div>
+        </form>
     </div>
 </div>
 {include file="common/footer" /}
@@ -22,16 +41,18 @@
     //电话Ajax
     function mobileAjax() {
         $.ajax({
-            url: 'URL',
+            url: '/wechat/user/userEditCheck',
             type: 'POST', //GET
             async: true, //或false,是否异步
-            data: {},
+            data: $('#userForm').serialize(),
             timeout: 5000, //超时时间
             dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
             success: function(data) {
-                var odata = eval("("+ data +")");
-                if(odata.code == "ok") {
-                    $("mobile").html(odata.data.mobile);
+                if(data == "1") {
+                    alert("修改成功");
+                    history.back();
+                }else {
+                    alert("修改失败");
                 }
             },
             error: function(xhr, textStatus) {
@@ -39,8 +60,6 @@
             }
         });
     }
-
-    mobileAjax();
-    </body>
-
-    </html>
+</script>
+</body>
+</html>

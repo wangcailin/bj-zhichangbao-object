@@ -123,7 +123,7 @@ class Wechat extends Api
                 'create_time'   => time(),
                 'update_time'   => time(),
             ];
-            $res = model('User')->save($data);
+            $userModel->save($data);
             session('user_id', $res->id);
             session('user_open_id', $openid);
         }
