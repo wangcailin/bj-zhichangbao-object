@@ -1,0 +1,116 @@
+body{
+	background: rgb(243, 243, 243);
+}
+.zcb-wrapper{
+	width: 100%;
+	background: rgb(243, 243, 243);
+}
+
+/*头部*/
+.list-header{
+	width: 100%;
+	height: 1.2rem;	
+	text-align: center;
+	background: #FFFFFF;
+}
+.list-back{
+	box-sizing: border-box;
+	float: left;
+	width: 0.346rem;
+	height: 1.2rem;
+	margin-left: 0.293rem;
+	padding: 0.293rem 0;
+}
+.list-back img{
+	width: 100%;
+	height: 100%;
+}
+.list-title{
+	line-height: 1.2rem;
+	color: rgb(51, 51, 51);
+	font-size: 0.48rem;
+	margin-left: -0.586rem;
+}
+
+/*反馈*/
+.evidence-feedback{
+	width: 100%;
+	height: 1.333rem;
+	background: rgb(93, 201, 167);
+}
+.evidence-feedback-icon{
+	width: 0.32rem;
+	height: 0.32rem;
+	display: inline-block;
+	margin-left: 0.4rem;
+}
+.evidence-feedback-icon img{
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin-top: 0.053rem;
+}
+.evidence-feedback-info{
+	font-size: 0.32rem;
+	line-height: 1.333rem;
+	color: rgb(254, 254, 254);
+	margin-left: 0.133rem;
+}
+
+/*信息*/
+.evidence-user-info, .evidence-email, .evidence-corp-wrapper, .evidence-detail-wrapper{
+	background: #fff;
+}
+.evidence-user-info{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.666rem 0.266rem 0.533rem 0.266rem;
+	margin-bottom: 0.16rem;
+}
+.evidence-user-info p, .evidence-corp-wrapper p{
+	width: 100%;
+	height: 0.32rem;
+	line-height: 0.32rem;
+	margin-bottom: 0.4rem;
+}
+.evidence-user-info p:last-child, .evidence-corp-wrapper p:last-child{
+	margin-bottom: 0;
+}
+.evidence-user-info p span:first-child, .evidence-email span:first-child, .evidence-corp-wrapper p span:first-child{
+	float: left;
+}
+.evidence-user-info p span:last-child, .evidence-email span:last-child,  .evidence-corp-wrapper p span:last-child{
+	float: right;
+	font-size: 0.266rem;
+}
+
+.evidence-email, .evidence-corp-wrapper{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.533rem 0.266rem;
+	margin-bottom: 0.16rem;
+}
+.evidence-email{
+	height: 1.386rem;
+}
+
+.evidence-detail-wrapper{
+	width: 100%;
+	/*height: 5.333rem;*/
+	height: 6.533rem;
+	box-sizing: border-box;
+	padding: 0.533rem 0.266rem;
+	padding-bottom: 1.733rem;
+}
+.evidence-detail-wrapper p{
+	width: 100%;
+	height: 1.333rem;
+	font-size: 0.24rem;
+	color: rgb(102, 102, 102);
+	border: 0.013rem solid rgb(153, 153, 153);
+	margin-bottom: 0.213rem;
+}
+
+
+
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>职场保</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/global.css" />
+		<link rel="stylesheet" type="text/css" href="./css/evidenceDetail.css" />
+	</head>
+	<body>
+		
+		<div class="zcb-wrapper">
+			
+			<div class="list-header">
+				<span class="list-back"><a href="javascript: history.back();"><img src="img/back@2x.png"/></a></span>
+				<span class="list-title">取证详情</span>
+			</div>
+			
+			<!--取证反馈-->
+			<div class="evidence-feedback">
+				<span class="evidence-feedback-icon"><img src="img/evidence-success@2x.png"/></span>
+				<span class="evidence-feedback-info">取证通过</span>
+			</div>
+			
+			<div class="evidence-user-info">
+				<p class="evidence-id">
+					<span class="evidence-id-title">取证单ID</span>
+					<span class="evidence-id-content">11111</span>
+				</p>
+				<p class="evidence-user">
+					<span class="evidence-user-title">联系人</span>
+					<span class="evidence-user-content">11111</span>
+				</p>
+				<p class="evidence-mobile">
+					<span class="evidence-mobile-title">联系人电话</span>
+					<span class="evidence-mobile-content">11111</span>
+				</p>
+				<p class="evidence-sex">				
+					<span class="evidence-sex-title">性别</span>
+					<span class="evidence-sex-content">11111</span>
+				</p>
+				<p class="evidence-age">
+					<span class="evidence-age-title">年龄</span>
+					<span class="evidence-age-content">11111</span>
+				</p>
+				<p class="evidence-residence">
+					<span class="evidence-residence-title">户口</span>
+					<span class="evidence-residence-content">11111</span>
+				</p>
+			</div>
+			
+			<p class="evidence-email">
+				<span class="evidence-email-title">邮箱地址</span>
+				<span class="evidence-email-content">11111</span>
+			</p>
+			
+			<div class="evidence-corp-wrapper">
+				<p class="evidence-corp">
+					<span class="evidence-corp-title">公司</span>
+					<span class="evidence-corp-content">11111</span>
+				</p>
+				<p class="evidence-location">
+					<span class="evidence-location-title">公司地址</span>
+					<span class="evidence-location-content">11111</span>
+				</p>
+				<p class="evidence-workplace">
+					<span class="evidence-workplace-title">工作地点</span>
+					<span class="evidence-workplace-content">11111</span>
+				</p>
+				<p class="evidence-contract">
+					<span class="evidence-contract-title">是否书面合同</span>
+					<span class="evidence-contract-content">11111</span>
+				</p>
+				<p class="evidence-type">
+					<span class="evidence-type-title">维权类型</span>
+					<span class="evidence-type-content">11111</span>
+				</p>
+				<p class="evidence-money">
+					<span class="evidence-money-title">维权金额</span>
+					<span class="evidence-money-content">11111</span>
+				</p>
+			</div>
+			
+			<div class="evidence-detail-wrapper">
+				<p>情况描述：<span class="evidence-detail-desc"></span></p>
+				<p>期望解决方案：<span class="evidence-detail-solution"></span></p>
+				<p>备注：<span class="evidence-detail-note"></span></p>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>	
+		<script type="text/javascript">
+			
+			function evidenceListAjax() {
+				$.ajax({
+					url: 'URL',
+					type: 'POST', //GET
+					async: true, //或false,是否异步
+					data: {},
+					timeout: 5000, //超时时间
+					dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+					success: function(data) {
+						var odata = eval("("+ data +")");
+						
+						if(odata.code == "ok") {
+
+							$(".evidence-id-content").html(odata.data.id);
+							$(".evidence-user-content").html(odata.data.user);
+							$(".evidence-mobile-content").html(odata.data.mobile);
+							$(".evidence-sex-content").html(odata.data.sex);
+							$(".evidence-age-content").html(odata.data.age);
+							$(".evidence-residence-content").html(odata.data.residence);
+							
+							$(".evidence-email-content").html(odata.data.email);
+							
+							$(".evidence-corp-content").html(odata.data.corp);
+							$(".evidence-location-content").html(odata.data.corplocation);
+							$(".evidence-workplace-content").html(odata.data.workplace);
+							$(".evidence-contract-content").html(odata.data.contract);
+							$(".evidence-type-content").html(odata.data.type);
+							$(".evidence-money-content").html(odata.data.money);
+							
+							$(".evidence-detail-desc").html(odata.data.desc);
+							$(".evidence-detail-solution").html(odata.data.solution);
+							$(".evidence-detail-note").html(odata.data.note);
+							
+//							如果失败就显示失败的提示
+							if(!odata.data.success) {
+								$(".evidence-feedback-icon").html('<img src="img/evidence-failed@2x.png"/>');
+								$(".evidence-feedback-info").html("取证未通过");
+								$(".evidence-feedback").css({"background": "#F76260"});
+							}
+
+						}
+					},
+					error: function(xhr, textStatus) {
+						console.log(textStatus);
+					}
+				});
+			}
+			
+			evidenceListAjax();
+			
+		</script>
+		
+	</body>
+</html>

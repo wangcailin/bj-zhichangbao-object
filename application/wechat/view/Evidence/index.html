@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		{include file="common/meta" /}
+	</head>
+
+	<body>
+
+		<div class="zcb-wrapper">
+
+			<!--头部-->
+			<div class="evidence-header">
+				<span class="evidence-back"><a href="javascript: history.back();"><img src="__CDN__/assets/img/wechat/back@2x.png"/></a></span>
+				<span class="evidence-title">取证管理</span>
+				<span class="evidence-search-btn"><img src="__CDN__/assets/img/wechat/search@2x.png"/></span>
+			</div>
+
+			{volist name="data" id="list" empty="<div><p style='text-align: center;font-size: 15px;padding-top: 20px;'>暂时没有数据</p></div>"}
+			<ul class="evidence-list">
+				<li class="evidence-item">
+					<div class="evidence-item-head">
+						<span class="evidence-item-time">{$list.evidence_time}</span>
+						<span class="evidence-item-success" zcb-evidence="-1">{$list.status}</span>
+					</div>
+					<div class="evidence-item-info-wrapper">
+						<img class="evidence-item-info-img" src="__CDN__/assets/img/wechat/evidenceIMG.jpg" />
+						<div class="evidence-item-info">
+							<p class="evidence-item-workOrder">工单：{$list.id}</p>
+							<p class="evidence-item-applicationSheet">申请单编号：{$list.evidence_sn}</p>
+							<p class="evidence-item-user">{$list.contact} {$list.contact_phone}</p>
+						</div>
+					</div>
+					<div class="evidence-item-detail"><a class="detail-btn" href="/wechat/evidence/detail/eid/{$list.id}">详情</a></div>
+				</li>
+			</ul>
+			{/volist}
+
+
+		</div>
+
+		<!-- 搜索 -->
+		<div class="evidence-search">
+			<div class="search">
+				<input class="search-text" type="text" placeholder="请输入搜索关键字">
+				<input class="search-button" type="button" value="搜索" onclick="addHistory()">
+			</div>
+			<div class="search-history">
+				<p class="search-history-title">搜索历史：</p>
+				<ul class="search-history-list">
+					<li class="search-history-item">11111</li>
+					<li class="search-history-item">22222</li>
+					<li class="search-history-item">33333</li>
+					<li class="search-history-item">44444</li>
+				</ul>
+			</div>
+		</div>
+		{include file="common/footer" /}
+
+		<script type="text/javascript">
+			$(".evidence-search-btn").click(function(){
+				$(".evidence-search").fadeIn(300,function(){
+					$(this).css({"display": "block"})
+				});
+			});
+			
+//			搜索历史记录
+			var historyList = new Array;
+			function addHistory() {
+				var listHtml = '';
+				var inputVal = $(".search-text").val();
+				if(inputVal != ""){
+					historyList.push(inputVal);
+				}
+				
+				for(var i=0; i<historyList.length; i++) {
+					listHtml += '<li class="search-history-item">'+ historyList[i] +'</li>';
+				}
+				document.getElementsByClassName("search-history-list")[0].innerHTML = listHtml;
+			}
+			
+			
+			//取证管理Ajax
+			function evidenceAjax() {
+				$.ajax({
+					url: 'URL',
+					type: 'POST', //GET
+					async: true, //或false,是否异步
+					data: {},
+					timeout: 5000, //超时时间
+					dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+					success: function(data) {
+						var odata = eval("("+ data +")");
+						
+						if(odata.code == "ok") {
+
+							$(".evidence-list").html(evidenceHtml(odata.data));
+
+						}
+					},
+					error: function(xhr, textStatus) {
+						console.log(textStatus);
+					},
+					complete: function() {
+						// 需要一个字段判断显示验证是否通过
+						var evidenceList = document.getElementsByClassName("evidence-item");
+						var evidenceSuccess = document.getElementsByClassName("evidence-item-success");
+						for(var i=0; i<evidenceList.length; i++){
+							if(evidenceSuccess[i].getAttribute("zcb-evidence") == "1") {
+								evidenceSuccess[i].innerHTML = '取证通过';
+							}
+							if(evidenceSuccess[i].getAttribute("zcb-evidence") == "0") {
+								evidenceSuccess[i].innerHTML='未验证';
+							}
+							if(evidenceSuccess[i].getAttribute("zcb-evidence") == "-1") {
+								evidenceSuccess[i].innerHTML='取证未通过';
+							}
+						}
+					}
+				});
+			}
+
+			// 字符串拼接
+			function evidenceHtml(data) {
+				var valueHtml = '';
+				for(var i=0; i<data.length; i++) {
+					valueHtml += '<li class="evidence-item">' +
+						'<div class="evidence-item-head">' +
+							'<span class="evidence-item-time">'+ data[i].time +'</span>' +
+							'<span class="evidence-item-success" zcb-evidence="'+ data[i].success +'">取证未通过</span>' +
+						'</div>' +
+						'<div class="evidence-item-info-wrapper">' +
+							'<img class="evidence-item-info-img" src="'+ data[i].imgUrl +'" />' +
+							'<div class="evidence-item-info">' +
+								'<p class="evidence-item-workOrder">工单：'+ data[i].workorder +'</p>' +
+								'<p class="evidence-item-applicationSheet">申请单编号：'+ data[i].applicationsheet +'</p>' +
+								'<p class="evidence-item-user">'+ data[i].name + ' ' + data[i].mobile +'</p>' +
+							'</div>' +
+						'</div>' +
+						'<div class="evidence-item-detail"><a class="detail-btn" href="'+ data[i].detail +'">详情</a></div>' +
+					'</li>';
+					
+				}
+				
+				return valueHtml;
+			}
+
+			
+			evidenceAjax();
+
+
+		</script>
+	</body>
+
+</html>
