@@ -38,90 +38,110 @@
 <body>
 <div id="app">
     <div data-v-6745eb1a="" class="rights-evidence">
+        <form id="evidence" action="">
         <div data-v-6745eb1a="" class="rights-title">取证单</div>
         <div data-v-6745eb1a="" class="rights-form">
             <div data-v-6745eb1a="" class="rights-must">必填项</div>
             <div data-v-6745eb1a="" class="form-input">
+                <input type="hidden" name="user_id" value="{$Think.session.user_id}">
                 <label data-v-6745eb1a="" for="aa">公司名称</label>
-                <input data-v-6745eb1a="" type="text" id="aa" placeholder="请输入公司名称" value="">
+                <input data-v-6745eb1a="" name="company" type="text" id="aa" placeholder="请输入公司名称" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="bb">公司地址</label>
-                <input data-v-6745eb1a="" type="text" id="bb" placeholder="请输入公司地址" value="">
+                <input data-v-6745eb1a="" name="company_address" type="text" id="bb" placeholder="请输入公司地址" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="cc">联系人</label>
-                <input data-v-6745eb1a="" type="text" id="cc" placeholder="请输入联系人姓名" value="">
+                <input data-v-6745eb1a="" name="contact" type="text" id="cc" placeholder="请输入联系人姓名" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="dd">联系方式</label>
-                <input data-v-6745eb1a="" type="text" id="dd" placeholder="请输入联系方式" value="">
+                <input data-v-6745eb1a="" name="contact_phone" type="text" id="dd" placeholder="请输入联系方式" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="ee">工作地点</label>
-                <input data-v-6745eb1a="" type="text" id="ee" placeholder="请输入工作地点" value="">
+                <input data-v-6745eb1a="" name="job_address" type="text" id="ee" placeholder="请输入工作地点" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="ff">工作职位</label>
-                <input data-v-6745eb1a="" type="text" id="ff" placeholder="请输入工作职位" value="">
+                <input data-v-6745eb1a="" name="job_post" type="text" id="ff" placeholder="请输入工作职位" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="gg">入职时间</label>
-                <input data-v-6745eb1a="" type="text" id="gg" readonly="readonly" placeholder="请选择入职时间" value="">
+                <input data-v-6745eb1a="" name="job_time" type="text" id="gg" readonly="readonly" placeholder="请选择入职时间" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="g">是否有书面合同</label>
-                <input data-v-6745eb1a="" type="text" id="g" readonly="readonly" placeholder="请选择是否有书面合同" value="">
+                <input data-v-6745eb1a="" name="compact" type="text" id="g" readonly="readonly" placeholder="请选择是否有书面合同" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="gggg">选择维权类型</label>
-                <input data-v-6745eb1a="" type="text" id="gggg" readonly="readonly" placeholder="请选择维权类型" value="">
+                <input data-v-6745eb1a="" name="rights_type" type="text" id="gggg" readonly="readonly" placeholder="请选择维权类型" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="gggggg">维权金额</label>
-                <input data-v-6745eb1a="" type="text" id="gggggg" placeholder="请输入维权金额" value="">
+                <input data-v-6745eb1a="" name="rights_money" type="text" id="gggggg" placeholder="请输入维权金额" value="">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="ggg">邮箱</label>
-                <input data-v-6745eb1a="" type="text" id="ggg" value="" placeholder="请输入邮箱地址">
+                <input data-v-6745eb1a="" name="email" type="text" id="ggg" value="" placeholder="请输入邮箱地址">
             </div>
             <div data-v-6745eb1a="" class="form-input2">
                 <label data-v-6745eb1a="" for="desc">你的情况</label>
-                <textarea data-v-6745eb1a="" id="desc" rows="10"></textarea>
+                <textarea data-v-6745eb1a="" name="description" id="desc" rows="10"></textarea>
             </div>
             <div data-v-6745eb1a="" class="form-input2">
                 <label data-v-6745eb1a="" for="desc2">期望解决办法</label>
-                <textarea data-v-6745eb1a="" id="desc2" rows="10"></textarea>
+                <textarea data-v-6745eb1a="" name="ask" id="desc2" rows="10"></textarea>
             </div>
             <div data-v-6745eb1a="" class="rights-must">选填项</div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="zg">职工名称</label>
-                <input data-v-6745eb1a="" type="text" id="zg" placeholder="请输入职工名称">
+                <input data-v-6745eb1a="" name="job_name" type="text" id="zg" placeholder="请输入职工名称">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="age">年龄</label>
-                <input data-v-6745eb1a="" type="text" id="age" placeholder="请输入年龄">
+                <input data-v-6745eb1a="" name="job_age" type="text" id="age" placeholder="请输入年龄">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="sex">请选择性别</label>
-                <input data-v-6745eb1a="" type="text" id="sex" readonly="readonly" placeholder="请选择性别">
+                <input data-v-6745eb1a="" name="sex" type="text" id="sex" readonly="readonly" placeholder="请选择性别">
             </div>
             <div data-v-6745eb1a="" class="form-input">
                 <label data-v-6745eb1a="" for="hk">户口性质</label>
-                <input data-v-6745eb1a="" type="text" id="hk" readonly="readonly" placeholder="请选择户口性质">
+                <input data-v-6745eb1a="" name="registered" type="text" id="hk" readonly="readonly" placeholder="请选择户口性质">
             </div>
-            <div data-v-6745eb1a="" class="rights-evidence-btn">确认申请</div>
+            <div data-v-6745eb1a="" class="rights-evidence-btn" onclick="postAjax();">确认申请</div>
         </div>
-        <!--<div data-v-6745eb1a="" class="rights-btn">-->
-            <!--<i data-v-6745eb1a=""></i>收集证据-->
-            <!--<i data-v-6745eb1a="" class="icon-xiangyoujiantou"></i>-->
-        <!--</div>-->
+        </form>
     </div>
 </div>
+{include file="common/footer" /}
 <script src="__CDN__/assets/js/wechat/mui.js"></script>
 <script src="__CDN__/assets/js/wechat/mui.picker.all.js"></script>
 <script type="text/javascript">
-
+    function postAjax() {
+        $.ajax({
+            url: '/wechat/evidence/addCheck',
+            type: 'POST', //GET
+            async: true, //或false,是否异步
+            data: $('#evidence').serialize(),
+            timeout: 5000, //超时时间
+            dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+            success: function(data) {
+                if(data == "1") {
+                    alert("提交成功");
+                    history.back();
+                }else {
+                    alert("提交失败");
+                }
+            },
+            error: function(xhr, textStatus) {
+                console.log(textStatus);
+            }
+        });
+    }
     window.onload = function(){
         // 请选择入职时间
         var gg = document.getElementById("gg");
@@ -136,8 +156,6 @@
                 gg.setAttribute("value",item.y.text+'-'+item.m.text+'-'+item.d.text);
             })
         });
-
-
 
         // 请选择是否有书面合同
         var g = document.getElementById("g");
@@ -160,31 +178,31 @@
         gggg.addEventListener("tap", function() {
             var roadPick = new mui.PopPicker();
             roadPick.setData([{
-                value: "1",
+                value: "0",
                 text: "拖欠工资"
             }, {
-                value: "2",
+                value: "1",
                 text: "劳动纠纷"
             }, {
-                value: "3",
+                value: "2",
                 text: "五险一金"
             }, {
-                value: "4",
+                value: "3",
                 text: "加班休假"
             }, {
-                value: "5",
+                value: "4",
                 text: "产假婚嫁"
             }, {
-                value: "6",
+                value: "5",
                 text: "岗位调动"
             }, {
-                value: "7",
+                value: "6",
                 text: "辞退开除"
             }, {
-                value: "8",
+                value: "7",
                 text: "绩效工资"
             }, {
-                value: "9",
+                value: "8",
                 text: "其他"
             }]);
             roadPick.show(function(item) {
@@ -197,13 +215,13 @@
         sex.addEventListener("tap", function() {
             var roadPick = new mui.PopPicker();
             roadPick.setData([{
-                value: "1",
+                value: "0",
                 text: "无"
             }, {
-                value: "2",
+                value: "1",
                 text: "男"
             }, {
-                value: "3",
+                value: "2",
                 text: "女"
             }]);
             roadPick.show(function(item) {
@@ -216,10 +234,10 @@
         hk.addEventListener("tap", function() {
             var roadPick = new mui.PopPicker();
             roadPick.setData([{
-                value: "1",
+                value: "0",
                 text: "农村户口"
             }, {
-                value: "2",
+                value: "1",
                 text: "城镇户口"
             }]);
             roadPick.show(function(item) {
