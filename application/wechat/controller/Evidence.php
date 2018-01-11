@@ -37,5 +37,14 @@ class Evidence extends Wechat
         return $this->view->fetch();
     }
 
+    public function add($uid = null)
+    {
+        if (model('User')->checkUserVip($uid)){
+
+        }
+        return $this->view->fetch();
+
+    }
+
 
 }

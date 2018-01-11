@@ -34,7 +34,6 @@ class User extends Model
     /**
      * 微信手机用户合并
      * @param $mobile
-     * @return array|bool|false|\PDOStatement|string|Model
      */
     public function checkMobile($mobile)
     {
@@ -47,8 +46,26 @@ class User extends Model
         return false;
     }
 
-    public function getUserInfo($uid){
+    /**
+     * 获取用户详细信息
+     * @param $uid  用户ID
+     */
+    public function getUserInfo($uid)
+    {
         return $this->with('info')->where('user.id', $uid)->find();
+    }
+
+    public function checkUserVip($uid)
+    {
+        $res = $this->where('id', $uid)->find();
+        if ($res) {
+            if ($res['vip'] != '0'){
+                if ($res['vip_time'] >= time()){
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     protected function setVipTimeAttr($value)
