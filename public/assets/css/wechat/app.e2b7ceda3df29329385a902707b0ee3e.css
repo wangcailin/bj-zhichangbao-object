@@ -1124,7 +1124,6 @@ input[data-v-65e0c7f8] {
 
 .rights-evidence[data-v-6745eb1a] {
     width: 100%;
-    padding-bottom: 120px;
     background:#fff;
 }
 
@@ -1143,7 +1142,7 @@ input[data-v-65e0c7f8] {
     bottom: 10px;
     width: 90px;
     height: 17px;
-    background: url(../img/title-left.png) 0 no-repeat
+    background: url(/assets/img/wechat/title-left.png) 0 no-repeat
 }
 
 .rights-title[data-v-6745eb1a]:after {
@@ -1153,7 +1152,7 @@ input[data-v-65e0c7f8] {
     bottom: 10px;
     width: 90px;
     height: 17px;
-    background: url(../img/title-right.png) 0 no-repeat
+    background: url(/assets/img/wechat/title-right.png) 0 no-repeat
 }
 
 .rights-form[data-v-6745eb1a] {
