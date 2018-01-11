@@ -66,7 +66,7 @@ class Evidence extends Wechat
         $sex                = input('sex');
         $registered         = input('registered');
         $data = [
-            'evidence_sn'      => date('Ymd', time()),
+            'evidence_sn'      => date('Ymd', time()).rand(1000,9999),
             'user_id'          => $user_id,
             'company'          => $company,
             'company_address'  => $company_address,
