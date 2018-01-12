@@ -12,6 +12,9 @@ use app\wechat\controller\User;
  */
 class WechatBase extends Api
 {
+    /**
+     * 登录回调
+     */
     public function oauth_callback()
     {
         $oauth = $this->app->oauth;
@@ -25,9 +28,12 @@ class WechatBase extends Api
         $userModel->checkUserInfo($data['original']);
     }
 
+    /**
+     * 服务端验证
+     */
     public function server()
     {
         $response = $this->app->server->serve();
-        return $response;
+        $response->send();
     }
 }
