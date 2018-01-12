@@ -24,7 +24,7 @@
         "karsonzhang/fastadmin-addons": "dev-master",
         "overtrue/pinyin": "~3.0",
         "phpoffice/phpexcel": "^1.8",
-        "hooklife/thinkphp5-wechat": "^1.1"
+        "overtrue/wechat": "~4.0"
     },
     "config": {
         "preferred-install": "dist"
