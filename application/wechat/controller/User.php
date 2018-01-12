@@ -2,11 +2,11 @@
 
 namespace app\wechat\controller;
 
-use app\common\controller\Api;
+use app\api\controller\Wechat;
 use \app\common\model\User as UserModel;
 use \app\common\model\UserInfo as UserInfoModel;
 
-class User extends Api
+class User extends Wechat
 {
     protected $model = null;
 
@@ -20,6 +20,35 @@ class User extends Api
     public function index()
     {
         return $this->view->fetch();
+    }
+
+    /**
+     * 微信用户是否存在
+     */
+    public function checkUserInfo($data)
+    {
+        if ($res = $this->model->where('open_id', $data['openid'])->find()){
+            session('user_id', $res->id);
+            $user              = $this->model->get($res['id']);
+            $user->avatar      = $data['headimgurl'];
+            $user->update_time = time();
+            $user->save();
+        }else{
+            $data = [
+                'username'      => 'Wx_'.get_random_str('10'),
+                'nickname'      => $data['nickname'],
+                'avatar'        => $data['headimgurl'],
+                'sex'           => $data['sex'],
+                'vip'           => 0,
+                'open_id'       => $data['openid'],
+                'create_time'   => time(),
+                'update_time'   => time(),
+            ];
+            $this->model->save($data);
+            session('user_id', $res->id);
+        }
+        var_dump($_SESSION);die;
+        header("Location:http://www.zhichangbb.com/wechat/index");
     }
 
     public function getAjaxUserInfo()

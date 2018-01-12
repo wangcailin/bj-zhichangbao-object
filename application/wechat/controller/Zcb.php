@@ -2,9 +2,9 @@
 
 namespace app\wechat\controller;
 
-use app\common\controller\Api;
+use app\api\controller\Wechat;
 
-class Zcb extends Api
+class Zcb extends Wechat
 {
     public function _initialize()
     {
