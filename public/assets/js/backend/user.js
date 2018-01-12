@@ -32,7 +32,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'vip', title: __('Vip'), searchList: $.getJSON('user/getVipListAjax'), formatter: Controller.api.formatter.vip},
                         {field: 'vip_time', title: __('Vip_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'create_time', title: __('Create_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
-                        {field: 'status', title: __('Status'), searchList: $.getJSON('user/getStatusListAjax')},
+                        {field: 'status', title: __('Status'), searchList: $.getJSON('user/getStatusListAjax'), formatter: Controller.api.formatter.status},
                         {field: 'operate', title: __('Operate'), table: table, buttons: [
                             {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'user/detail'}
                         ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
@@ -64,8 +64,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     }else {
                         return '<span class="label label-primary">注册会员</span>';
                     }
+                },
+                status: function (value, row, index) {
+                    if (value == '1'){
+                        return '<span class="text-success"><i class="fa fa-circle"></i> 启用</span>';
+                    }else if (value == '0'){
+                        return '<span class="text-grey"><i class="fa fa-circle"></i> 禁用</span>';
+                    }
                 }
-            },
+            }
         }
     };
     return Controller;

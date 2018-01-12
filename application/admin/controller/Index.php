@@ -29,12 +29,14 @@ class Index extends Backend
      */
     public function index()
     {
+        $usernum = model('User')->where('status', 1)->count();
         //
         $menulist = $this->auth->getSidebar([
             'dashboard' => 'hot',
             'addon'     => ['new', 'red', 'badge'],
             'auth/rule' => 'side',
             'general'   => ['new', 'purple'],
+            'user'      => $usernum,
                 ], $this->view->site['fixedpage']);
         $this->view->assign('menulist', $menulist);
         $this->view->assign('title', __('Home'));
