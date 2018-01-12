@@ -27,7 +27,6 @@ class WechatBase extends Api
 
     public function server()
     {
-        $response = $this->app->server->serve();
-        return $response->send();
+        $this->app->server->serve()->send();
     }
 }
