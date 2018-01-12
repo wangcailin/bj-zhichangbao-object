@@ -10,7 +10,7 @@ use app\wechat\controller\User;
  *
  * @icon fa fa-user
  */
-class WechatBase extends Api
+class Wechatbase extends Api
 {
     /**
      * 登录回调

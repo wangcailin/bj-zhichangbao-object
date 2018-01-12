@@ -22,8 +22,4 @@ class Wechat extends Api
         }
     }
 
-
-
-
-
 }
