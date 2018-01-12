@@ -17,7 +17,7 @@ class Api extends Controller
             'app_id' => 'wxa0afc75ebe2d5871',
             'secret' => '75cbdd6b7e9b58e90f1c5e8c8de802f9',
             'token'  => 'zhichangbao20180112',
-            'aes_key'=> 'G2odRwCOQlfYjRCc39vennq713NndnfSrGQXBts5ZGM',
+            'aes_key'=> 'g9pA8Q58l8Idre2PfL8qIVsr1dazdNXfzEZPe7MIGip',
 
             'response_type' => 'array',
 
