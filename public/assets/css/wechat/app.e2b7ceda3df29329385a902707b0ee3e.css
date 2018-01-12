@@ -3022,7 +3022,7 @@ textarea[data-v-9d029ba8] {
 .feedback-title[data-v-8d519448] {
     color: #5dc9a7;
     font-size: 14px;
-    height: 32px;
+    height: 40px;
     line-height: 32px;
     text-indent: 11px
 }
@@ -3082,7 +3082,7 @@ textarea[data-v-9d029ba8] {
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
     position: relative;
-    margin: 35% auto 0
+    margin: 10% auto 0
 }
 
 .g-core-image-upload-btn {

@@ -84,4 +84,22 @@ class User extends Api
         }
         return $code;
     }
+
+    public function feedback()
+    {
+        if ($this->request->isAjax()){
+            $user_id = input('user_id');
+            $content = input('content');
+            $data = [
+                'user_id'   => $user_id,
+                'content'   => $content
+            ];
+            if (model('Feedback')->save($data)){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+        return $this->view->fetch();
+    }
 }

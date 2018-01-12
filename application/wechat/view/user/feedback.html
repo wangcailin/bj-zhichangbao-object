@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)http://wx.zhichangbb.com/?a=2&uid=167&expire_time=1514345187#/feedback -->
+<html>
+
+<head>
+    {include file="common/meta" /}
+
+</head>
+
+<body>
+    <div id="app">
+        <div data-v-8d519448="" class="feedback">
+            <form id="feedback" action="">
+            <div data-v-8d519448="" class="feedback-title">问题和意见</div>
+            <div data-v-8d519448="" class="feedback-form">
+                <input type="hidden" name="user_id" value="{$Think.session.user_id}">
+                <textarea data-v-8d519448="" name="content" id="" rows="10" placeholder="请输入不少于10个字的描述"></textarea>
+            </div>
+            <div data-v-8d519448="" class="feedback-btn" onclick="postAjax()">提交</div>
+            </form>
+        </div>
+    </div>
+    {include file="common/footer" /}
+    <script>
+        function postAjax() {
+            $.ajax({
+                url: '/wechat/user/feedback',
+                type: 'POST', //GET
+                async: true, //或false,是否异步
+                data: $('#feedback').serialize(),
+                timeout: 5000, //超时时间
+                dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+                success: function(data) {
+                    if(data == "1") {
+                        alert("感谢您的反馈！");
+                        history.back();
+                    }else {
+                        alert("反馈失败");
+                    }
+                },
+                error: function(xhr, textStatus) {
+                    console.log(textStatus);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
