@@ -16,7 +16,7 @@ class Api extends Controller
         $this->config = [
             'app_id' => 'wxa0afc75ebe2d5871',
             'secret' => '75cbdd6b7e9b58e90f1c5e8c8de802f9',
-            'token'  => 'zcb357951',
+            'token'  => 'zhichangbao20180112',
             'aes_key'=> 'G2odRwCOQlfYjRCc39vennq713NndnfSrGQXBts5ZGM',
 
             'response_type' => 'array',
