@@ -2383,7 +2383,8 @@ textarea[data-v-9d029ba8] {
     bottom: 0;
     left: 0;
     color: #676767;
-    border-top: 1px solid #d0d0d0
+    border-top: 1px solid #d0d0d0;
+    z-index: 999;
 }
 
 .tab-link[data-v-cb6b4808] {

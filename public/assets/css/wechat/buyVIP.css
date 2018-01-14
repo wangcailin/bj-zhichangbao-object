@@ -1,0 +1,135 @@
+.buy-info{
+	width: 8.933rem;
+	height: 2.933rem;
+	background: url(../img/vipcontentBG@2x.png);
+	background-size: 100% 100%;
+	margin: 0.746rem auto 0;
+	padding: 0.586rem 0.693rem 0.8rem 0.453rem;
+	box-sizing: border-box;
+}
+.buy-price-wrapper{
+	width: 100%;
+	height: 0.48rem;
+	line-height: 0.48rem;
+}
+.buy-price-title{
+	float: left;
+	font-size: 0.4rem;
+	color: rgb(51,51,51);
+}
+.buy-price-title img{
+	width: 0.56rem;
+	height: 0.293rem;
+	margin-left: 0.106rem;
+}
+.buy-price{
+	float: right;
+	font-size: 0.32rem;
+	color: rgb(93, 201, 167);
+}
+.buy-price-num{
+	font-size: 0.64rem;
+}
+.buy-days-wrapper{
+	width: 100%;
+	height: 0.32rem;
+	line-height: 0.32rem;
+	font-size: 0.32rem;
+	margin-top: 0.8rem;
+}
+.buy-days-title{
+	color: rgb(102,102,102);
+}
+.buy-days{
+	float: right;
+	color: rgb(153,153,153);
+}
+
+/*支付方式*/
+.pay-method{
+	width: 8.933rem;
+	height: 4.533rem;
+	background: url(../img/vipcontentBG@2x.png);
+	background-size: 100% 100%;
+	margin: 0 auto;
+	margin-top: 0.266rem;
+}
+.pay-method-title{
+	height: 0.32rem;
+	line-height: 0.32rem;
+	padding: 0.56rem 0 0.24rem 0.453rem;
+	font-size: 0.32rem;
+	color: rgb(102,102,102);
+}
+.pay-method-wechat, .pay-method-coupon{
+	margin-left: 0.08rem;
+	width: 97%;
+	height: 1.626rem;
+	line-height: 0.933rem;
+	box-sizing: border-box;
+	padding: 0.346rem 0.586rem 0.346rem 0.453rem;
+	vertical-align: middle;
+}
+.pay-method-wechat{
+	border-bottom: 0.013rem solid rgb(219,219,219);
+}
+.pay-method-wechat img, .pay-method-coupon img{
+	width: 0.933rem;
+	height: 0.933rem;
+	float: left;
+}
+.pay-method-wechat-title, .pay-method-coupon-title{
+	font-size: 0.32rem;
+	color: rgb(51,51,51);
+	float: left;
+	height: 100%;
+	line-height: 0.933rem;
+	margin-left: 0.4rem;
+}
+.pay-method-wechat-select, .pay-method-coupon-select{
+	width: 0.586rem;
+	height: 0.586rem;
+	float: right;
+	margin-top: 0.146rem;
+	background: url(../img/icon-no-select.png);
+	background-size: 100% 100%;
+}
+.pay-method-wechat-select{
+	background: url(../img/icon-selected.png);
+	background-size: 100% 100%;
+}
+
+
+/*支付按钮*/
+.vip-pay-btn{
+	display: block;
+	width: 6.693rem;
+	height: 1.093rem;
+	line-height: 1.093rem;
+	background: rgb(93, 201, 167);
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 0.48rem;
+	border-radius: 0.546rem;
+	margin: 0 auto;
+	margin-top: 3.386rem;
+}
+.vip-pay-btn:hover, .vip-pay-btn:active{
+	text-decoration: none;
+}
+
+/*用户协议*/
+.pay-agree{
+	width: 100%;
+	height: 0.306rem;
+	line-height: 0.306rem;
+	font-size: 0.24rem;
+	margin: 0 auto;
+	margin-top: 0.693rem;
+	text-align: center;
+	color: rgb(102,102,102);
+}
+.pay-agree img{
+	width: 0.293rem;
+	height: 0.306rem;
+}

@@ -47,7 +47,6 @@ class User extends Wechat
             $this->model->save($data);
             session('user_id', $res->id);
         }
-        var_dump($_SESSION);die;
         header("Location:http://www.zhichangbb.com/wechat/index");
     }
 

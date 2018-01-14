@@ -1,0 +1,142 @@
+/*头部*/
+.vip-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 1.2rem;
+	max-width: 10rem;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-align: center;
+	background: url(/assets/img/wechat/vip/BGvipheader.png);
+	background-size: 100% 100%;
+	z-index: 99;
+}
+.vip-header span {
+	display: inline-block;
+	box-sizing: border-box;
+}
+.vip-back {
+	float: left;
+	width: 0.346rem;
+	height: 1.2rem;
+	margin-left: 0.293rem;
+	padding: 0.293rem 0;
+}
+.vip-back img {
+	width: 100%;
+	height: 100%;
+}
+
+/*会员详情*/
+.vip-info{
+	width: 100%;
+	height: 4.8rem;
+	margin-top: 1.2rem;
+	background: rgb(93, 201,167);
+	position: relative;
+	color: #FFFFFF;
+}
+.vip-title{
+	width: 100%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	text-align: center;
+	font-size: 0.4rem;
+	padding-top: 0.386rem;
+}
+.vip-price{
+	height: 1.28rem;
+	line-height: 1.28rem;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 0.48rem;
+	margin-top: 0.466rem;
+}
+.vip-price span{
+	font-size: 1.28rem;
+}
+.vip-rights{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 1.866rem;
+	box-sizing: border-box;
+	border-top: 1px solid rgb(243,243,243);
+	padding: 0.4rem 0;
+}
+.vip-validate, .vip-times{
+	width: 50%;
+	height: 100%;
+	float: left;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	box-sizing: border-box;
+}
+.vip-validate-title, .vip-times-title{
+	font-size: 0.373rem;
+	line-height: 0.373rem;
+}
+.vip-validate-num, .vip-times-num{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	font-size: 0.32rem;
+}
+.vip-validate-num span, .vip-times-num span{
+	font-size: 0.453rem;
+}
+.vip-validate{
+	border-right: 0.013rem solid rgb(223,223,223);
+}
+
+/*享受服务*/
+.vip-service{
+	width: 100%;
+	box-sizing: border-box;
+	padding-top: 0.986rem;
+	padding-bottom: 2.666rem;
+	text-align: center;
+	color: rgb(51, 51, 51);
+}
+.vip-service-title{
+	font-size: 0.48rem;
+}
+.vip-service-item{
+	font-size: 0.4rem;
+	line-height: 0.4rem;
+	margin-top: 0.586rem;
+	padding-left: 2.773rem;
+	text-align: left;
+}
+.vip-service-item img{
+	width: 0.4rem;
+	height: 0.4rem;
+	margin-right: 0.266rem;
+}
+.vip-service-list li:first-child{
+	margin-top: 0.893rem;
+}
+
+/*开通会员*/
+.buy-vip{
+	display: block;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 1.173rem;
+	line-height: 1.173rem;
+	max-width: 10rem;
+	background: rgb(93, 201, 167);
+	margin: 0 auto;
+	font-size: 0.48rem;
+	text-align: center;
+	color: #FFFFFF;
+}
+.buy-vip:hover, .buy-vip:active{
+	text-decoration: none;
+}
