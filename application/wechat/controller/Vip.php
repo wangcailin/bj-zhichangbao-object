@@ -97,7 +97,7 @@ class Vip extends Wechat
         }
         $json = $app->jssdk->bridgeConfig($prepayId);
         $conf = $this->app->jssdk->buildConfig(array('translateVoice','chooseWXPay','getBrandWCPayRequest','onMenuShareTimeline', 'onMenuShareAppMessage'), false, false, true);
-        $this->assign(['jsorder'=>$json,'vipData' => $vipData,'conf'=>$conf]);
+        $this->assign(['jsorder' => $json,'vipData' => $vipData,'conf' => $conf]);
         return $this->view->fetch();
     }
 
