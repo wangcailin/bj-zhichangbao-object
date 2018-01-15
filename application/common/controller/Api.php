@@ -10,6 +10,7 @@ class Api extends Controller
 
     public $config = [];
     public $app = [];
+    public $pay= [];
 
     public function _initialize()
     {
@@ -29,8 +30,20 @@ class Api extends Controller
                 'scopes'   => ['snsapi_userinfo'],
                 'callback' => '/api/wechatbase/oauth_callback',
             ],
+            'payment' => [
+                'merchant_id'        => '1401831202',
+                'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',
+                'cert_path'          => '/wxpay/apiclient_cert.pem',
+                'key_path'           => '/wxpay/apiclient_key.pem',
+                'notify_url'         => '',       // 你也可以在下单时单独设置来想覆盖它
+                // 'device_info'     => '013467007045764',
+                // 'sub_app_id'      => '',
+                // 'sub_merchant_id' => '',
+                // ...
+            ],
         ];
         $this->app = Factory::officialAccount($this->config);
+        $this->pay = Factory::payment($this->config);
     }
 
 }

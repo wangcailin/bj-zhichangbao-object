@@ -1,7 +1,7 @@
 .buy-info{
 	width: 8.933rem;
 	height: 2.933rem;
-	background: url(../img/vipcontentBG@2x.png);
+	background: url(/assets/img/wechat/vip/vipcontentBG@2x.png);
 	background-size: 100% 100%;
 	margin: 0.746rem auto 0;
 	padding: 0.586rem 0.693rem 0.8rem 0.453rem;
@@ -49,7 +49,7 @@
 .pay-method{
 	width: 8.933rem;
 	height: 4.533rem;
-	background: url(../img/vipcontentBG@2x.png);
+	background: url(/assets/img/wechat/vip/vipcontentBG@2x.png);
 	background-size: 100% 100%;
 	margin: 0 auto;
 	margin-top: 0.266rem;
@@ -91,11 +91,11 @@
 	height: 0.586rem;
 	float: right;
 	margin-top: 0.146rem;
-	background: url(../img/icon-no-select.png);
+	background: url(/assets/img/wechat/vip/icon-no-select.png);
 	background-size: 100% 100%;
 }
 .pay-method-wechat-select{
-	background: url(../img/icon-selected.png);
+	background: url(/assets/img/wechat/vip/icon-selected.png);
 	background-size: 100% 100%;
 }
 

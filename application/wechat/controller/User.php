@@ -56,9 +56,9 @@ class User extends Wechat
         $data = $this->model->where('id', $uid)->find();
         if ($data) {
             $data['code'] = 1;
-            if ($data['vip'] != '0' && time() < $data['vip_time']){
-                $data['guarantee'] = 1;
-            }
+//            if ($data['vip'] != '0' && time() < $data['vip_time']){
+//                $data['guarantee'] = 1;
+//            }
         }
         return json($data);
     }

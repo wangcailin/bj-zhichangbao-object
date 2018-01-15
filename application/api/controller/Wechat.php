@@ -17,6 +17,7 @@ class Wechat extends Api
     {
         parent::_initialize();
         if (empty(session('wechat_user')) && empty(session('user_id'))){
+
             $oauth = $this->app->oauth;
             return $oauth->redirect()->send();
         }

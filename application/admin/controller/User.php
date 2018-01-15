@@ -26,7 +26,7 @@ class User extends Backend
     {
         parent::_initialize();
         $this->model = model('User');
-        $this->view->assign("vipList", $this->model->getVipList());
+        $this->view->assign("vipList", model('UserVip')->vipList);
 
     }
 

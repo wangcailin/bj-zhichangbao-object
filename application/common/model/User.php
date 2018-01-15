@@ -19,18 +19,6 @@ class User extends Model
     // 追加属性
     protected $append = [];
 
-    protected $vipType = [0 => '注册会员', 1 => '普通会员', 2 => 'VIP', 3 => 'SVIP'];
-
-
-    /**
-     * 读取VIP列表
-     * @return array
-     */
-    public function getVipList()
-    {
-        return $this->vipType;
-    }
-
     /**
      * 微信手机用户合并
      * @param $mobile
