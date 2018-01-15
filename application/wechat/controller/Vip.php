@@ -132,8 +132,7 @@ class Vip extends Wechat
     public function notify(){
         $response = $this->wxPay->handlePaidNotify(function($message, $fail){
 
-            @file_put_contents('fail.txt', json_encode($fail));
-            @file_put_contents('notify.txt',json_encode($message));
+
 
             $out_trade_no = $message['out_trade_no'];
             $order_info = $this->orderModel->where('order_sn', $out_trade_no)->find();
@@ -144,7 +143,8 @@ class Vip extends Wechat
             if($order_info['pay_time']>0){
                 return true;
             }
-
+            @file_put_contents('fail.txt', json_encode($fail));
+            @file_put_contents('notify.txt',json_encode($message));
             ///////////// <- 建议在这里调用微信的【订单查询】接口查一下该笔订单的情况，确认是已经支付 /////////////
 
             if($message['return_code'] === 'SUCCESS'){
