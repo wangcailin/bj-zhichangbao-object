@@ -31,16 +31,12 @@ class Api extends Controller
                 'callback' => '/api/wechatbase/oauth_callback',
             ],
             'payment' => [
-                'mch_id'             => '1401831202',
+                'merchant_id'        => '1401831202',
                 'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',
                 'cert_path'          => '/wxpay/apiclient_cert.pem',
                 'key_path'           => '/wxpay/apiclient_key.pem',
-                'notify_url'         => '/api/wechatbase/pay_callback',       // 你也可以在下单时单独设置来想覆盖它
-                // 'device_info'     => '013467007045764',
-                // 'sub_app_id'      => '',
-                // 'sub_merchant_id' => '',
-                // ...
-            ],
+                'notify_url'         => '/api/wechatbase/pay_callback'
+            ]
         ];
         $this->app = Factory::officialAccount($this->config);
         $this->pay = Factory::payment($this->config);

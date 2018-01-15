@@ -21,9 +21,9 @@ class UserVip extends Model
 
     public $vipList = [0 => '注册会员', 1 => '大众会员', 2 => '铜牌会员', 3 => '银牌会员', 4 => '金牌会员'];
     public $vipData = [
-        ['vid' => 1, 'name' => '大众会员', 'money' => '9.9'],
-        ['vid' => 2, 'name' => '铜牌会员', 'money' => '199'],
-        ['vid' => 3, 'name' => '银牌会员', 'money' => '499'],
+        ['vid' => 1, 'name' => '大众会员', 'money' => 9.9],
+        ['vid' => 2, 'name' => '铜牌会员', 'money' => 199],
+        ['vid' => 3, 'name' => '银牌会员', 'money' => 499],
         ['vid' => 4, 'name' => '金牌会员', 'money' => '-'],
     ];
 
