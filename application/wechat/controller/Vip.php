@@ -85,7 +85,7 @@ class Vip extends Wechat
         $order = [
             'body' => '职场保-'.$vipData['name'].'充值',
             'out_trade_no' => date('Ymd', time()).rand(10000,99999),
-            'total_fee' => $vipData['money'],
+            'total_fee' => 1,
             'trade_type' => 'JSAPI',
             'openid' => $user['open_id'],
         ];
