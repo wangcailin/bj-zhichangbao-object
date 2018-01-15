@@ -29,18 +29,9 @@ class Api extends Controller
             'oauth' => [
                 'scopes'   => ['snsapi_userinfo'],
                 'callback' => '/api/wechatbase/oauth_callback',
-            ],
-            'payment' => [
-                'app_id'             => 'wxa0afc75ebe2d5871',
-                'merchant_id'        => '1401831202',
-                'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',
-                'cert_path'          => '/wxpay/apiclient_cert.pem',
-                'key_path'           => '/wxpay/apiclient_key.pem',
-                'notify_url'         => '/api/wechatbase/pay_callback'
             ]
         ];
         $this->app = Factory::officialAccount($this->config);
-        $this->pay = Factory::payment($this->config);
     }
 
 }

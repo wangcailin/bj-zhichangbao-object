@@ -36,9 +36,4 @@ class Wechatbase extends Api
         $response = $this->app->server->serve();
         $response->send();
     }
-
-    public function pay_callback()
-    {
-
-    }
 }
