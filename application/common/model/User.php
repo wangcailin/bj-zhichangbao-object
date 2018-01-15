@@ -71,9 +71,14 @@ class User extends Model
         return $value && !is_numeric($value) ? strtotime($value) : $value;
     }
 
+
+    public function vip()
+    {
+        return $this->hasOne('UserVip', 'user_id', 'id');
+    }
     public function info()
     {
-        return $this->hasOne('UserInfo', 'user_id', 'id')->setEagerlyType(0);
+        return $this->hasOne('UserInfo', 'user_id', 'id');
     }
 
 }
