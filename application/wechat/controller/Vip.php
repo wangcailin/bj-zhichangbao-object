@@ -90,8 +90,8 @@ class Vip extends Wechat
         ];
 
         $result = $app->order->unify($order);
-        if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
-            $prepayId = $result->prepay_id;
+        if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS'){
+            $prepayId = $result['prepay_id'];
         }
         $json = $this->pay->jssdk->bridgeConfig($prepayId);
 
