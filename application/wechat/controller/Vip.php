@@ -150,7 +150,7 @@ class Vip extends Wechat
             if($message['return_code'] === 'SUCCESS'){
 
                 // 用户是否支付成功
-                if ($message['trade_state'] === 'SUCCESS') {
+                if ($message['result_code'] === 'SUCCESS') {
                     $order_info->transaction_id = $message['transaction_id'];
                     $order_info->status         = 1;
                     $order_info->pay_time       = time();
