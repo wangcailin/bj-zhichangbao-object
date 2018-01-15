@@ -60,6 +60,7 @@ class Vip extends Wechat
     public function buy($vid =null, $uid = null)
     {
 
+        
         $config = [
             // 必要配置
             'app_id'             => 'wxa0afc75ebe2d5871',
