@@ -57,15 +57,10 @@ class Vip extends Wechat
     /**
      * 会员支付
      */
-    public function buy()
+    public function buy($vid =null, $uid = null)
     {
         $vipData = [];
-        $vid = input('vid');
-        $uid = input('uid');
         $user = model('User')->where('id', $uid)->find();
-
-        $jssdk = $this->pay->jssdk;
-        $jsorder = $jssdk->bridgeConfig('201801112312312');
 
         $vipList = $this->model->vipData;
         foreach ($vipList as $v){
@@ -82,9 +77,20 @@ class Vip extends Wechat
             'openid' => $user['open_id'],
         ]);
 
+        var_dump($result);die;
+
+        if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
+            $prepayId = $result->prepay_id;
+        }
+        $json = $this->pay->jssdk->bridgeConfig($prepayId);
 
         $this->assign('vipData', $vipData);
-        $this->assign('jsorder', $jsorder);
+        $this->assign('jsorder', $json);
         return $this->view->fetch();
+    }
+
+    public function buyCall()
+    {
+
     }
 }
