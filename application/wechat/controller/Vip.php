@@ -60,14 +60,14 @@ class Vip extends Wechat
     public function buy($vid =null, $uid = null)
     {
 
-        
+
         $config = [
             // 必要配置
             'app_id'             => 'wxa0afc75ebe2d5871',
             'mch_id'             => '1401831202',
             'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',   // API 密钥
-            'cert_path'          => '/wxpay/apiclient_cert.pem', // XXX: 绝对路径！！！！
-            'key_path'           => '/wxpay/apiclient_key.pem',      // XXX: 绝对路径！！！！
+            'cert_path'          => '/home/wwwroot/zhichangbao/public/wxpay/apiclient_cert.pem', // XXX: 绝对路径！！！！
+            'key_path'           => '/home/wwwroot/zhichangbao/public/wxpay/apiclient_key.pem',      // XXX: 绝对路径！！！！
             'notify_url'         => '/api/wechatbase/pay_callback',     // 你也可以在下单时单独设置来想覆盖它
         ];
         $app = Factory::payment($config);
