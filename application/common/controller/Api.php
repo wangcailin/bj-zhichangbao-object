@@ -31,6 +31,7 @@ class Api extends Controller
                 'callback' => '/api/wechatbase/oauth_callback',
             ],
             'payment' => [
+                'app_id'             => 'wxa0afc75ebe2d5871',
                 'merchant_id'        => '1401831202',
                 'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',
                 'cert_path'          => '/wxpay/apiclient_cert.pem',

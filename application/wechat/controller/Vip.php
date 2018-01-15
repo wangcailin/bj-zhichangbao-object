@@ -88,6 +88,7 @@ class Vip extends Wechat
             'trade_type' => 'JSAPI',
             'openid' => $user['open_id'],
         ];
+
         $result = $app->order->unify($order);
         if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
             $prepayId = $result->prepay_id;
