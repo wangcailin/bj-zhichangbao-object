@@ -45,14 +45,19 @@
 			</div>
 
 			<!--支付按钮-->
-			<a href="javascript:;" class="vip-pay-btn" onclick="callpay()">确认支付</a>
-			
+
 			<!--用户协议-->
 			<p class="pay-agree">
 				<img src="/assets/img/wechat/vip/icon-chebox.png"/> 我已阅读并同意<span style="color: rgb(36,88,255);">《用户在线协议》</span>
 			</p>
 			
 		</div>
+		<font color="#9ACD32"><b>该笔订单支付金额为<span style="color:#f00;font-size:50px">1分</span>钱</b></font><br/><br/>
+		<div align="center">
+			<button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>
+		</div>
+		<a href="javascript:;" class="vip-pay-btn" onclick="callpay()">确认支付</a>
+
 		{include file="common/footer" /}
 		<script type="text/javascript">
 			$(".pay-method-wechat-select").click(function(){
@@ -79,6 +84,7 @@
             }
             
             function callpay() {
+                $(".zcb-wrapper").hide();
                 if (typeof WeixinJSBridge == "undefined"){
                     if( document.addEventListener ){
                         document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
