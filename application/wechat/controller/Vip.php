@@ -9,7 +9,6 @@ class Vip extends Wechat
 {
     protected $model = null;
     protected $orderModel = null;
-    protected $payConfig = null;
     protected $wxPay = null;
     public function _initialize()
     {
@@ -23,10 +22,10 @@ class Vip extends Wechat
             'app_id'             => 'wxa0afc75ebe2d5871',
             'secret'             => '75cbdd6b7e9b58e90f1c5e8c8de802f9',
             'mch_id'             => '1401831202',
-            'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',   // API 密钥
-            'cert_path'          => 'wxpay/apiclient_cert.pem', // XXX: 绝对路径！！！！
-            'key_path'           => 'wxpay/apiclient_key.pem',      // XXX: 绝对路径！！！！
-            'notify_url'         => 'http://www.zhichangbb.com/wechat/vip/notify',     // 你也可以在下单时单独设置来想覆盖它
+            'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',
+            'cert_path'          => 'wxpay/apiclient_cert.pem',
+            'key_path'           => 'wxpay/apiclient_key.pem',
+            'notify_url'         => 'http://www.zhichangbb.com/wechat/vip/notify',
         ];
         $this->wxPay = Factory::payment($payConfig);
 
@@ -132,6 +131,8 @@ class Vip extends Wechat
      */
     public function notify(){
         $response = $this->wxPay->handlePaidNotify(function($message, $fail){
+            @file_put_contents('notice.txt',$message.PHP_EOL.PHP_EOL,FILE_APPEND);
+            @file_put_contents('fail.txt',$fail.PHP_EOL.PHP_EOL,FILE_APPEND);
             $message = json_decode($message,true);
             $out_trade_no = $message['out_trade_no'];
             $order_info = $this->orderModel->where('order_sn', $out_trade_no)->find();
