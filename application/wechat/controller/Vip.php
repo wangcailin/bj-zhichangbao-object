@@ -131,8 +131,8 @@ class Vip extends Wechat
      */
     public function notify(){
         $response = $this->wxPay->handlePaidNotify(function($message, $fail){
-            @file_put_contents('notice.txt',$message);
-            @file_put_contents('fail.txt',$fail);
+            @file_put_contents('notice.txt',$message.PHP_EOL);
+            @file_put_contents('fail.txt',$fail.PHP_EOL);
             $message = json_decode($message,true);
             $out_trade_no = $message['out_trade_no'];
             $order_info = $this->orderModel->where('order_sn', $out_trade_no)->find();
@@ -146,12 +146,21 @@ class Vip extends Wechat
 
             ///////////// <- 建议在这里调用微信的【订单查询】接口查一下该笔订单的情况，确认是已经支付 /////////////
 
-            if($fail == 1 && $message['return_code'] == 'SUCCESS' && $message['result_code'] == 'SUCCESS'){
-                $order_info->transaction_id = $message['transaction_id'];
-                $order_info->status         = 1;
-                $order_info->pay_time       = time();
+            if($message['return_code'] === 'SUCCESS'){
+
+                // 用户是否支付成功
+                if ($message['trade_state'] === 'SUCCESS') {
+                    $order_info->transaction_id = $message['transaction_id'];
+                    $order_info->status         = 1;
+                    $order_info->pay_time       = time();
+
+                    // 用户支付失败
+                } elseif ($message['result_code']) === 'FAIL') {
+                    $order_info->status = 3;
+                }
+
             }else{
-                $order_info->status = 3;
+                return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
                 return true;
