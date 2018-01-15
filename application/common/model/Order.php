@@ -19,7 +19,7 @@ class Order extends Model
     // 追加属性
     protected $append = [];
 
-    protected $statusType = [0 => '未支付', 1 => '已支付', 2 => '申请退款', 3 => '退款成功', 4 => '退款失败'];
+    protected $statusType = [0 => '未支付', 1 => '已支付', 2 => '取消支付', 3 => '支付失败', 4 => '申请退款', 5 => '退款成功', 6 => '退款失败'];
 
     public function getStatusType()
     {

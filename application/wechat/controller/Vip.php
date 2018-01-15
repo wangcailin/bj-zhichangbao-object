@@ -90,9 +90,10 @@ class Vip extends Wechat
                 $vipData = $v;
             }
         }
+        $out_trade_no = date('Ymd', time()).rand(10000,99999);
         $order = [
             'body' => '职场保-'.$vipData['name'].'充值',
-            'out_trade_no' => date('Ymd', time()).rand(10000,99999),
+            'out_trade_no' => $out_trade_no,
             'total_fee' => 1,
             'trade_type' => 'JSAPI',
             'openid' => $wechat_user['openid'],
@@ -105,7 +106,8 @@ class Vip extends Wechat
         if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS'){
             $prepayId = $result['prepay_id'];
 
-            $this->orderModel->order_sn     = $prepayId;
+            $this->orderModel->order_sn     = $out_trade_no;
+            $this->orderModel->prepay_id    = $prepayId;
             $this->orderModel->user_id      = $user_id;
             $this->orderModel->goods_name   = $vipData['name'];
             $this->orderModel->amount       = $vipData['money'];
@@ -128,31 +130,63 @@ class Vip extends Wechat
      * 会员支付回调
      * @return mixed
      */
-    public function pay_callback()
-    {
+    public function notify(){
         $response = $this->wxPay->handleNotify(function($notify, $successful){
-            var_dump($notify, $successful);die;
-            // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
-            $order = ($notify->out_trade_no);
-            if (!$order) { // 如果订单不存在
-                return 'Order not exist.'; // 告诉微信，我已经处理完了，订单没找到，别再通知我了
+            $array = json_decode($notify,true);
+            $out_trade_no = $array['out_trade_no'];
+            $order_info = $this->orderModel->where('order_sn', $out_trade_no)->find();
+            if(empty($order_info)){
+                return false;
             }
-            // 如果订单存在
-            // 检查订单是否已经更新过支付状态
-            if ($order->paid_at) { // 假设订单字段“支付时间”不为空代表已经支付
-                return true; // 已经支付成功了就不再更新了
+            if($order_info['pay_time']>0){
+                return true;
             }
-            // 用户是否支付成功
-            if ($successful) {
-                // 不是已经支付状态则修改为已经支付状态
-                $order->paid_at = time(); // 更新支付时间为当前时间
-                $order->status = 'paid';
-            } else { // 用户支付失败
-                $order->status = 'paid_fail';
+            if($successful == 1 && $array['return_code'] == 'SUCCESS' && $array['result_code'] == 'SUCCESS'){
+                $order_info->transaction_id = $array['transaction_id'];
+                $order_info->status         = 1;
+                $order_info->pay_time       = time();
+
+                $update = $order_info->save();
+            }else{
+                $order_info->status = 3;
+
+                $update = $order_info->save();
             }
-            $order->save(); // 保存订单
-            return true; // 返回处理完成
+
+            if($update){
+                return true;
+            }else{
+                return false;
+            }
         });
         return $response;
     }
+//    public function pay_callback()
+//    {
+//        $response = $this->wxPay->handleNotify(function($notify, $successful){
+//            var_dump($notify, $successful);die;
+//            // 使用通知里的 "微信支付订单号" 或者 "商户订单号" 去自己的数据库找到订单
+//            $order = ($notify->out_trade_no);
+//            if (!$order) { // 如果订单不存在
+//                return 'Order not exist.'; // 告诉微信，我已经处理完了，订单没找到，别再通知我了
+//            }
+//            // 如果订单存在
+//            // 检查订单是否已经更新过支付状态
+//            if ($order->paid_at) { // 假设订单字段“支付时间”不为空代表已经支付
+//                return true; // 已经支付成功了就不再更新了
+//            }
+//            // 用户是否支付成功
+//            if ($successful) {
+//                // 不是已经支付状态则修改为已经支付状态
+//                $order->paid_at = time(); // 更新支付时间为当前时间
+//                $order->status = 'paid';
+//            } else { // 用户支付失败
+//                $order->status = 'paid_fail';
+//            }
+//            $order->save(); // 保存订单
+//            return true; // 返回处理完成
+//        });
+//        return $response;
+//    }
+
 }

@@ -74,11 +74,14 @@
                     'getBrandWCPayRequest', {$jsorder},
                     function(res) {
                         if (res.err_msg == "get_brand_wcpay_request:ok") {
-			                alert('支付成功!')
+			                alert('支付成功!');
+                            window.location.href="/wechat/user/index";
                         } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
                             // message: "已取消微信支付!"
-			                alert('支付取消！')
-                        }
+			                alert('取消支付！');
+                        } else if (res.err_msg == "get_brand_wcpay_request:fail") {
+							alert('支付失败');
+						}
                     }
                 );
             }
