@@ -64,6 +64,7 @@ class Vip extends Wechat
         $config = [
             // 必要配置
             'app_id'             => 'wxa0afc75ebe2d5871',
+            'secret'             => '75cbdd6b7e9b58e90f1c5e8c8de802f9',
             'mch_id'             => '1401831202',
             'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',   // API 密钥
             'cert_path'          => 'wxpay/apiclient_cert.pem', // XXX: 绝对路径！！！！
@@ -74,7 +75,6 @@ class Vip extends Wechat
 
         $vipData = [];
         $user = model('User')->where('id', $uid)->find();
-
         $vipList = $this->model->vipData;
         foreach ($vipList as $v){
             if ($v['vid'] == $vid){
@@ -95,10 +95,9 @@ class Vip extends Wechat
         if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS'){
             $prepayId = $result['prepay_id'];
         }
-        $json = $this->pay->jssdk->bridgeConfig($prepayId);
-
-        $this->assign('vipData', $vipData);
-        $this->assign('jsorder', $json);
+        $json = $app->jssdk->bridgeConfig($prepayId);
+        $conf = $this->app->jssdk->buildConfig(array('translateVoice','chooseWXPay','getBrandWCPayRequest','onMenuShareTimeline', 'onMenuShareAppMessage'), true);
+        $this->assign(['jsorder'=>$json,'vipData' => $vipData,'conf'=>$conf]);
         return $this->view->fetch();
     }
 
@@ -117,7 +116,7 @@ class Vip extends Wechat
             'notify_url'         => '/api/wechatbase/pay_callback',     // 你也可以在下单时单独设置来想覆盖它
         ];
         $app = Factory::payment($config);
-        dump($app);exit;
+
 
         $vipData = [];
         $user = model('User')->where('id', $uid)->find();
@@ -143,10 +142,10 @@ class Vip extends Wechat
             $prepayId = $result['prepay_id'];
         }
         $json = $this->pay->jssdk->bridgeConfig($prepayId);
+        $config = $app->jssdk->sdkConfig($prepayId);
 
-        $this->assign('vipData', $vipData);
-        $this->assign('jsorder', $json);
-        return $this->view->fetch();
+        $this->assign(['jsorder'=>$json,'vipData' => $vipData,'config'=>$config]);
+        return $this->view->fetch('');
     }
 
     public function buyCall()
