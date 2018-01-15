@@ -131,8 +131,8 @@ class Vip extends Wechat
      */
     public function notify(){
         $response = $this->wxPay->handlePaidNotify(function($message, $fail){
-            @file_put_contents('notice.txt',$message.PHP_EOL.PHP_EOL,FILE_APPEND);
-            @file_put_contents('fail.txt',$fail.PHP_EOL.PHP_EOL,FILE_APPEND);
+            @file_put_contents('notice.txt',$message);
+            @file_put_contents('fail.txt',$fail);
             $message = json_decode($message,true);
             $out_trade_no = $message['out_trade_no'];
             $order_info = $this->orderModel->where('order_sn', $out_trade_no)->find();
