@@ -155,7 +155,7 @@ class Vip extends Wechat
                     $order_info->pay_time       = time();
 
                     // 用户支付失败
-                } elseif ($message['result_code']) === 'FAIL') {
+                } elseif ($message['result_code'] === 'FAIL') {
                     $order_info->status = 3;
                 }
 
