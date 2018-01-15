@@ -26,7 +26,7 @@ class Vip extends Wechat
             'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',   // API 密钥
             'cert_path'          => 'wxpay/apiclient_cert.pem', // XXX: 绝对路径！！！！
             'key_path'           => 'wxpay/apiclient_key.pem',      // XXX: 绝对路径！！！！
-            'notify_url'         => 'http://www.zhichangbb.com//api/wechatbase/pay_callback',     // 你也可以在下单时单独设置来想覆盖它
+            'notify_url'         => 'http://www.zhichangbb.com/wechat/vip/notify',     // 你也可以在下单时单独设置来想覆盖它
         ];
         $this->wxPay = Factory::payment($payConfig);
 
@@ -159,7 +159,7 @@ class Vip extends Wechat
             }
             return true; // 返回处理完成
         });
-        
+
         $response->send(); // return $response;
     }
 
