@@ -34,6 +34,10 @@ class Normal extends Backend
     {
         return json($this->model->statusType);
     }
+    public function payType()
+    {
+        return json($this->model->payType);
+    }
 
     public function statusSearch()
     {
@@ -45,6 +49,42 @@ class Normal extends Backend
         }
         $data = ['searchlist' => $searchlist];
         $this->success('', null, $data);
+    }
+    public function paySearch()
+    {
+        $payType = $this->model->payType;
+        $searchlist = [];
+        foreach ($payType as $key => $value)
+        {
+            $searchlist[] = ['id' => $key, 'name' => $value];
+        }
+        $data = ['searchlist' => $searchlist];
+        $this->success('', null, $data);
+    }
+
+    /**
+     * 详情
+     */
+    public function detail($ids)
+    {
+        $payType = $this->model->payType;
+        $statusType = $this->model->statusType;
+        $row = $this->model->get(['id' => $ids])->toArray();
+        if (!$row){
+            $this->error(__('No Results were found'));
+        }
+
+        foreach ($row as $k=>&$v){
+            if ($k == 'pay_type'){
+                $v = $payType[$v];
+            }elseif($k == 'pay_time' || $k == 'add_time'){
+                $v = $v ? date('Y-m-d H:i:s', $v) : '无';
+            }elseif($k == 'status'){
+                $v = $statusType[$v];
+            }
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
     }
 
 
