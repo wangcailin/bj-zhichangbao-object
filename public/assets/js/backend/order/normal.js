@@ -1,5 +1,6 @@
 define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefined, Backend, Table, Form) {
     var status = $.ajax({url:"order/normal/statusType",async:false})
+    var pay = $.ajax({url:"order/normal/payType",async:false})
     var Controller = {
         index: function () {
             // 初始化表格参数配置
@@ -27,12 +28,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'id', title: __('Id'), operate: false},
                         {field: 'order_sn', title: __('Order_sn'), operate: false},
                         {field: 'user_id', title: __('User_id'), operate: false},
+                        {field: 'pay_type', title: __('Pay_type'), searchList: $.getJSON('order/normal/paySearch'), formatter: Controller.api.formatter.pay},
                         {field: 'goods_name', title: __('Goods_name'), operate: false},
                         {field: 'amount', title: __('Amount'), operate: false},
                         {field: 'add_time', title: __('Add_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'pay_time', title: __('Pay_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'status', title: __('Status'), searchList: $.getJSON('order/normal/statusSearch'), formatter: Controller.api.formatter.status},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table, buttons: [
+                                {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'order/normal/detail'}
+                            ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
             });
@@ -52,7 +56,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             },
             formatter: {
                 status: function (value, row, index) {
-                    return status.responseJSON[value]
+                    return status.responseJSON[value];
+                },
+                pay: function (value, row, index) {
+                    return pay.responseJSON[value];
                 }
             }
         }
