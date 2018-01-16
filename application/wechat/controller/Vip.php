@@ -106,6 +106,7 @@ class Vip extends Wechat
             $prepayId = $result['prepay_id'];
 
             $this->orderModel->order_sn     = $out_trade_no;
+            $this->orderModel->pay_type     = 1;
             $this->orderModel->prepay_id    = $prepayId;
             $this->orderModel->user_id      = $user_id;
             $this->orderModel->goods_name   = $vipData['name'];

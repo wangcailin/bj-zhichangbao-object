@@ -20,18 +20,24 @@ class Normal extends Backend
      */
     protected $model = null;
 
-    protected $searchFields = 'id,order_sn,user_id,goods_id,amount';
+    protected $searchFields = 'id,order_sn,user_id,goods_name,amount';
 
 
     public function _initialize()
     {
         parent::_initialize();
         $this->model = model('Order');
+        $this->assign('statusType', $this->model->statusType);
     }
 
-    public function getStatusType()
+    public function statusType()
     {
-        $statusType = $this->model->getStatusType();
+        return json($this->model->statusType);
+    }
+
+    public function statusSearch()
+    {
+        $statusType = $this->model->statusType;
         $searchlist = [];
         foreach ($statusType as $key => $value)
         {
