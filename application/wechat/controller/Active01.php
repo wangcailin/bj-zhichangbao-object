@@ -9,10 +9,12 @@ class Active01 extends Api
 {
     private $wxPay = null;
     private $orderModel = null;
+    private $userVipModel = null;
     public function _initialize()
     {
         parent::_initialize();
         $this->orderModel = model('Order');
+        $this->userVipModel = model('UserVip');
         $payConfig = [
             // 必要配置
             'app_id'             => 'wxa0afc75ebe2d5871',
@@ -164,6 +166,6 @@ class Active01 extends Api
         $vip_thing = 0;
         $end_time = strtotime("+365days");
         $vip_count = 5;
-        return model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
+        return $this->userVipModel->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
     }
 }
