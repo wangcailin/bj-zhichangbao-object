@@ -59,4 +59,23 @@ class UserVip extends Model
         }
         return false;
     }
+
+    public function checkUserVip($uid)
+    {
+        $res = $this->where('user_id', $uid)->find();
+        if ($res) {
+            if ($res['vip_time_end']){
+                if ($res['vip_time_end'] >= time()){
+                    return true;
+                }
+            }
+            if ($res['vip_thing']){
+                if ($res['vip_thing'] > $res['vip_thing_user']){
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
 }

@@ -43,19 +43,6 @@ class User extends Model
         return $this->with('info')->where('user.id', $uid)->find();
     }
 
-    public function checkUserVip($uid)
-    {
-        $res = $this->where('id', $uid)->find();
-        if ($res) {
-            if ($res['vip'] != '0'){
-                if ($res['vip_time'] >= time()){
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
     protected function setVipTimeAttr($value)
     {
         return $value && !is_numeric($value) ? strtotime($value) : $value;

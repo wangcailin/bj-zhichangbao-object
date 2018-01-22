@@ -93,7 +93,7 @@ class Active01 extends Api
         $order = [
             'body' => '职场保-包年会员-充值',
             'out_trade_no' => $out_trade_no,
-            'total_fee' => 39.6*100,
+            'total_fee' => 1,
             'trade_type' => 'JSAPI',
             'openid' => $wechat_user['openid'],
         ];
