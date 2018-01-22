@@ -48,7 +48,7 @@ class User extends Wechat
             $this->model->save($data);
             session('user_id', $res->id);
         }
-        header("Location:http://www.zhichangbb.com/wechat/vip/vip_video");
+        header("Location:http://www.zhichangbb.com/wechat/index/index");
     }
 
     public function getAjaxUserInfo()
