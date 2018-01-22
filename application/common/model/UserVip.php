@@ -19,16 +19,44 @@ class UserVip extends Model
     // 追加属性
     protected $append = [];
 
-    public $vipList = [0 => '注册会员', 1 => '大众会员', 2 => '铜牌会员', 3 => '银牌会员', 4 => '金牌会员'];
+    public $vipList = [0 => '普通会员', 1 => '荣誉会员', 2 => '白金会员', 3 => '黑砖会员'];
     public $vipData = [
-        ['vid' => 1, 'name' => '大众会员', 'money' => 9.9],
-        ['vid' => 2, 'name' => '铜牌会员', 'money' => 199],
-        ['vid' => 3, 'name' => '银牌会员', 'money' => 499],
-        ['vid' => 4, 'name' => '金牌会员', 'money' => '-'],
+        ['vid' => 1, 'name' => '荣誉会员', 'money' => 9.9],
+        ['vid' => 2, 'name' => '白金会员', 'money' => 499],
+        ['vid' => 3, 'name' => '黑砖会员', 'money' => '-'],
     ];
 
     public function user()
     {
         return $this->belongsTo('User', 'id', 'user_id');
+    }
+
+    /**
+     * 添加会员
+     * @param null $uid             用户ID
+     * @param null $vid             会员ID
+     * @param null $vip_name        会员名称
+     * @param null $vip_time_end    到期时间
+     * @param null $vip_count       使用次数
+     * @param null $vip_thing       使用件数
+     * @return bool|false|int
+     */
+    public function user_add_vip($uid = null, $vid = null, $vip_name = null, $vip_time_end = 0, $vip_count = 0, $vip_thing = 0)
+    {
+        if ($uid && $vid){
+            $data = [
+                'user_id'   => $uid,
+                'vid'       => $vid,
+                'vip_name'  => $vip_name,
+                'vip_time'  => time(),
+                'vip_time_end'  => $vip_time_end,
+                'vip_count'  => $vip_count,
+                'vip_count_user'  => 0,
+                'vip_thing'       => $vip_thing,
+                'vip_thing_user'    => 0,
+            ];
+            return $this->save($data);
+        }
+        return false;
     }
 }

@@ -1,3 +1,7 @@
+.zcb-wrapper{
+	padding: 0.5rem;
+}
+
 .buy-info{
 	width: 8.933rem;
 	height: 2.933rem;
@@ -132,4 +136,77 @@
 .pay-agree img{
 	width: 0.293rem;
 	height: 0.306rem;
+}
+
+/*支付成功回调*/
+.pay-success-callback-wrapper{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 99;
+}
+.pay-success-callback{
+	width: 7.466rem;
+	height: 3.066rem;
+	position: absolute;
+	top: 50%; left: 50%;
+	margin-top: -1.533rem;
+	margin-left: -3.733rem;
+	background-color: #ffffff;
+	border-radius: 0.266rem;
+}
+.pay-success-callback-header{
+	width: 100%;
+	height: 0.906rem;
+	line-height: 0.906rem;
+	background-color: #ff7d32;
+	border-radius: 0.266rem 0.266rem 0px 0px;
+	position: relative;
+}
+.pay-success-callback-btn{
+	width: 0.986rem;
+	height: 0.986rem;
+	position: absolute;
+	bottom: 0;
+	margin-left: 0.48rem;
+}
+.pay-success-callback-title{
+	position: absolute;
+	font-size: 0.373rem;
+	color: #FFFFFF;
+	margin-left: 2.093rem;
+}
+.pay-success-clost-btn{
+	position: absolute;
+	right: 0.32rem;
+	top: 0.186rem;
+	width: 0.506rem;
+	height: 0.506rem;
+}
+.pay-success-info{
+	width: 100%;
+	line-height: 0.266rem;
+	font-size: 0.266rem;
+	color: #ff7d32;
+	margin-left: 0.613rem;
+	margin-top: 0.453rem;
+}
+.pay-success-callback-confirm{
+	position: absolute;
+	bottom: 0.186rem;
+	left: 0; right: 0;
+	width: 2.453rem;
+	height: 0.666rem;
+	line-height: 0.666rem;
+	font-size: 0.373rem;
+	background-color: #ff7d32;
+	border-radius: 0.08rem;
+	color: #FFFFFF;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
 }

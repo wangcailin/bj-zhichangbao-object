@@ -1,127 +1,171 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>职场保</title>
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
-		<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/global.css" />
-		<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/buyVIP.css"/>
-	</head>
-	<body>
-	
-		<div class="zcb-wrapper">
-			
-			<!--VIP信息-->
-			<div class="buy-info">
-				
-				<div class="buy-price-wrapper">
-					<span class="buy-price-title">职场保<img src="/assets/img/wechat/vip/icon-vip.png" alt="vip-icon" /></span>
-					<span class="buy-price">￥<span class="buy-price-num">{$vipData.money}</span></span>
-				</div>
-				<div class="buy-days-wrapper">
-					<span class="buy-days-title">保护职场人的劳动权益</span>
-					<span class="buy-days"><span class="buy-days-num"></span></span>
-				</div>
-						
-			</div>
-			
-			<!--支付方式-->
-			<div class="pay-method">
-				<p class="pay-method-title">选择付款方式</p>
-				<ul>
-					<li class="pay-method-wechat">
-						<img src="/assets/img/wechat/vip/icon-wechat@2x.png"/>
-						<span class="pay-method-wechat-title">微信支付</span>
-						<span class="pay-method-wechat-select pay-method-selected"></span>
-					</li>
-					<li class="pay-method-coupon">
-						<img src="/assets/img/wechat/vip/icon-coupon@2x.png"/>
-						<span class="pay-method-coupon-title">兑换券</span>
-						<span class="pay-method-coupon-select"></span>
-					</li>
-				</ul>
-			</div>
+<head>
+	<meta charset="UTF-8">
+	<title>职场保</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/global.css" />
+	<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/buyVIP.css"/>
+</head>
+<body>
 
-			<!--支付按钮-->
-			<a href="javascript:;" class="vip-pay-btn" onclick="callpay()">确认支付</a>
-			<!--用户协议-->
-			<p class="pay-agree">
-				<img src="/assets/img/wechat/vip/icon-chebox.png"/> 我已阅读并同意<span style="color: rgb(36,88,255);">《用户在线协议》</span>
-			</p>
-			
+<div class="zcb-wrapper">
+
+	<!--VIP信息-->
+	<div class="buy-info">
+
+		<div class="buy-price-wrapper">
+			<span class="buy-price-title">职场保<img src="__CDN__/assets/img/wechat/vip/icon-vip.png" alt="vip-icon" /></span>
+			<span class="buy-price">￥<span class="buy-price-num">{$vipData.money}</span></span>
 		</div>
-		{include file="common/footer" /}
-		<script type="text/javascript">
-            wx.config({$conf});
-			$(".pay-method-wechat-select").click(function(){
-				$(this).addClass("pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-selected.png)", "backgroundSize": "100% 100%"});
-				if($(".pay-method-coupon-select").hasClass("pay-method-selected")){
-					$(".pay-method-coupon-select").removeClass(".pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-no-select.png)", "backgroundSize": "100% 100%"});
-				}
-			});
-			$(".pay-method-coupon-select").click(function(){
-				$(this).addClass("pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-selected.png)", "backgroundSize": "100% 100%"});
-				if($(".pay-method-wechat-select").hasClass("pay-method-selected")){
-					$(".pay-method-wechat-select").removeClass(".pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-no-select.png)", "backgroundSize": "100% 100%"});
-				}
-				$()
-			});
+		<div class="buy-days-wrapper">
+			<span class="buy-days-title">保护职场人的劳动权益</span>
+			<!--<span class="buy-days"><span class="buy-days-num">90</span>天</span>-->
+		</div>
 
-            function onBridgeReady(){
-                WeixinJSBridge.invoke(
-                    'getBrandWCPayRequest', {$jsorder},
-                    function(res) {
-                        if (res.err_msg == "get_brand_wcpay_request:ok") {
-			                alert('支付成功!');
-                            window.location.href="/wechat/user/index";
-                        } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
-                            // message: "已取消微信支付!"
-			                alert('取消支付！');
-                        } else if (res.err_msg == "get_brand_wcpay_request:fail") {
-							alert('支付失败');
+	</div>
+
+	<!--支付方式-->
+	<div class="pay-method">
+		<p class="pay-method-title">选择付款方式</p>
+		<ul>
+			<li class="pay-method-wechat">
+				<img src="__CDN__/assets/img/wechat/vip/icon-wechat@2x.png"/>
+				<span class="pay-method-wechat-title">微信支付</span>
+				<span class="pay-method-wechat-select pay-method-selected"></span>
+			</li>
+			<li class="pay-method-coupon">
+				<img src="__CDN__/assets/img/wechat/vip/icon-coupon@2x.png"/>
+				<span class="pay-method-coupon-title">兑换券</span>
+				<span class="pay-method-coupon-select"></span>
+			</li>
+		</ul>
+	</div>
+
+	<!--支付按钮-->
+	<a href="javascript:checkSubmit();" class="vip-pay-btn">确认支付</a>
+
+	<!--用户协议-->
+	<p class="pay-agree">
+		<img src="__CDN__/assets/img/wechat/vip/icon-chebox.png"/> 我已阅读并同意<span style="color: rgb(36,88,255);">《用户在线协议》</span>
+	</p>
+
+</div>
+
+<!--支付成功回调-->
+<div class="pay-success-callback-wrapper">
+	<div class="pay-success-callback">
+		<div class="pay-success-callback-header">
+			<img class="pay-success-callback-btn" src="/assets/img/wechat/vip/icon-pay-success.png"/>
+			<span class="pay-success-callback-title">恭喜！成为职场保会员</span>
+			<img class="pay-success-clost-btn"  src="/assets/img/wechat/vip/pay-success-close-btn.png"/>
+		</div>
+		<p class="pay-success-info">您可以去个人中心查看会员权益。</p>
+		<a class="pay-success-callback-confirm" href="javascript: void(0)">确定</a>
+	</div>
+</div>
+{include file="common/footer" /}
+<script type="text/javascript">
+	var buytype = 1;
+    wx.config({$conf});
+    //			切换支付方式
+    $(".pay-method-wechat-select").click(function(){
+        buytype = 1;
+        $(this).addClass("pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-selected.png)", "backgroundSize": "100% 100%"});
+        if($(".pay-method-coupon-select").hasClass("pay-method-selected")){
+            $(".pay-method-coupon-select").removeClass(".pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-no-select.png)", "backgroundSize": "100% 100%"});
+        }
+    });
+    $(".pay-method-coupon-select").click(function(){
+        buytype = 2;
+        $(this).addClass("pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-selected.png)", "backgroundSize": "100% 100%"});
+        if($(".pay-method-wechat-select").hasClass("pay-method-selected")){
+            $(".pay-method-wechat-select").removeClass(".pay-method-selected").css({"background": "url(/assets/img/wechat/vip/icon-no-select.png)", "backgroundSize": "100% 100%"});
+        }
+        $()
+    });
+    
+    function checkSubmit() {
+		if (buytype == 1) {
+            callpay();
+		}else {
+            scode = prompt("请输入你的兑换码:");
+            if (scode != null){
+                var out_trade_no = {$order_sn};
+                $.ajax({
+                    url:'/wechat/vip/buy_coupon',
+                    type:'POST',
+                    async:true,    //或false,是否异步
+                    data:{order_sn:out_trade_no,code:scode},
+                    timeout:5000,    //超时时间
+                    success:function(data){
+                        console.info(data)
+                        if (data.code == '1'){
+                            $(".pay-success-callback-wrapper").fadeIn(200, function() {
+                                $(this).css({"display": "block"});
+                            });
+                            //window.location.href="/wechat/user/index";
+                        }else{
+                            alert("卡券无效！");
 						}
+                    },
+                    error:function(xhr,textStatus){
+                        console.log(textStatus)
                     }
-                );
+                })
             }
-            
-            function callpay() {
-                if (typeof WeixinJSBridge == "undefined"){
-                    if( document.addEventListener ){
-                        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-                    }else if (document.attachEvent){
-                        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-                        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-                    }
-                }else{
-                    onBridgeReady();
+		}
+    }
+
+    function onBridgeReady(){
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest', {$jsorder},
+            function(res) {
+                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    alert('支付成功!');
+					$(".pay-success-callback-wrapper").fadeIn(200, function() {
+						$(this).css({"display": "block"});
+					});
+                    window.location.href="/wechat/user/index";
+                } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                    // message: "已取消微信支付!"
+                    alert('取消支付！');
+                } else if (res.err_msg == "get_brand_wcpay_request:fail") {
+                    alert('支付失败');
                 }
-                window.event.returnValue = false;
-                return false;
             }
+        );
+    }
 
+    function callpay() {
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        }else{
+            onBridgeReady();
+        }
+        window.event.returnValue = false;
+        return false;
+    }
 
-            //			VIP购买页Ajax
-// 			function buyVIP() {
-// 				$.ajax({
-// 				    url:'url',
-// 				    type:'POST',
-// 				    async:true,    //或false,是否异步
-// 				    data:{},
-// 				    timeout:5000,    //超时时间
-// 				    success:function(data){
-// 				    		var odata = eval("(" + data +")");
-// 				    		if(odata.code == "ok") {
-// 				    			$(".buy-price-num").html(odata.data.price);
-// 				    			$(".buy-days-num").html(odata.data.days);
-// 				    		}
-// 				    },
-// 				    error:function(xhr,textStatus){
-// 				        console.log(textStatus)
-// 				    }
-// 				})
-// 			}
-		</script>
-	</body>
+    //			支付成功回调消失
+    $(".pay-success-clost-btn").click(function() {
+        $(".pay-success-callback-wrapper").fadeOut(200, function() {
+            $(this).css({"display": "none"});
+        });
+    });
+    $(".pay-success-callback-confirm").click(function() {
+        $(".pay-success-callback-wrapper").fadeOut(200, function() {
+            $(this).css({"display": "none"});
+        });
+    });
+</script>
+</body>
 </html>
+

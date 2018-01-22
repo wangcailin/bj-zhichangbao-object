@@ -1,0 +1,203 @@
+body{
+	background-color: #f3f3f3;
+}
+
+/*头部*/
+.user-header{
+	width: 100%;
+	height: 5.546rem;
+	background: url(/assets/img/wechat/userHeaderBG@2x.png);
+	background-size: 100% 100%;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+	color: rgb(255, 255, 255);
+}
+.user-avatar{
+	display: block;
+	width: 1.733rem;
+	height: 1.733rem;
+	border-radius: 50%;
+	margin: 0.56rem auto 0;
+}
+.user-avatar img{
+	width: 100%;
+	height: 100%;
+}
+.user-name{
+	font-size: 0.346rem;
+	line-height: 0.346rem;
+	margin-top: 0.24rem;
+}
+.user-membership-wrapper{
+	font-size: 0.293rem;
+	line-height: 0.293rem;
+	margin-top: 0.106rem;
+}
+.buy-VIP-btn{
+	position: absolute;
+	top: 1.066rem;
+	right: 1.04rem;
+	width: 2.1rem;
+	height: 0.6rem;
+	background: url(/assets/img/wechat/buyVIPbtn1.png);
+	background-size: 100% 100%;
+}
+.buy-VIP-btn a{
+	display: block;
+	color: rgb(255,255,255);
+	font-size: 0.32rem;
+	line-height: 0.6rem;
+	padding-left: 0.4rem;
+}
+
+
+/*我的订单*/
+.user-order{
+	position: absolute;
+	top: 3.573rem;
+	left: 0; right: 0;
+	margin: 0 auto;
+	z-index: 99;
+	width: 9.466rem;
+	height: 3.2rem;
+	background-color: #ffffff;
+	box-shadow: 0 0.066rem 0.16rem 0 rgba(131, 178, 222, 0.41);
+	border-radius: 0.266rem;
+	box-sizing: border-box;
+}
+.order-title-wrapper{
+	width: 100%;
+	height: 0.533rem;
+	line-height: 0.533rem;
+	padding-left: 0.293rem;
+	margin-top: 0.4rem;
+}
+.order-icon{
+	float: left;
+	width: 0.48rem;
+	height: 0.506rem;
+}
+.order-title{
+	float: left;
+	margin-left: 0.16rem;
+	font-size: 0.4rem;
+	line-height: 0.533rem;
+	color: rgb(100, 100, 100);
+}
+.user-order-list{
+	width: 100%;
+	height: 2rem;
+	display: flex;
+	position: absolute;
+	bottom: 0;
+}
+.user-order-item{
+	flex: 1;
+	text-align: center;
+}
+.user-order-item img{
+	width: 0.72rem;
+	height: 0.72rem;
+}
+.user-order-item p{
+	font-size: 0.373rem;
+	line-height: 0.373rem;
+	color: rgb(153, 153, 153);
+	margin-top: 0.48rem;
+}
+
+
+
+/*会员状态及维权记录*/
+.safeguard-wrapper{
+	width: 9.466rem;
+	height: 2.666rem;
+	margin: 2.04rem auto 0;
+	background: url(/assets/img/wechat/safeguardBG@2x.png);
+	background-size: 100% 100%;
+}
+.safeguard-status, .safeguard-record{
+	width: 9.2rem;
+	height: 1.333rem;
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding: 0.4rem 0.293rem 0.373rem 0.266rem;
+}
+.safeguard-status{
+	border-bottom: 0.013rem solid rgba(177, 184, 191, 0.4);
+}
+.safeguard-status a, 
+.safeguard-record a,
+.safeguard-rights a,
+.user-feedback a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.safeguard-status-icon, 
+.safeguard-record-icon, 
+.safeguard-rights-icon, 
+.user-feedback-icon{
+	float: left;
+	display: inline-block;
+	width: 0.48rem;
+	height: 0.533rem;
+}
+.safeguard-record-icon{
+	width: 0.52rem;
+}
+.safeguard-rights-icon{
+	height: 0.466rem;
+}
+.user-feedback-icon{
+	width: 0.506rem;
+	height: 0.426rem;
+	padding-top: 0.08rem;
+}
+.safeguard-status-icon img, 
+.safeguard-record-icon img, 
+.safeguard-rights-icon img, 
+.user-feedback-icon img{
+	width: 100%;
+	height: 100%;
+}
+.safeguard-status-title, 
+.safeguard-record-title, 
+.safeguard-rights-title, 
+.user-feedback-title{
+	float: left;
+	font-size: 0.426rem;
+	line-height: 0.533rem;
+	color: #666666;
+	margin-left: 0.266rem;
+}
+.safeguard-more{
+	float: right;
+	display: inline-block;
+	width: 0.16rem;
+	height: 0.293rem;
+	padding-top: 0.106rem;
+}
+.safeguard-more img{
+	width: 100%;
+	height: 100%;
+}
+
+/*我要维权、意见反馈*/
+.safeguard-rights, .user-feedback{
+	width: 9.466rem;
+	height: 1.333rem;
+	margin: 0 auto;
+	background-color: #ffffff;
+	border-radius: 0.266rem;
+	margin-top: 0.266rem;
+	box-sizing: border-box;
+	padding: 0.4rem 0.426rem 0.373rem 0.4rem;
+}
+
+/*底部选项卡选中*/
+.zcb-footer-user span:first-child {
+	background: url(/assets/img/wechat/icon-user-active.png);
+	background-size: 100% 100%;
+}

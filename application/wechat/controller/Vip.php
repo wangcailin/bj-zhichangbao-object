@@ -37,7 +37,7 @@ class Vip extends Wechat
     }
 
     /**
-     * 大众会员
+     * 荣誉会员
      * @return string
      * @throws \think\Exception
      */
@@ -47,15 +47,7 @@ class Vip extends Wechat
     }
 
     /**
-     * 铜牌会员
-     */
-    public function bronze()
-    {
-        return $this->view->fetch();
-    }
-
-    /**
-     * 银牌会员
+     * 黑砖会员
      */
     public function silver()
     {
@@ -63,11 +55,18 @@ class Vip extends Wechat
     }
 
     /**
-     * 金牌会员
+     * 白金会员
      */
     public function golden()
     {
         return $this->view->fetch();
+    }
+
+    public function vip_type($vid = null)
+    {
+        $this->assign('vip_type', $vid);
+        return $this->view->fetch();
+
     }
 
     /**
@@ -93,12 +92,10 @@ class Vip extends Wechat
         $order = [
             'body' => '职场保-'.$vipData['name'].'充值',
             'out_trade_no' => $out_trade_no,
-            'total_fee' => 1,
+            'total_fee' => $vipData['money']*100,
             'trade_type' => 'JSAPI',
             'openid' => $wechat_user['openid'],
         ];
-
-
 
         $result = $this->wxPay->order->unify($order);
 
@@ -106,7 +103,7 @@ class Vip extends Wechat
             $prepayId = $result['prepay_id'];
 
             $this->orderModel->order_sn     = $out_trade_no;
-            $this->orderModel->pay_type     = 1;
+            $this->orderModel->vid          = $vipData['vid'];
             $this->orderModel->prepay_id    = $prepayId;
             $this->orderModel->user_id      = $user_id;
             $this->orderModel->goods_name   = $vipData['name'];
@@ -121,8 +118,53 @@ class Vip extends Wechat
         }
         $json = $this->wxPay->jssdk->bridgeConfig($prepayId);
         $conf = $this->app->jssdk->buildConfig(array('translateVoice','chooseWXPay','getBrandWCPayRequest','onMenuShareTimeline', 'onMenuShareAppMessage'), false, false, true);
-        $this->assign(['jsorder' => $json,'vipData' => $vipData,'conf' => $conf]);
+        $this->assign(['jsorder' => $json,'vipData' => $vipData,'conf' => $conf,'order_sn' => $out_trade_no]);
         return $this->view->fetch();
+    }
+
+    /**
+     * 兑换码支付
+     */
+    public function buy_coupon()
+    {
+        $CouponCode = model('CouponCode');
+        $order_sn = input('order_sn');
+        $code = input('code');
+        $res['code'] = 0;
+        $order_info = $this->orderModel->where('order_sn', $order_sn)->find();
+        if ($order_info){
+            if ($CouponCode->checkCode($code)){
+                $order_info->pay_type = 2;
+                $order_info->code = $code;
+                $order_info->status = 1;
+                $order_info->pay_time = time();
+                if ($order_info->save()){
+                    $this->add_vip($order_info);
+                    $res['code'] = 1;
+                }
+            }
+        }
+        return json($res);
+    }
+
+    public function add_vip($order_info)
+    {
+        $end_time = 0;
+        $vip_count = 0;
+        $vip_thing = 0;
+        if ($order_info->vid == 1){
+            $end_time = strtotime("+90days");
+            $vip_count = 5;
+        }elseif($order_info->vid == 2){
+            $vip_thing = 1;
+        }
+        $vipList = $this->model->vipData;
+        foreach ($vipList as $v){
+            if ($v['vid'] == $vid){
+                $vipData = $v;
+            }
+        }
+        return $this->model->user_add_vip($order_info->user_id, $vipData['vid'], $vipData['name'], $end_time, $vip_count, $vip_thing);
     }
 
 
@@ -134,42 +176,33 @@ class Vip extends Wechat
         $response = $this->wxPay->handlePaidNotify(function($message, $fail){
             $out_trade_no = $message['out_trade_no'];
             $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
+            $order_info->pay_type = 1;
             @file_put_contents('fail.txt', json_encode($order_info));
             @file_put_contents('notify.txt',json_encode($message));
             if(empty($order_info)){
                 return false;
             }
-
             if($order_info['pay_time']>0){
                 return true;
             }
-
-            ///////////// <- 建议在这里调用微信的【订单查询】接口查一下该笔订单的情况，确认是已经支付 /////////////
-
             if($message['return_code'] === 'SUCCESS'){
-
                 // 用户是否支付成功
                 if ($message['result_code'] === 'SUCCESS') {
                     $order_info->transaction_id = $message['transaction_id'];
                     $order_info->status         = 1;
                     $order_info->pay_time       = time();
-
-                    // 用户支付失败
-                } elseif ($message['result_code'] === 'FAIL') {
-                    $order_info->status = 3;
                 }
-
             }else{
                 return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
+                $this->add_vip($order_info);
                 return true;
             }else{
                 return false;
             }
             return true; // 返回处理完成
         });
-
         $response->send(); // return $response;
     }
 

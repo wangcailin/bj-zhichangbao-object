@@ -5,6 +5,7 @@ namespace app\wechat\controller;
 use app\api\controller\Wechat;
 use \app\common\model\User as UserModel;
 use \app\common\model\UserInfo as UserInfoModel;
+use \app\common\model\UserVip as UserVipModel;
 
 class User extends Wechat
 {
@@ -53,9 +54,14 @@ class User extends Wechat
     public function getAjaxUserInfo()
     {
         $uid = input('uid');
+        $UserVipModel = new UserVipModel();
         $data = $this->model->with('vip')->where('id', $uid)->find();
 
         if ($data) {
+            if (empty($data['vid'])){
+                $data['vip_name'] = '普通会员';
+                $data['vid'] = '0';
+            }
             $data['code'] = 1;
         }
         return json($data);

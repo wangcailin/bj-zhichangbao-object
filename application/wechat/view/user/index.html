@@ -1,92 +1,110 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     {include file="common/meta" /}
 </head>
-
 <body>
-<div id="app">
-    <div data-v-cb6b4808="" class="ucenter-index">
-        <ul data-v-cb6b4808="" class="ucenter-table-view-media">
-            <li data-v-cb6b4808="" class="ucenter-table-view-cell">
-                <img data-v-cb6b4808="" id="head-img" width="50" height="50" class="ucenter-avatar" src="">
-                <div data-v-cb6b4808="" class="ucenter-media-body">
-                    <p data-v-cb6b4808="" class="ucenter-ellipsis"></p>
-                </div>
-            </li>
-        </ul>
-        <ul data-v-cb6b4808="" class="ucenter-table-view">
-            <li data-v-cb6b4808="" class="ucenter-table-view-li table-padding">
-                <a data-v-cb6b4808="" href="/wechat/user/getGuarantee/{$Think.session.user_id}" class="ucenter-table-view-item me-guarantee">
-                    <i data-v-cb6b4808="" class="safing"></i>会员权益到期了
-                </a>
-            </li>
-        </ul>
-        <ul data-v-cb6b4808="" class="ucenter-table-view">
-            <li data-v-cb6b4808="" class="ucenter-table-view-li table-padding">
-                <a data-v-cb6b4808="" href="/wechat/evidence/index/uid/{$Think.session.user_id}" class="ucenter-table-view-item">
-                    <i data-v-cb6b4808="" class="record-icon"></i>维权记录
-                </a>
-            </li>
-            <li data-v-cb6b4808="" class="ucenter-table-view-li table-padding">
-                <a data-v-cb6b4808="" href="/wechat/evidence/add" class="ucenter-table-view-item">
-                    <i data-v-cb6b4808="" class="record-icon"></i>我要维权
-                </a>
-            </li>
-            <!--<li data-v-cb6b4808="" class="ucenter-table-view-li table-padding">-->
-                <!--<a data-v-cb6b4808="" href="notices.html" class="ucenter-table-view-item">-->
-                    <!--<i data-v-cb6b4808="" class="notice-icon"></i>消息-->
-                <!--</a>-->
-            <!--</li>-->
-        </ul>
-        <ul data-v-cb6b4808="" class="ucenter-table-view">
-            <li data-v-cb6b4808="" class="ucenter-table-view-li table-padding">
-                <a data-v-cb6b4808="" href="/wechat/user/feedback" class="ucenter-table-view-item">
-                    <i data-v-cb6b4808="" class="feedback-icon"></i>反馈问题
-                </a>
-            </li>
-        </ul>
-
-        {include file="common/menu" /}
+{include file="common/menu" /}
+<!--我的订单-->
+<div class="user-order">
+    <div class="order-title-wrapper">
+        <img class="order-icon" src="/assets/img/wechat/icon-user-order@2x.png"/>
+        <span class="order-title">我的订单</span>
     </div>
+    <ul class="user-order-list">
+        <li class="user-order-item"><a href="#">
+            <img src="/assets/img/wechat/icon-paid@2x.png"/>
+            <p>已支付</p>
+        </a></li>
+        <li class="user-order-item"><a href="#">
+            <img src="/assets/img/wechat/icon-unpaid@2x.png"/>
+            <p>待支付</p>
+        </a></li>
+        <li class="user-order-item"><a href="#">
+            <img src="/assets/img/wechat/icon-refunding@2x.png"/>
+            <p>退款中</p>
+        </a></li>
+        <li class="user-order-item"><a href="#">
+            <img src="/assets/img/wechat/icon-refunded@2x.png"/>
+            <p>已退款</p>
+        </a></li>
+    </ul>
+</div>
+
+<div class="zcb-wrapper">
+
+    <!--头部-->
+    <div class="user-header">
+        <div class="buy-VIP-btn"><a href="/wechat/vip/index">开通会员</a></div>
+        <span class="user-avatar"><img src="/assets/img/wechat/avatar@2x.png"/></span>
+        <p class="user-name">职场保</p>
+        <p class="user-membership-wrapper">[<span class="user-membership">普通用户</span>]</p>
+    </div>
+
+    <!--会员状态及维权记录-->
+    <ul class="safeguard-wrapper">
+        <li class="safeguard-status"><a class="user-membership-link" href="#">
+            <span class="safeguard-status-icon"><img src="/assets/img/wechat/icon-user-vip@2x.png"/></span>
+            <span class="safeguard-status-title">会员权益保障中</span>
+            <span class="safeguard-more"><img src="/assets/img/wechat/more-btn.png"/></span>
+        </a></li>
+        <li class="safeguard-record"><a href="/wechat/evidence/index/uid/{$Think.session.user_id}">
+            <span class="safeguard-record-icon"><img src="/assets/img/wechat/icon-user-records@2x.png" alt="" /></span>
+            <span class="safeguard-record-title">维权记录</span>
+            <span class="safeguard-more"><img src="/assets/img/wechat/more-btn.png"/></span>
+        </a></li>
+    </ul>
+
+    <!--我要维权-->
+    <div class="safeguard-rights"><a href="/wechat/evidence/add">
+        <span class="safeguard-rights-icon"><img src="/assets/img/wechat/icon-user-auncel@2x.png"/></span>
+        <span class="safeguard-rights-title">我要维权</span>
+        <span class="safeguard-more"><img src="/assets/img/wechat/more-btn.png"/></span>
+    </a></div>
+
+    <!--意见反馈-->
+    <div class="user-feedback"><a href="/wechat/user/feedback">
+        <span class="user-feedback-icon"><img src="/assets/img/wechat/icon-user-dialog@2x.png"/></span>
+        <span class="user-feedback-title">意见反馈</span>
+        <span class="safeguard-more"><img src="/assets/img/wechat/more-btn.png"/></span>
+    </a></div>
+
 </div>
 {include file="common/footer" /}
 <script type="text/javascript">
     var user_id = {$Think.session.user_id};
-    //头像,用户名Ajax
     function userAjax() {
         $.ajax({
-            url: '/wechat/user/getAjaxUserInfo',
-            type: 'POST', //GET
-            async: true, //或false,是否异步
-            data: {uid:user_id},
-            timeout: 5000, //超时时间
-            dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
-            success: function(data) {
+            url:'/wechat/user/getAjaxUserInfo',
+            type:'POST',
+            async:true,    //或false,是否异步
+            data:{uid:user_id},
+            timeout:5000,    //超时时间
+            success:function(data){
                 if(data.code == "1") {
-                    $("#head-img").attr("src",data.avatar);
-                    $(".ucenter-media-body").html(data.nickname+'<p data-v-cb6b4808="" class="ucenter-ellipsis"></p>');
+                    $(".user-avatar").html('<img src="'+ data.avatar +'"/>');
+                    $(".user-name").html(data.nickname);
+                    $(".user-membership").html(data.vip_name);
 
-                    //需要一个字段判断会员是否过期，未过期动态显示"会员权益保障中"
-                    if(data.vip) {
-                        $(".me-guarantee").html('<i data-v-cb6b4808="" class="safing"></i>会员权益保障中');
+                    //『会员权益保障中』点击根据会员等级不同进入不同界面
+                    if(data.vid == "0") {
+                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/0");
+                    } else if(data.vid == "1") {
+                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/1");
+                    } else if(data.vid == "2") {
+                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/2");
+                    } else if(data.vid == "3") {
+                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/3");
                     }
-
                 }
             },
-            error: function(xhr, textStatus) {
-                console.log(textStatus);
+            error:function(xhr,textStatus){
+                console.log(textStatus)
             }
-        });
+        })
     }
 
     userAjax();
-
-    $(".ucenter-table-view-media").click(function(){
-        $(location).attr('href', '/wechat/user/user_edit/uid/{$Think.session.user_id}');
-    });
 </script>
 </body>
-
 </html>
