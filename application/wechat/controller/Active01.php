@@ -148,7 +148,11 @@ class Active01 extends Api
                 return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
-                $this->add_vip($out_trade_no);
+                $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
+                $vip_thing = 0;
+                $end_time = strtotime("+365days");
+                $vip_count = 5;
+                model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
                 return true;
             }else{
                 return false;
@@ -158,12 +162,4 @@ class Active01 extends Api
         $response->send(); // return $response;
     }
 
-    public function add_vip($out_trade_no)
-    {
-        $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
-        $vip_thing = 0;
-        $end_time = strtotime("+365days");
-        $vip_count = 5;
-        return model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
-    }
 }
