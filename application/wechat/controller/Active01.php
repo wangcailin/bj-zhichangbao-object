@@ -118,8 +118,6 @@ class Active01 extends Api
                 $this->error('生成订单失败!', '/wechat/vip/index');
             }
         }
-        $this->add_vip($out_trade_no);
-die;
         $json = $this->wxPay->jssdk->bridgeConfig($prepayId);
         $conf = $this->app->jssdk->buildConfig(array('translateVoice','chooseWXPay','getBrandWCPayRequest','onMenuShareTimeline', 'onMenuShareAppMessage'), false, false, true);
         $this->assign(['jsorder' => $json,'conf' => $conf,'order_sn' => $out_trade_no]);
