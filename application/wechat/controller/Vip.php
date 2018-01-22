@@ -143,24 +143,23 @@ class Vip extends Wechat
         return json($res);
     }
 
-    public function add_vip($order_info)
+    public function add_vip($order_info, $active = null)
     {
         $end_time = 0;
         $vip_count = 0;
         $vip_thing = 0;
-        if ($order_info->vid == 1){
-            $end_time = strtotime("+90days");
-            $vip_count = 5;
-        }elseif($order_info->vid == 2){
-            $vip_thing = 1;
-        }
-        $vipList = $this->model->vipData;
-        foreach ($vipList as $v){
-            if ($v['vid'] == $vid){
-                $vipData = $v;
+        if (!$active){
+            if ($order_info->vid == 1){
+                $end_time = strtotime("+90days");
+                $vip_count = 5;
+            }elseif($order_info->vid == 2){
+                $vip_thing = 1;
             }
+        }else{
+            $end_time = strtotime("+365days");
         }
-        return $this->model->user_add_vip($order_info->user_id, $vipData['vid'], $vipData['name'], $end_time, $vip_count, $vip_thing);
+
+        return $this->model->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
     }
 
 
