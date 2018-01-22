@@ -55,7 +55,6 @@ class UserVip extends Model
                 'vip_thing'       => $vip_thing,
                 'vip_thing_user'    => 0,
             ];
-            @file_put_contents('notify.txt',json_encode($data));
             return $this->save($data);
         }
         return false;
