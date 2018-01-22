@@ -195,9 +195,3 @@ body{
 	box-sizing: border-box;
 	padding: 0.4rem 0.426rem 0.373rem 0.4rem;
 }
-
-/*底部选项卡选中*/
-.zcb-footer-user span:first-child {
-	background: url(/assets/img/wechat/icon-user-active.png);
-	background-size: 100% 100%;
-}

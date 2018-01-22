@@ -116,10 +116,3 @@
 .bronze-vip {
 	margin-top: 0.666rem;
 }
-
-
-/*底部选项卡选中*/
-.zcb-footer-zcb span:first-child{
-	background: url(/assets/img/wechat/vip/icon-zcb-active.png);
-	background-size: 100% 100%;
-}

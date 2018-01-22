@@ -56,17 +56,29 @@ a:active {
 	background: url(/assets/img/wechat/icon-home.png);
 	background-size: 100% 100%;
 }
+.zcb-footer-home-active{
+	background: url(/assets/img/wechat/icon-home-active.png) !important;
+	background-size: 100% 100% !important;
+}
 .zcb-footer-zcb span:first-child{
 	background: url(/assets/img/wechat/icon-zcb.png);
 	background-size: 100% 100%;
+}
+.zcb-footer-zcb-active{
+	background: url(/assets/img/wechat/icon-zcb-active.png) !important;
+	background-size: 100% 100% !important;
 }
 .zcb-footer-user span:first-child{
 	background: url(/assets/img/wechat/icon-user.png);
 	background-size: 100% 100%;
 }
+.zcb-footer-user-active{
+	background: url(/assets/img/wechat/icon-user-active.png) !important;
+	background-size: 100% 100% !important;
+}
 .zcb-tab-footer a:hover, .zcb-tab-footer a:active{
 	text-decoration: none;
 }
-.zcb-footer-active span{
+.zcb-footer-active{
 	color: #268bea !important;
 }

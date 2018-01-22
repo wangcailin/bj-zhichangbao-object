@@ -77,9 +77,6 @@ class Vip extends Wechat
         $user_id = session('user_id');
         $vid     = input('vid');
         $wechat_user = session('wechat_user');
-        if ($user_id != input('uid')){
-            return $this->app->oauth->redirect()->send();
-        }
 
         $vipData = [];
         $vipList = $this->model->vipData;
@@ -114,7 +111,6 @@ class Vip extends Wechat
             if (!$this->orderModel->id){
                 $this->error('生成订单失败!', '/wechat/vip/index');
             }
-            session('order_id', $this->orderModel->id);
         }
         $json = $this->wxPay->jssdk->bridgeConfig($prepayId);
         $conf = $this->app->jssdk->buildConfig(array('translateVoice','chooseWXPay','getBrandWCPayRequest','onMenuShareTimeline', 'onMenuShareAppMessage'), false, false, true);
@@ -164,6 +160,9 @@ class Vip extends Wechat
                 $vipData = $v;
             }
         }
+        session('order_id', null);
+        session('vid', null);
+        session('order', null);
         return $this->model->user_add_vip($order_info->user_id, $vipData['vid'], $vipData['name'], $end_time, $vip_count, $vip_thing);
     }
 
