@@ -161,9 +161,16 @@ class Active01 extends Api
     public function add_vip($out_trade_no)
     {
         $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
-        $vip_thing = 0;
-        $end_time = strtotime("+365days");
-        $vip_count = 5;
-        return model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
+        $userVip = model('UserVip');
+        $userVip->user_id    = $order_info->user_id;
+        $userVip->vid        = $order_info->vid;
+        $userVip->vip_name   = $order_info->goods_name;
+        $userVip->vip_time   = time();
+        $userVip->vip_time_end   = strtotime("+365days");
+        $userVip->vip_count   = 5;
+        $userVip->vip_count_user   = 0;
+        $userVip->vip_thing   = 0;
+        $userVip->vip_thing_user   = 0;
+        return $userVip->save();
     }
 }

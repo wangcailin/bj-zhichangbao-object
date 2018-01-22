@@ -43,22 +43,18 @@ class UserVip extends Model
      */
     public function user_add_vip($uid = null, $vid = null, $vip_name = null, $vip_time_end = 0, $vip_count = 0, $vip_thing = 0)
     {
-        if ($uid && $vid){
-            $data = [
-                'user_id'   => $uid,
-                'vid'       => $vid,
-                'vip_name'  => $vip_name,
-                'vip_time'  => time(),
-                'vip_time_end'  => $vip_time_end,
-                'vip_count'  => $vip_count,
-                'vip_count_user'  => 0,
-                'vip_thing'       => $vip_thing,
-                'vip_thing_user'    => 0,
-            ];
-            @file_put_contents('notify.txt',json_encode($this->save($data)));
-            //return $this->save($data);
-        }
-        return false;
+        $data = [
+            'user_id'   => $uid,
+            'vid'       => $vid,
+            'vip_name'  => $vip_name,
+            'vip_time'  => time(),
+            'vip_time_end'  => $vip_time_end,
+            'vip_count'  => $vip_count,
+            'vip_count_user'  => 0,
+            'vip_thing'       => $vip_thing,
+            'vip_thing_user'    => 0,
+        ];
+        return $this->save($data);
     }
 
     public function checkUserVip($uid)
