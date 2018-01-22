@@ -26,12 +26,23 @@ class Access extends Backend
         $this->model = model('CouponAccess');
 
     }
-    
-    /**
-     * 默认生成的控制器所继承的父类中有index/add/edit/del/multi五个方法
-     * 因此在当前控制器中可不用编写增删改查的代码,如果需要自己控制这部分逻辑
-     * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
-     */
-    
 
+    /**
+     * 发放卡券
+     * @param $ids
+     */
+    public function send($ids)
+    {
+        $access = $this->model->where('id', $ids)->find()->toArray();
+        $data = [];
+        for ($i=0;$i<$access['count'];$i++){
+            $temp['cid'] = $access['id'];
+            $temp['code'] = 'ZCB'.rand(1000,9999).strtoupper(get_random_str('2'));
+            $data[] = $temp;
+        }
+        if (model('CouponCode')->saveAll($data)){
+            $this->success('生成卡券码成功！');
+        }
+        $this->error('生成卡券码失败！');
+    }
 }

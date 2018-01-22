@@ -27,9 +27,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'id', title: __('Id')},
                         {field: 'count', title: __('Count')},
                         {field: 'type', title: __('Type')},
+                        {field: 'title', title: __('Title')},
                         {field: 'time', title: __('Time'), formatter: Table.api.formatter.datetime},
                         {field: 'admin_id', title: __('Admin_id')},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table, buttons: [
+                                {name: 'send', text: '发送', title: '发送', icon: 'fa fa-flash', classname: 'btn btn-xs btn-success btn-ajax', url: 'counpon/access/send', success:function(data, ret){}, error:function(){}},
+                            ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
             });
