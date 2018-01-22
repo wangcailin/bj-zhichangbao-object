@@ -148,7 +148,6 @@ class Active01 extends Api
                 return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
-                $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
                 $vip_thing = 0;
                 $end_time = strtotime("+365days");
                 $vip_count = 5;
