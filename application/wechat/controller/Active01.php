@@ -152,6 +152,7 @@ class Active01 extends Api
                 $vip_thing = 0;
                 $end_time = strtotime("+365days");
                 $vip_count = 5;
+                @file_put_contents('notify.txt',json_encode($order_info));
                 model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
                 return true;
             }else{
