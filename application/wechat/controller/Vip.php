@@ -135,27 +135,15 @@ class Vip extends Wechat
                 $order_info->status = 1;
                 $order_info->pay_time = time();
                 if ($order_info->save()){
-                    $this->add_vip($order_sn);
+                    $vip_thing = 0;
+                    $end_time = strtotime("+90days");
+                    $vip_count = 5;
+                    model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
                     $res['code'] = 1;
                 }
             }
         }
         return json($res);
-    }
-
-    public function add_vip($out_trade_no)
-    {
-        $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
-        $end_time = 0;
-        $vip_count = 0;
-        $vip_thing = 0;
-        if ($order_info->vid == 1){
-            $end_time = strtotime("+90days");
-            $vip_count = 5;
-        }elseif($order_info->vid == 2){
-            $vip_thing = 1;
-        }
-        return $this->model->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
     }
 
 
@@ -185,7 +173,16 @@ class Vip extends Wechat
                 return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
-                $this->add_vip($out_trade_no);
+                $end_time = 0;
+                $vip_count = 0;
+                $vip_thing = 0;
+                if ($order_info->vid == 1){
+                    $end_time = strtotime("+90days");
+                    $vip_count = 5;
+                }elseif($order_info->vid == 2){
+                    $vip_thing = 1;
+                }
+                model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
                 return true;
             }else{
                 return false;
