@@ -35,25 +35,44 @@ class User extends Backend
      */
     public function detail($ids)
     {
-        $vipList = $this->model->getVipList();
-        $row = $this->model->get(['id' => $ids])->toArray();
+        $vipList = model('UserVip')->vipList;
+        $row = $this->model->with('vip,info')->where('id', $ids)->find()->toArray();
         if (!$row){
             $this->error(__('No Results were found'));
         }
 
         foreach ($row as $k=>&$v){
-            if ($k == 'avatar'){
-                $v = '<img class="img-sm img-center" src="'.$v.'">';
-            }elseif($k == 'create_time' || $k == 'update_time'){
-                $v = date('Y-m-d H:i:s', $v);
-            }elseif($k == 'vip'){
-                $v = $vipList[$v];
-            }elseif($k == 'status'){
-                if ($v == 'normal'){
-                    $v = '正常';
-                }elseif ($v == 'hidden'){
-                    $v = '隐藏';
-                }
+            switch ($k){
+                case 'avatar':
+                    $v = '<img class="img-sm img-center" src="'.$v.'">';
+                    break;
+                case 'create_time':
+                    $v = date('Y-m-d H:i:s', $v);
+                    break;
+                case 'update_time':
+                    $v = date('Y-m-d H:i:s', $v);
+                    break;
+                case 'vid':
+                    $v = $vipList[$v];
+                    break;
+                case 'sex':
+                    if ($v == 0){
+                        $v = '保密';
+                    }elseif ($v == 1){
+                        $v = '男';
+                    }elseif ($v == 2){
+                        $v = '女';
+                    }
+                    break;
+                case 'status':
+                    if ($v == '1'){
+                        $v = '正常';
+                    }elseif ($v == '0'){
+                        $v = '禁用';
+                    }
+                    break;
+                default:
+                    break;
             }
         }
         $this->view->assign("row", $row);
