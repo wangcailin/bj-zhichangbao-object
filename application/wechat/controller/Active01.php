@@ -9,12 +9,10 @@ class Active01 extends Api
 {
     private $wxPay = null;
     private $orderModel = null;
-    private $userVipModel = null;
     public function _initialize()
     {
         parent::_initialize();
         $this->orderModel = model('Order');
-        $this->userVipModel = model('UserVip');
         $payConfig = [
             // 必要配置
             'app_id'             => 'wxa0afc75ebe2d5871',
@@ -150,21 +148,7 @@ class Active01 extends Api
                 return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
-                $vip_thing = 0;
-                $end_time = strtotime("+365days");
-                $vip_count = 5;
-                $data = [
-                    'user_id'   => $order_info->user_id,
-                    'vid'       => $order_info->vid,
-                    'vip_name'  => $order_info->goods_name,
-                    'vip_time'  => time(),
-                    'vip_time_end'  => $end_time,
-                    'vip_count'  => $vip_count,
-                    'vip_count_user'  => 0,
-                    'vip_thing'       => $vip_thing,
-                    'vip_thing_user'    => 0,
-                ];
-                $this->userVipModel->save($data);
+                $this->add_vip($out_trade_no);
                 return true;
             }else{
                 return false;
@@ -174,4 +158,12 @@ class Active01 extends Api
         $response->send(); // return $response;
     }
 
+    public function add_vip($out_trade_no)
+    {
+        $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
+        $vip_thing = 0;
+        $end_time = strtotime("+365days");
+        $vip_count = 5;
+        return model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
+    }
 }
