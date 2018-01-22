@@ -9,10 +9,12 @@ class Active01 extends Api
 {
     private $wxPay = null;
     private $orderModel = null;
+    private $userVipModel = null;
     public function _initialize()
     {
         parent::_initialize();
         $this->orderModel = model('Order');
+        $this->userVipModel = model('UserVip');
         $payConfig = [
             // 必要配置
             'app_id'             => 'wxa0afc75ebe2d5871',
@@ -162,7 +164,7 @@ class Active01 extends Api
                     'vip_thing'       => $vip_thing,
                     'vip_thing_user'    => 0,
                 ];
-                model('UserVip')->save($data);
+                $this->userVipModel->save($data);
                 return true;
             }else{
                 return false;
