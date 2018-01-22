@@ -21,7 +21,7 @@ class Active01 extends Api
             'key'                => 'BGQv5ebUj5Ug8FLJMyPg8ZvKoRxqYMlf',
             'cert_path'          => 'wxpay/apiclient_cert.pem',
             'key_path'           => 'wxpay/apiclient_key.pem',
-            'notify_url'         => 'http://www.zhichangbb.com/wechat/vip/notify',
+            'notify_url'         => 'http://www.zhichangbb.com/wechat/Active01/notify',
         ];
         $this->wxPay = Factory::payment($payConfig);
     }
@@ -131,8 +131,6 @@ class Active01 extends Api
             $out_trade_no = $message['out_trade_no'];
             $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
             $order_info->pay_type = 1;
-            @file_put_contents('fail.txt', json_encode($order_info));
-            @file_put_contents('notify.txt',json_encode($message));
             if(empty($order_info)){
                 return false;
             }
@@ -150,7 +148,7 @@ class Active01 extends Api
                 return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
-                $this->add_vip($order_info);
+                $this->add_vip($out_trade_no);
                 return true;
             }else{
                 return false;
@@ -160,8 +158,9 @@ class Active01 extends Api
         $response->send(); // return $response;
     }
 
-    public function add_vip($order_info)
+    public function add_vip($out_trade_no)
     {
+        $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
         $vip_thing = 0;
         $end_time = strtotime("+365days");
         $vip_count = 5;

@@ -135,7 +135,7 @@ class Vip extends Wechat
                 $order_info->status = 1;
                 $order_info->pay_time = time();
                 if ($order_info->save()){
-                    $this->add_vip($order_info);
+                    $this->add_vip($order_sn);
                     $res['code'] = 1;
                 }
             }
@@ -143,8 +143,9 @@ class Vip extends Wechat
         return json($res);
     }
 
-    public function add_vip($order_info)
+    public function add_vip($out_trade_no)
     {
+        $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
         $end_time = 0;
         $vip_count = 0;
         $vip_thing = 0;
@@ -186,7 +187,7 @@ class Vip extends Wechat
                 return $fail('通信失败，请稍后再通知我');
             }
             if($order_info->save()){
-                $this->add_vip($order_info);
+                $this->add_vip($out_trade_no);
                 return true;
             }else{
                 return false;
