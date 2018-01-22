@@ -168,8 +168,6 @@ class Vip extends Wechat
             $out_trade_no = $message['out_trade_no'];
             $order_info = model('Order')->where('order_sn', $out_trade_no)->find();
             $order_info->pay_type = 1;
-            @file_put_contents('fail.txt', json_encode($order_info));
-            @file_put_contents('notify.txt',json_encode($message));
             if(empty($order_info)){
                 return false;
             }
