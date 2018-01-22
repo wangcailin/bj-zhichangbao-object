@@ -160,9 +160,6 @@ class Vip extends Wechat
                 $vipData = $v;
             }
         }
-        session('order_id', null);
-        session('vid', null);
-        session('order', null);
         return $this->model->user_add_vip($order_info->user_id, $vipData['vid'], $vipData['name'], $end_time, $vip_count, $vip_thing);
     }
 
@@ -203,6 +200,47 @@ class Vip extends Wechat
             return true; // 返回处理完成
         });
         $response->send(); // return $response;
+    }
+
+    /**
+     * 冲一年会员送一年视频会员
+     */
+    public function vip_video()
+    {
+        $user_id = session('user_id');
+        $wechat_user = session('wechat_user');
+
+        $out_trade_no = date('Ymd', time()).rand(10000,99999);
+        $order = [
+            'body' => '职场保-包年会员-充值',
+            'out_trade_no' => $out_trade_no,
+            'total_fee' => 39.6*100,
+            'trade_type' => 'JSAPI',
+            'openid' => $wechat_user['openid'],
+        ];
+
+        $result = $this->wxPay->order->unify($order);
+
+        if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS'){
+            $prepayId = $result['prepay_id'];
+
+            $this->orderModel->order_sn     = $out_trade_no;
+            $this->orderModel->vid          = 1;
+            $this->orderModel->prepay_id    = $prepayId;
+            $this->orderModel->user_id      = $user_id;
+            $this->orderModel->goods_name   = '包年荣誉会员';
+            $this->orderModel->amount       = 39.6;
+            $this->orderModel->status       = 0;
+            $this->orderModel->add_time     = time();
+            $this->orderModel->save();
+            if (!$this->orderModel->id){
+                $this->error('生成订单失败!', '/wechat/vip/index');
+            }
+        }
+        $json = $this->wxPay->jssdk->bridgeConfig($prepayId);
+        $conf = $this->app->jssdk->buildConfig(array('translateVoice','chooseWXPay','getBrandWCPayRequest','onMenuShareTimeline', 'onMenuShareAppMessage'), false, false, true);
+        $this->assign(['jsorder' => $json,'conf' => $conf,'order_sn' => $out_trade_no]);
+        return $this->view->fetch();
     }
 
 }
