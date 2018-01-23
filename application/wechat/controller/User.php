@@ -137,15 +137,15 @@ class User extends Wechat
     {
         return $this->view->fetch();
     }
-    public function common()
+    public function honorVIP()
     {
         return $this->view->fetch();
     }
-    public function common()
+    public function backBrickVIP()
     {
         return $this->view->fetch();
     }
-    public function common()
+    public function platinumVIP()
     {
         return $this->view->fetch();
     }
