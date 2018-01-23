@@ -53,7 +53,7 @@ class User extends Wechat
 
     public function getAjaxUserInfo()
     {
-        $uid = input('uid');
+        $uid = session('user_id');
         $data = $this->model->with('vip')->where('id', $uid)->find()->toArray();
         if ($data) {
             if (empty($data['vip'])){

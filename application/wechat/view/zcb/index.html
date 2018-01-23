@@ -5,6 +5,15 @@
 <head>
     {include file="common/meta" /}
     <style type="text/css">
+        .zcb-wrapper img{
+            display: block;
+            width: 100%;
+            border-image-width: 0 !important;
+            border: none;
+        }
+        .zcb-case{
+            margin: -2px 0;
+        }
         .work-index[data-v-062bd704] {
             width: 100%
         }
@@ -376,26 +385,24 @@
                 </style>
                 <div class="zcb-wrapper">
                     <div class="zcb-banner">
-                        <img src="__CDN__/assets/img/wechat/banner@2x.png"/>
+                        <img src="__CDN__/assets/img/wechat/landingpage1.png"/>
                     </div>
-                    <div class="zcb-service">
-                        <img src="__CDN__/assets/img/wechat/zhuangy@2x.png"/>
+                    <div class="zcb-team">
+                        <img src="__CDN__/assets/img/wechat/landingpage2.png"/>
                     </div>
-                    <div class="zcb-compare">
-                        <img src="__CDN__/assets/img/wechat/VS@2x.png"/>
-                    </div>
-                    <div class="zcb-response">
-                        <img src="__CDN__/assets/img/wechat/JISU@2x.png"/>
+                    <div class="zcb-rights">
+                        <img src="__CDN__/assets/img/wechat/landingpage3.png"/>
+                        <img src="__CDN__/assets/img/wechat/landingpage4.png"/>
                     </div>
                     <div class="zcb-case">
-                        <img src="__CDN__/assets/img/wechat/gushi12@2x.png"/>
-                        <img src="__CDN__/assets/img/wechat/gushi2@2x.png"/>
+                        <img src="__CDN__/assets/img/wechat/landingpage5.png"/>
                     </div>
                     <div class="zcb-fee">
-                        <img src="__CDN__/assets/img/wechat/shoufeibiaozhun@2x.png"/>
+                        <img src="__CDN__/assets/img/wechat/landingpage6.png"/>
+                        <img src="__CDN__/assets/img/wechat/landingpage7.png"/>
                     </div>
                     <div class="zcb-qrcode">
-                        <img src="__CDN__/assets/img/wechat/erweima@2x.png"/>
+                        <img src="__CDN__/assets/img/wechat/landingpage8.png"/>
                     </div>
                 </div>
             </div>
@@ -414,19 +421,19 @@
 {include file="common/footer" /}
 <script type="text/javascript">
     //判断是否显示"加入会员"，是会员的话隐藏
-    function showVip() {
+    $(function () {
         $.ajax({
-            url: 'URL',
+            url: '/wechat/user/getAjaxUserInfo',
             type: 'POST', //GET
             async: true, //或false,是否异步
             data: {},
             timeout: 5000, //超时时间
             dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
             success: function(data) {
-                var odata = eval("("+ data +")");
-                if(odata.code == "ok") {
-                    if(odata.data.isVip) {
-                        $("join-vip").css({"display":"none"});
+                if(data.code == "1") {
+                    console.info(data)
+                    if(data.vip.vid > "0") {
+                        $(".join-vip").css({"display":"none"});
                     }
                 }
             },
@@ -434,9 +441,7 @@
                 console.log(textStatus);
             }
         });
-    }
-
-    shopVip();
+    });
 
 </script>
 </body>
