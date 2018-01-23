@@ -84,16 +84,16 @@
                 if(data.code == "1") {
                     $(".user-avatar").html('<img src="'+ data.avatar +'"/>');
                     $(".user-name").html(data.nickname);
-                    $(".user-membership").html(data.vip_name);
+                    $(".user-membership").html(data.vip.vip_name);
 
                     //『会员权益保障中』点击根据会员等级不同进入不同界面
-                    if(data.vid == "0") {
+                    if(data.vip.vid == "0") {
                         $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/0");
-                    } else if(data.vid == "1") {
+                    } else if(data.vip.vid == "1") {
                         $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/1");
-                    } else if(data.vid == "2") {
+                    } else if(data.vip.vid == "2") {
                         $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/2");
-                    } else if(data.vid == "3") {
+                    } else if(data.vip.vid == "3") {
                         $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/3");
                     }
                 }

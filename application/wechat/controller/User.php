@@ -56,9 +56,9 @@ class User extends Wechat
         $uid = input('uid');
         $data = $this->model->with('vip')->where('id', $uid)->find()->toArray();
         if ($data) {
-            if (empty($data['vid'])){
-                $data['vip_name'] = '普通会员';
-                $data['vid'] = '0';
+            if (empty($data['vip'])){
+                $data['vip']['vip_name'] = '普通会员';
+                $data['vip']['vid'] = '0';
             }
             $data['code'] = 1;
         }
