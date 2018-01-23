@@ -35,7 +35,7 @@
 
     <!--头部-->
     <div class="user-header">
-        <div class="buy-VIP-btn"><a href="/wechat/vip/index">开通会员</a></div>
+        <div class="buy-VIP-btn" style="display: none"><a href="/wechat/vip/index">开通会员</a></div>
         <span class="user-avatar"><img src="/assets/img/wechat/avatar@2x.png"/></span>
         <p class="user-name">职场保</p>
         <p class="user-membership-wrapper">[<span class="user-membership">普通用户</span>]</p>
@@ -89,6 +89,7 @@
                     //『会员权益保障中』点击根据会员等级不同进入不同界面
                     if(data.vip.vid == "0") {
                         $(".user-membership-link").attr("href", "/wechat/user/common");
+                        $(".buy-VIP-btn").css({"display":"block"});
                     } else if(data.vip.vid == "1") {
                         $(".user-membership-link").attr("href", "/wechat/user/honorVIP");
                     } else if(data.vip.vid == "2") {
