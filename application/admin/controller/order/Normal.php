@@ -30,6 +30,34 @@ class Normal extends Backend
         $this->assign('statusType', $this->model->statusType);
     }
 
+    /**
+     * 查看
+     */
+    public function index()
+    {
+        $this->relationSearch = true;
+        $this->searchFields = "user.nickname,id";
+        if ($this->request->isAjax())
+        {
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $total = $this->model
+                ->with("user")
+                ->where($where)
+                ->order($sort, $order)
+                ->count();
+            $list = $this->model
+                ->with("user")
+                ->where($where)
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+            $result = array("total" => $total, "rows" => $list);
+
+            return json($result);
+        }
+        return $this->view->fetch();
+    }
+
     public function statusType()
     {
         return json($this->model->statusType);

@@ -8,5 +8,7 @@ return [
     'Amount'  =>  '订单金额',
     'Add_time'  =>  '创建时间',
     'Pay_time'  =>  '支付时间',
-    'Status'  =>  '状态'
+    'Status'  =>  '状态',
+    'user.nickname' => '微信号',
+    'user.avatar'   => '微信头像'
 ];
