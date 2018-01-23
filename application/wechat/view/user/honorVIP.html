@@ -119,10 +119,9 @@
 				    data:{},
 				    timeout:5000,
 				    success:function(data){
-				       	var odata = eval("("+ data +")");
-				        if(odata.code === "ok") {
-				        		_buyTime = odata.data.buyTime;
-				        		_effectiveTime = odata.data.effectiveTime;
+				        if(data.code === "ok") {
+				        		_buyTime = data.buyTime;
+				        		_effectiveTime = data.effectiveTime;
 				        		$(".buy-time-dates").html(odata.data.buyTime);  //购买时间
 				        		$(".effective-time-dates").html(odata.data.effectiveTime);  //生效时间
 				        }
