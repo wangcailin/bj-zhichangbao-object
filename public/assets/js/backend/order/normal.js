@@ -27,7 +27,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id'), operate: false},
                         {field: 'order_sn', title: __('Order_sn'), operate: false},
-                        {field: 'user_id', title: __('User_id'), operate: false},
+                        {field: 'user_id', title: __('User_id'), operate: false, formatter: Controller.api.formatter.user},
                         {field: 'pay_type', title: __('Pay_type'), searchList: $.getJSON('order/normal/paySearch'), formatter: Controller.api.formatter.pay},
                         {field: 'goods_name', title: __('Goods_name'), operate: false},
                         {field: 'amount', title: __('Amount'), operate: false},
@@ -60,6 +60,16 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 },
                 pay: function (value, row, index) {
                     return pay.responseJSON[value];
+                },
+                user: function (value, row, index) {
+                    //这里手动构造URL
+                    url = "user/index?id=" + value;
+
+                    //方式一,直接返回class带有addtabsit的链接,这可以方便自定义显示内容
+                    return '<a href="' + url + '" class="label label-success addtabsit" title="' + __("Search %s", value) + '">' + value + '</a>';
+
+                    //方式二,直接调用Table.api.formatter.addtabs
+                    //return Table.api.formatter.addtabs(value, row, index, url);
                 }
             }
         }

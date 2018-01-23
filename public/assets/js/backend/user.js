@@ -24,7 +24,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id'), operate: false},
+                        {field: 'id', title: __('Id')},
                         {field: 'username', title: __('Username'), operate: false},
                         {field: 'nickname', title: __('Nickname'), operate: false},
                         {field: 'avatar', title: __('Avatar'), formatter: Table.api.formatter.image, operate: false},
