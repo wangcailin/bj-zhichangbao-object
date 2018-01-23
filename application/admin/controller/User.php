@@ -30,6 +30,35 @@ class User extends Backend
 
     }
 
+    public function index()
+    {
+        //设置过滤方法
+        $this->request->filter(['strip_tags']);
+        if ($this->request->isAjax()) {
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('pkey_name')) {
+                return $this->selectpage();
+            }
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $total = $this->model
+                ->where($where)
+                ->order($sort, $order)
+                ->count();
+
+            $list = $this->model
+                ->with('vip')
+                ->where($where)
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+
+            $result = array("total" => $total, "rows" => $list);
+
+            return json($result);
+        }
+        return $this->view->fetch();
+    }
+
     /**
      * 详情
      */
@@ -84,7 +113,7 @@ class User extends Backend
      */
     public function getVipListAjax()
     {
-        $list = $this->model->getVipList();
+        $list = model('UserVip')->vipList;
         $searchlist = [];
         foreach ($list as $key => $value)
         {
