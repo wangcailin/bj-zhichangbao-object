@@ -421,27 +421,27 @@
 {include file="common/footer" /}
 <script type="text/javascript">
     //判断是否显示"加入会员"，是会员的话隐藏
-    $(function () {
-        $.ajax({
-            url: '/wechat/user/getAjaxUserInfo',
-            type: 'POST', //GET
-            async: true, //或false,是否异步
-            data: {},
-            timeout: 5000, //超时时间
-            dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
-            success: function(data) {
-                if(data.code == "1") {
-                    console.info(data)
-                    if(data.vip.vid > "0") {
-                        $(".join-vip").css({"display":"none"});
-                    }
-                }
-            },
-            error: function(xhr, textStatus) {
-                console.log(textStatus);
-            }
-        });
-    });
+    // $(function () {
+    //     $.ajax({
+    //         url: '/wechat/user/getAjaxUserInfo',
+    //         type: 'POST', //GET
+    //         async: true, //或false,是否异步
+    //         data: {},
+    //         timeout: 5000, //超时时间
+    //         dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+    //         success: function(data) {
+    //             if(data.code == "1") {
+    //                 console.info(data)
+    //                 if(data.vip.vid > "0") {
+    //                     $(".join-vip").css({"display":"none"});
+    //                 }
+    //             }
+    //         },
+    //         error: function(xhr, textStatus) {
+    //             console.log(textStatus);
+    //         }
+    //     });
+    // });
 
 </script>
 </body>

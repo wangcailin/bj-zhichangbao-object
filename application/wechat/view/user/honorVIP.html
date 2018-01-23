@@ -110,7 +110,7 @@
 			var _effectiveTime = 0;
 			var _nowTime = new Date();
 			_nowTime = _nowTime.getTime();
-			
+
 //			日期ajax
 			function honorVIPdates() {
 				$.ajax({
@@ -119,12 +119,11 @@
 				    data:{},
 				    timeout:5000,
 				    success:function(data){
-				        console.info(data)
-				        if(data.code === "1") {
+				        if(data.code == "1") {
 				        		_buyTime = data.buyTime;
 				        		_effectiveTime = data.effectiveTime;
-				        		$(".buy-time-dates").html(data.buyTime);  //购买时间
-				        		$(".effective-time-dates").html(data.effectiveTime);  //生效时间
+				        		$(".buy-time-dates").html(data.vip_time);  //购买时间
+				        		$(".effective-time-dates").html(data.vip_time_start);  //生效时间
 				        }
 				    },
 				    error:function(xhr,textStatus){

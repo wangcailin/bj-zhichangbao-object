@@ -145,7 +145,7 @@ class User extends Wechat
             if ($UserVipModel->checkUserVip($uid)){
                 $data = $UserVipModel->where('user_id', $uid)->find()->toArray();
                 $data['vip_time'] = date('Y-m-d', $data['vip_time']);
-                $data['vip_time_start'] = date('Y-m-d', $data['vip_time']+strtotime("+30days"));
+                $data['vip_time_start'] = date('Y-m-d', strtotime('+1 month', strtotime($data['vip_time'])));
                 $data['vip_time_end'] = date('Y-m-d', $data['vip_time_end']);
                 $data['code'] = 1;
                 return json($data);
