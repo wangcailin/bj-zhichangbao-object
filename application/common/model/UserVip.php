@@ -59,7 +59,7 @@ class UserVip extends Model
 
     public function checkUserVip($uid)
     {
-        $res = $this->where('user_id', $uid)->find();
+        $res = $this->where('user_id', $uid)->order('vip_time','DESC')->find();
         if ($res) {
             if ($res['vip_time_end']){
                 if ($res['vip_time_end'] >= time()){
