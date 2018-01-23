@@ -32,12 +32,19 @@ class User extends Backend
 
     public function index()
     {
+        //设置过滤方法
+        $this->request->filter(['strip_tags']);
         if ($this->request->isAjax()) {
-            list($where, $sort, $order, $offset, $limit) = $this->buildparams( NULL);
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('pkey_name')) {
+                return $this->selectpage();
+            }
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
                 ->where($where)
                 ->order($sort, $order)
                 ->count();
+
             $list = $this->model
                 ->with('vip')
                 ->where($where)
@@ -45,7 +52,7 @@ class User extends Backend
                 ->limit($offset, $limit)
                 ->select();
 
-            $result = array("total" => $total, "rows" => $list, "extend" => ['id' => 1]);
+            $result = array("total" => $total, "rows" => $list);
 
             return json($result);
         }
@@ -68,8 +75,9 @@ class User extends Backend
         }
         if ($row['info']){
             $row = array_merge($row,$row['info']);
-            unset($row['info']);
+            unset($row['vip']);
         }
+        $row = array_merge($row,$row['info']);
         foreach ($row as $k=>&$v){
             switch ($k){
                 case 'avatar':
