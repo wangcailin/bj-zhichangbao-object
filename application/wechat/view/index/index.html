@@ -1,47 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    {include file="common/meta" /}
-    <style>
-        body {
-            background: #f3f3f3
-        }
+<html>
+	<head>
+		{include file="common/meta" /}
+	</head>
+	<body>
+		
+		<div class="zcb-wrapper">
+			
+			<!--首页banner-->
+			<div class="home-banner">
+				<a href="/wechat/vip/common"><img src="__CDN__/assets/img/wechat/bannerIMG@2x.jpg"/></a>
+			</div>
+			<!--首页轮播图 暂未启用-->
+			<!--<div class="home-carousel swiper-container">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide"><a href="#"><img src="img/bannerIMG@2x.jpg"/></a></div>
+			        <div class="swiper-slide"><a href="#"><img src="img/bannerIMG@2x.jpg"/></a></div>
+			        <div class="swiper-slide"><a href="#"><img src="img/bannerIMG@2x.jpg"/></a></div>
+			    </div>
+			    <div class="swiper-pagination"></div>
+			</div>-->
+			
+			<!--首页导航-->
+			<ul class="home-nav">
+				<li class="home-nav-item nav-zcb">
+					<a href="#">
+						<img class="nav-zcb-icon" src="__CDN__/assets/img/wechat/nav-zcb@2x.png"/>
+						<p class="nav-zcb-title">职场保</p>
+					</a>
+				</li>
+				<li class="home-nav-item nav-vip">
+					<a href="#">
+						<img class="nav-vip-icon" src="__CDN__/assets/img/wechat/nav-vip@2x.png"/>
+						<p class="nav-vip-title">VIP会员</p>
+					</a>
+				</li>
+			</ul>
+			
+			<!--荣誉会员-->
+			<div class="home-common-vip">
+				<p class="common-vip-title">荣誉会员</p>
+				<p class="common-vip-price"><span>9.9</span>元/季</p>
+				<p class="common-vip-price-title">会员价格</p>
+				<p class="common-vip-effective">生效 30天后</p>
+				<a class="buy-btn" href="/wechat/vip/common">立即抢购</a>
+			</div>
+			
+		</div>
 
-        .zcb-wrapper {
-            width: 100%;
-            height: 100%;
-            background: url("__CDN__/assets/img/wechat/homeBG.jpg");
-            background-size: 100%;
-            background-repeat: no-repeat
-        }
+		{include file="common/menu" /}
 
-        .more-detail{
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 10.3rem;
-            margin: 0 auto;
-            width: 7.04rem;
-            height: 1.173rem;
-            line-height: 1.173rem;
-            text-align: center;
-            border-radius: 0.16rem;
-            background: #5dc9a7;
-            color: #fff;
-            text-decoration: none;
-        }
-        .more-detail:hover, .more-detail:active{
-            text-decoration: none;
-        }
-    </style>
-</head>
+		<!--送福利按钮-->
+		<div class="welfare-btn">
+			<img src="__CDN__/assets/img/wechat/welfare-btn.png"/>
+		</div>
+		
+		<!--video VIP 弹窗-->
+		<div class="home-ad-wrapper">
+			<div class="home-ad">
+				<a href="javascript:checkVip();" class="ad-get-btn">点击马上领取</a>
+				<img src="__CDN__/assets/img/wechat/ad-close-btn@2x.png" class="ad-close-btn" />
+			</div>
+		</div>
+		{include file="common/footer" /}
+		<script type="text/javascript" src="__CDN__/assets/js/wechat/swiper.min.js" ></script>
+		<script type="text/javascript">
+			$(".welfare-btn").click(function() {
+				$(".home-ad-wrapper").fadeIn(200, function() {
+					$(this).css({"display": "block"});
+				});
+			});
+//			弹窗关闭按钮
+			$(".ad-close-btn").click(function() {
+				$(".home-ad-wrapper").fadeIn(200, function() {
+					$(this).css({"display": "none"});
+				});
+			});
 
-<body>
-<div class="zcb-wrapper">
-    <a class="more-detail" href="/wechat/zcb/index">点击立即了解详情</a>
-</div>
-{include file="common/menu" /}
-{include file="common/footer" /}
-</body>
+			//首页轮播图ajax
+			function headerCarousel() {
+				$.ajax({
+				    url:'URL',
+				    type:'POST',
+				    data:{},
+				    timeout:5000,
+				    success:function(data){
+				       	var odata = eval("("+ data +")");
+				        if(odata.code === "ok") {
+				        	console.log("11");
+				        	$(".swiper-wrapper").html(carouselHtml(odata.data));
+				        	//初始化swiper
+				        	var mySwiper = new Swiper ('.swiper-container', {
+							    loop: true,
+							    pagination: {
+							   		el: '.swiper-pagination'
+							    }
+							});   
+				        }
+				    },
+				    error:function(xhr,textStatus){
+				        console.log('错误：'+textStatus);
+				    }
+				});
+			}
+
+            //判断是否领取
+            function checkVip() {
+                $.ajax({
+                    url:'/wechat/active01/checkVip',
+                    type:'POST',
+                    async:true,
+                    data:{},
+                    timeout:5000,
+                    success:function(data){
+                        if(data === "1") {
+                            window.location.href="/wechat/active01/vip_video/";
+                        }else {
+                            alert("已经是会员不能领取！");
+                        }
+                    },
+                    error:function(xhr,textStatus){
+                        console.log('错误：'+textStatus);
+                    }
+                });
+            }
+			
+			function carouselHtml(data) {
+				valueHtml = '';
+				for(var i=0; i<data.length; i++) {
+					valueHtml += '<div class="swiper-slide"><a href="'+ data[i].imgLink +'"><img src="'+ data[i].imgURL +'"/></a></div>';
+				}
+				return valueHtml;
+			}
+			
+//			轮播图ajax，暂未启用
+			//headerCarousel();
+		</script>
+		
+	</body>
 </html>

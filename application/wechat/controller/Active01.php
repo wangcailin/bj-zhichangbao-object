@@ -91,6 +91,12 @@ class Active01 extends Api
         $user_id = session('user_id');
         $wechat_user = session('wechat_user');
 
+        if ($this->userVipModel->checkUserVip($user_id)){
+            header('Location: http://www.zhichangbb.com/wechat/user/index');
+            die;
+        }
+
+
         $out_trade_no = date('Ymd', time()).rand(10000,99999);
         $order = [
             'body' => '职场保-包年会员-充值',
@@ -161,6 +167,19 @@ class Active01 extends Api
             return true; // 返回处理完成
         });
         $response->send(); // return $response;
+    }
+
+    public function checkVip()
+    {
+        $user_id = session('user_id');
+        if (!$user_id){
+            header('Location: http://www.zhichangbb.com/wechat/user/index');
+            die;
+        }
+        if ($this->userVipModel->checkUserVip($user_id)){
+            return json('0');
+        }
+        return json('1');
     }
 
 }
