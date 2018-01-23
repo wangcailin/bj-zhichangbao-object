@@ -75,9 +75,8 @@ class User extends Backend
         }
         if ($row['info']){
             $row = array_merge($row,$row['info']);
-            unset($row['vip']);
+            unset($row['info']);
         }
-        $row = array_merge($row,$row['info']);
         foreach ($row as $k=>&$v){
             switch ($k){
                 case 'avatar':
