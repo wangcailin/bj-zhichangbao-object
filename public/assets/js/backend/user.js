@@ -30,7 +30,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'avatar', title: __('Avatar'), formatter: Table.api.formatter.image, operate: false},
                         {field: 'mobile', title: __('Mobile'), operate: false},
                         {field: 'vip', title: __('Vip'), searchList: $.getJSON('user/getVipListAjax'), formatter: Controller.api.formatter.vip},
-                        {field: 'vip_time', title: __('Vip_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'create_time', title: __('Create_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'status', title: __('Status'), searchList: $.getJSON('user/getStatusListAjax'), formatter: Controller.api.formatter.status},
                         {field: 'operate', title: __('Operate'), table: table, buttons: [
@@ -55,14 +54,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             },
             formatter: {
                 vip: function (value, row, index) {
-                    if (value == '1'){
-                        return '<span class="label label-info">普通会员</span>';
-                    }else if (value == '2'){
-                        return '<span class="label lable-maroon">VIP</span>';
-                    }else if (value == '3'){
-                        return '<span class="label label-danger">SVIP</span>';
-                    }else {
+                    if (value == null) {
                         return '<span class="label label-primary">注册会员</span>';
+                    }else if (value.vid == '1'){
+                        return '<span class="label label-info">荣誉会员</span>';
+                    }else if (value.vid  == '2'){
+                        return '<span class="label lable-maroon">白金会员</span>';
+                    }else if (value.vid  == '3'){
+                        return '<span class="label label-danger">SVIP</span>';
                     }
                 },
                 status: function (value, row, index) {

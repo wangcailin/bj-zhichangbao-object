@@ -69,7 +69,14 @@ class User extends Backend
         if (!$row){
             $this->error(__('No Results were found'));
         }
-
+        if ($row['vip']){
+            $row = array_merge($row,$row['vip']);
+            unset($row['vip']);
+        }
+        if ($row['info']){
+            $row = array_merge($row,$row['info']);
+            unset($row['info']);
+        }
         foreach ($row as $k=>&$v){
             switch ($k){
                 case 'avatar':

@@ -40,7 +40,6 @@ class User extends Wechat
                 'nickname'      => $data['nickname'],
                 'avatar'        => $data['headimgurl'],
                 'sex'           => $data['sex'],
-                'vip'           => 0,
                 'open_id'       => $data['openid'],
                 'create_time'   => time(),
                 'update_time'   => time(),
