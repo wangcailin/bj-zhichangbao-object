@@ -123,7 +123,8 @@
 				        		_buyTime = data.buyTime;
 				        		_effectiveTime = data.effectiveTime;
 				        		$(".buy-time-dates").html(data.vip_time);  //购买时间
-				        		$(".effective-time-dates").html(data.vip_time_start);  //生效时间
+                            	$(".effective-time-dates").html(data.vip_time_start);  //生效时间
+                            	$(".hasShield-days").html(data.vip_time_now+'天');  //拥有时间
 				        }
 				    },
 				    error:function(xhr,textStatus){
