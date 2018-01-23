@@ -51,7 +51,7 @@
 		{include file="common/menu" /}
 
 		<!--送福利按钮-->
-		<div class="welfare-btn">
+		<div class="welfare-btn" onclick="javascript:checkVip()" style="display: none;">
 			<img src="__CDN__/assets/img/wechat/welfare-btn.png"/>
 		</div>
 		
@@ -68,10 +68,11 @@
             $(function(){
                 tan();
             });
-            $(".welfare-btn").click(function() {
-				tan();
-			});
+
             function tan() {
+                $(".welfare-btn").fadeIn(200, function() {
+                    $(this).css({"display": "none"});
+                });
                 $(".home-ad-wrapper").fadeIn(200, function() {
                     $(this).css({"display": "block"});
                 });
@@ -81,6 +82,9 @@
 				$(".home-ad-wrapper").fadeIn(200, function() {
 					$(this).css({"display": "none"});
 				});
+                $(".welfare-btn").fadeIn(200, function() {
+                    $(this).css({"display": "block"});
+                });
 			});
 
 			//首页轮播图ajax
