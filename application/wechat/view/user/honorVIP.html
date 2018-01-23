@@ -114,16 +114,17 @@
 //			日期ajax
 			function honorVIPdates() {
 				$.ajax({
-				    url:'URL',
+				    url:'/wechat/user/honorVIP',
 				    type:'POST',
 				    data:{},
 				    timeout:5000,
 				    success:function(data){
-				        if(data.code === "ok") {
+				        console.info(data)
+				        if(data.code === "1") {
 				        		_buyTime = data.buyTime;
 				        		_effectiveTime = data.effectiveTime;
-				        		$(".buy-time-dates").html(odata.data.buyTime);  //购买时间
-				        		$(".effective-time-dates").html(odata.data.effectiveTime);  //生效时间
+				        		$(".buy-time-dates").html(data.buyTime);  //购买时间
+				        		$(".effective-time-dates").html(data.effectiveTime);  //生效时间
 				        }
 				    },
 				    error:function(xhr,textStatus){
