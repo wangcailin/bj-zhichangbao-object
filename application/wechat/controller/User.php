@@ -45,7 +45,7 @@ class User extends Wechat
                 'update_time'   => time(),
             ];
             $this->model->save($data);
-            $res = $this->model->where('open_id', $data['openid'])->find();
+            $res = $this->model->where('open_id', $data['open_id'])->find();
             session('user_id', $res->id);
         }
         header("Location:http://www.zhichangbb.com/wechat/index/index");
