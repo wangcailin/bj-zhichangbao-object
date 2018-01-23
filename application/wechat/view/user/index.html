@@ -88,13 +88,13 @@
 
                     //『会员权益保障中』点击根据会员等级不同进入不同界面
                     if(data.vip.vid == "0") {
-                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/0");
+                        $(".user-membership-link").attr("href", "/wechat/user/common");
                     } else if(data.vip.vid == "1") {
-                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/1");
+                        $(".user-membership-link").attr("href", "/wechat/user/honorVIP");
                     } else if(data.vip.vid == "2") {
-                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/2");
+                        $(".user-membership-link").attr("href", "/wechat/user/backBrickVIP");
                     } else if(data.vip.vid == "3") {
-                        $(".user-membership-link").attr("href", "/wechat/vip/vip_type/vid/3");
+                        $(".user-membership-link").attr("href", "/wechat/user/platinumVIP");
                     }
                 }
             },

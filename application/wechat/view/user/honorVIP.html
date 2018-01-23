@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>职场保</title>
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
-		<link rel="stylesheet" type="text/css" href="./css/global.css" />
+		{include file="common/meta" /}
+
 		<style type="text/css">
 			.zcb-wrapper{
 				position: relative;
@@ -17,7 +13,7 @@
 			.honor-vip-header{
 				width: 100%;
 				height: 4.6rem;
-				background: url(img/shield-honor-vip.png);
+				background: url(/assets/img/wechat/vip/shield-honor-vip.png);
 				background-size: 100% 100%;
 			}
 			
@@ -92,7 +88,7 @@
 			<p class="honor-vip-hasShield">拥有护盾<span class="hasShield-days">2个月25天</span></p>
 			
 			<div class="hasShield-progress">
-				<img style="" class="progress-bar" src="img/progressbar.png"/>
+				<img style="" class="progress-bar" src="__CDN__/assets/img/wechat/vip/progressbar.png"/>
 			</div>
 			
 			<p class="hasShield-title">
@@ -107,8 +103,8 @@
 			<a class="check-rights" href="#">查看权益</a>
 			
 		</div>
-		
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		{include file="common/footer" /}
+
 		<script type="text/javascript">
 			var _buyTime = 0;
 			var _effectiveTime = 0;
