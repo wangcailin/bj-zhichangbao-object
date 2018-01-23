@@ -65,11 +65,17 @@
 		{include file="common/footer" /}
 		<script type="text/javascript" src="__CDN__/assets/js/wechat/swiper.min.js" ></script>
 		<script type="text/javascript">
-			$(".welfare-btn").click(function() {
-				$(".home-ad-wrapper").fadeIn(200, function() {
-					$(this).css({"display": "block"});
-				});
+            $(function(){
+                tan();
+            });
+            $(".welfare-btn").click(function() {
+				tan();
 			});
+            function tan() {
+                $(".home-ad-wrapper").fadeIn(200, function() {
+                    $(this).css({"display": "block"});
+                });
+            }
 //			弹窗关闭按钮
 			$(".ad-close-btn").click(function() {
 				$(".home-ad-wrapper").fadeIn(200, function() {
@@ -117,6 +123,7 @@
                             window.location.href="/wechat/active01/vip_video";
                         }else {
                             alert("已经是会员不能领取！");
+                            window.location.href="/wechat/user/index";
                         }
                     },
                     error:function(xhr,textStatus){
