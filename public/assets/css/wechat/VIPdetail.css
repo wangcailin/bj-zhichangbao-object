@@ -4,14 +4,16 @@
 	top: 0;
 	width: 100%;
 	height: 1.2rem;
+	line-height: 1.2rem;
 	max-width: 10rem;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
 	text-align: center;
-	background: url(/assets/img/wechat/vip/BGvipheader.png);
+	background: url(/assets/img/wechat/vip/vipheaderBG.png);
 	background-size: 100% 100%;
 	z-index: 99;
+	text-align: center;
 }
 .vip-header span {
 	display: inline-block;
@@ -28,13 +30,19 @@
 	width: 100%;
 	height: 100%;
 }
+.vip-header-title{
+	font-size: 0.48rem;
+	color: #FFFFFF;
+	letter-spacing: 0.026rem;
+	margin-left: -0.64rem;
+}
 
 /*会员详情*/
 .vip-info{
 	width: 100%;
 	height: 4.8rem;
 	margin-top: 1.2rem;
-	background: rgb(93, 201,167);
+	background: #268bea;
 	position: relative;
 	color: #FFFFFF;
 }
@@ -131,7 +139,7 @@
 	height: 1.173rem;
 	line-height: 1.173rem;
 	max-width: 10rem;
-	background: rgb(93, 201, 167);
+	background: #268bea;
 	margin: 0 auto;
 	font-size: 0.48rem;
 	text-align: center;

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>职场保</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/global.css" />
+		<style type="text/css">
+			.zcb-wrapper{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+			}
+			.honor-vip-header{
+				width: 100%;
+				height: 4.6rem;
+				background: url(img/shield-honor-vip.png);
+				background-size: 100% 100%;
+			}
+			
+			.check-rights{
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 10.4rem;
+				display: block;
+				margin: 0 auto;
+				width: 6.666rem;
+				height: 1.066rem;
+				line-height: 1.066rem;
+				text-align: center;
+				font-size: 0.48rem;
+				color: #FFFFFF;
+				background-color: #268bea;
+				box-shadow: 0px 0.08rem 0.24rem 0px 
+					rgba(3, 87, 166, 0.5);
+				border-radius: 0.533rem;
+			}
+			.honor-vip-hasShield{
+				font-size: 0.426rem;
+				line-height: 0.426rem;
+				color: #333333;
+			}
+			.hasShield-progress{
+				width: 8.933rem;
+				height: 0.186rem;
+				border-radius: 0.093rem;
+				background: #f7f7f7;
+				margin: 0.266rem auto;
+			}
+			.hasShield-progress img{
+				display: block;
+				height: 100%;
+				width: 0;
+			}
+			
+			.hasShield-title, .hasShield-dates{
+				width: 8.933rem;
+				height: 0.4rem;
+				font-size: 0.32rem;
+				line-height: 0.4rem;
+				color: #666666;
+				margin: 0 auto;
+			}
+			.hasShield-dates{
+				width: 9.333rem;
+			}
+			.hasShield-dates span{
+				transform: scale(0.75);
+				color: #666666;
+			}
+			.buy-time-title, .buy-time-dates{
+				float: left;
+			}
+			.effective-time-title, .effective-time-dates{
+				float: right;
+			}
+			.buy-time-title{color: #268bea;}
+			.effective-time-title{color: #9d5af5;}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="zcb-wrapper">
+			
+			<div class="honor-vip-header"></div>
+			
+			<p class="honor-vip-hasShield">拥有护盾<span class="hasShield-days">2个月25天</span></p>
+			
+			<div class="hasShield-progress">
+				<img style="" class="progress-bar" src="img/progressbar.png"/>
+			</div>
+			
+			<p class="hasShield-title">
+				<span class="buy-time-title">购买时间</span>
+				<span class="effective-time-title">生效时间</span>
+			</p>
+			<p class="hasShield-dates">
+				<span class="buy-time-dates">2018.01.01</span>
+				<span class="effective-time-dates">2018.02.01</span>
+			</p>
+			
+			<a class="check-rights" href="#">查看权益</a>
+			
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			var _buyTime = 0;
+			var _effectiveTime = 0;
+			var _nowTime = new Date();
+			_nowTime = _nowTime.getTime();
+			
+//			日期ajax
+			function honorVIPdates() {
+				$.ajax({
+				    url:'URL',
+				    type:'POST',
+				    data:{},
+				    timeout:5000,
+				    success:function(data){
+				       	var odata = eval("("+ data +")");
+				        if(odata.code === "ok") {
+				        		_buyTime = odata.data.buyTime;
+				        		_effectiveTime = odata.data.effectiveTime;
+				        		$(".buy-time-dates").html(odata.data.buyTime);  //购买时间
+				        		$(".effective-time-dates").html(odata.data.effectiveTime);  //生效时间
+				        }
+				    },
+				    error:function(xhr,textStatus){
+				        console.log('错误：'+textStatus);
+				    }
+				});
+			}
+			
+			honorVIPdates();
+			
+//			设置进度条
+			var _progress = (_effectiveTime-_nowTime)/(_effectiveTime-_buyTime);
+			$(".progress-bar").css({"width": _progress});
+			
+		</script>
+	</body>
+</html>

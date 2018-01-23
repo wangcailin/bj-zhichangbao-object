@@ -132,4 +132,22 @@ class User extends Wechat
         }
         return $this->view->fetch();
     }
+
+    public function common()
+    {
+        return $this->view->fetch();
+    }
+    public function common()
+    {
+        return $this->view->fetch();
+    }
+    public function common()
+    {
+        return $this->view->fetch();
+    }
+    public function common()
+    {
+        return $this->view->fetch();
+    }
+
 }
