@@ -21,11 +21,11 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">文本内容</label>
-                                <input type="text" name="text" class="form-control" placeholder="" value="http://www.zhichangbb.com/wechat/index/index?source=">
+                                <input type="text" name="text" class="form-control" placeholder="" value="">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">标签</label>
-                                <input type="text" name="label" placeholder="" class="form-control" value="职场保">
+                                <input type="text" name="label" placeholder="" class="form-control" value="">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Logo</label>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">大小</label>
-                                    <input type="number" name="size" placeholder="" class="form-control" value="300">
+                                    <input type="number" name="size" placeholder="" class="form-control" value="150">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">内边距</label>
@@ -165,10 +165,9 @@
         <script type="text/javascript">
             $(function () {
                 $("form").submit(function () {
-                    $("#qrcodeimg").prop("src", "{:addon_url('qrcode/index/build')}?" + $(this).serialize());
+                    $("#qrcodeimg").prop("src", "build?" + $(this).serialize());
                     return false;
                 });
-                $("form").trigger('submit');
             });
         </script>
     </body>
