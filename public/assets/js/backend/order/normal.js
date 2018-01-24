@@ -36,6 +36,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'add_time', title: __('Add_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'pay_time', title: __('Pay_time'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'status', title: __('Status'), searchList: $.getJSON('order/normal/statusSearch'), formatter: Controller.api.formatter.status},
+                        {field: 'source', title: __('Source'), operate: false},
                         {field: 'operate', title: __('Operate'), table: table, buttons: [
                                 {name: 'detail', text: '详情', title: '详情', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'order/normal/detail'}
                             ], events: Table.api.events.operate, formatter: Table.api.formatter.operate}
