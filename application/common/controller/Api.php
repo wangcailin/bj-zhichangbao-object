@@ -29,7 +29,7 @@ class Api extends Controller
             ],
             'oauth' => [
                 'scopes'   => ['snsapi_userinfo'],
-                'callback' => '/api/wechatbase/oauth_callback',
+                'callback' => '/api/wechatbase/oauth_callback/source/'.input('source'),
             ]
         ];
         $this->app = Factory::officialAccount($this->config);

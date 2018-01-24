@@ -15,8 +15,9 @@ class Wechatbase extends Api
     /**
      * 登录回调
      */
-    public function oauth_callback()
+    public function oauth_callback($source = null)
     {
+        session('source', $source);
         $oauth = $this->app->oauth;
 
         // 获取 OAuth 授权结果用户信息
