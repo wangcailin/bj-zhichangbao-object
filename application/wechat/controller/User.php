@@ -163,4 +163,21 @@ class User extends Wechat
         return $this->view->fetch();
     }
 
+    /**
+     * 查看用户是否VIP
+     * @return \think\response\Json
+     */
+    public function checkVip()
+    {
+        $user_id = session('user_id');
+        if (!$user_id){
+            header('Location: http://www.zhichangbb.com/wechat/user/index');
+            die;
+        }
+        if (model('UserVip')->checkUserVip($user_id)){
+            return json('1');
+        }
+        return json('0');
+    }
+
 }

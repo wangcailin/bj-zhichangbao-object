@@ -71,7 +71,6 @@ class UserVip extends Model
                     return true;
                 }
             }
-            return false;
         }
         return false;
     }

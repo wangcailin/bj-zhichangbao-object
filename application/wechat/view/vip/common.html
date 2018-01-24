@@ -60,6 +60,25 @@
 			<a href="/wechat/vip/buy?vid=1&uid={$Think.session.user_id}" class="buy-vip">开通会员</a>
 
 		</div>
-
+		{include file="common/footer" /}
+		<script>
+			$(function () {
+                $.ajax({
+                    url:'/wechat/user/checkVip',
+                    type:'POST',
+                    async:true,    //或false,是否异步
+                    data:{},
+                    timeout:5000,    //超时时间
+                    success:function(data){
+                        if (data == '1'){
+                            $(".buy-vip").css({"display": "none"});
+                        }
+                    },
+                    error:function(xhr,textStatus){
+                        console.log(textStatus)
+                    }
+                })
+            })
+		</script>
 	</body>
 </html>

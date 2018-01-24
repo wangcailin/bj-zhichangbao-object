@@ -169,17 +169,4 @@ class Active01 extends Api
         $response->send(); // return $response;
     }
 
-    public function checkVip()
-    {
-        $user_id = session('user_id');
-        if (!$user_id){
-            header('Location: http://www.zhichangbb.com/wechat/user/index');
-            die;
-        }
-        if ($this->userVipModel->checkUserVip($user_id)){
-            return json('0');
-        }
-        return json('1');
-    }
-
 }
