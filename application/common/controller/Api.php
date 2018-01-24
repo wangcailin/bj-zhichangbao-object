@@ -14,6 +14,7 @@ class Api extends Controller
 
     public function _initialize()
     {
+        input('source') ? session('source', input('source')) : session('source', '无');
         $this->config = [
             'app_id' => 'wxa0afc75ebe2d5871',
             'secret' => '75cbdd6b7e9b58e90f1c5e8c8de802f9',

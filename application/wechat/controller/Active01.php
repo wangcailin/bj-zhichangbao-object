@@ -90,7 +90,7 @@ class Active01 extends Api
     {
         $user_id = session('user_id');
         $wechat_user = session('wechat_user');
-
+        $source = session('source');
         if ($this->userVipModel->checkUserVip($user_id)){
             header('Location: http://www.zhichangbb.com/wechat/user/index');
             die;
@@ -119,6 +119,7 @@ class Active01 extends Api
             $this->orderModel->amount       = 39.6;
             $this->orderModel->status       = 0;
             $this->orderModel->add_time     = time();
+            $this->orderModel->source       = $source;
             $this->orderModel->save();
             if (!$this->orderModel->id){
                 $this->error('生成订单失败!', '/wechat/vip/index');

@@ -77,6 +77,7 @@ class Vip extends Wechat
         $user_id = session('user_id');
         $vid     = input('vid');
         $wechat_user = session('wechat_user');
+        $source = session('source');
 
         $vipData = [];
         $vipList = $this->model->vipData;
@@ -107,6 +108,7 @@ class Vip extends Wechat
             $this->orderModel->amount       = $vipData['money'];
             $this->orderModel->status       = 0;
             $this->orderModel->add_time     = time();
+            $this->orderModel->source       = $source;
             $this->orderModel->save();
             if (!$this->orderModel->id){
                 $this->error('生成订单失败!', '/wechat/vip/index');

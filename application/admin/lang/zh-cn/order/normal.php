@@ -10,5 +10,6 @@ return [
     'Pay_time'  =>  '支付时间',
     'Status'  =>  '状态',
     'user.nickname' => '微信号',
-    'user.avatar'   => '微信头像'
+    'user.avatar'   => '微信头像',
+    'Source'    => '订单来源'
 ];
