@@ -91,10 +91,10 @@ class Active01 extends Api
         $user_id = session('user_id');
         $wechat_user = session('wechat_user');
 
-        if ($this->userVipModel->checkUserVip($user_id)){
-            header('Location: http://www.zhichangbb.com/wechat/user/index');
-            die;
-        }
+//        if ($this->userVipModel->checkUserVip($user_id)){
+//            header('Location: http://www.zhichangbb.com/wechat/user/index');
+//            die;
+//        }
 
 
         $out_trade_no = date('Ymd', time()).rand(10000,99999);

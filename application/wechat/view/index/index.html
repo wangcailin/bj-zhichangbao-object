@@ -123,12 +123,12 @@
                     data:{},
                     timeout:5000,
                     success:function(data){
-                        if(data === "0") {
-                            window.location.href="/wechat/active01/vip_video";
-                        }else {
-                            alert("已经是会员不能领取！");
-                            window.location.href="/wechat/user/index";
-                        }
+                        // if(data === "0") {
+                             window.location.href="/wechat/active01/vip_video";
+                        // }else {
+                        //     alert("已经是会员不能领取！");
+                        //     window.location.href="/wechat/user/index";
+                        // }
                     },
                     error:function(xhr,textStatus){
                         console.log('错误：'+textStatus);

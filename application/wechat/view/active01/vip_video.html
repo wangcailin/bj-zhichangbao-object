@@ -48,7 +48,7 @@
 			.video-vip-rules{
 				display: block;
 				width: 8.533rem;
-				height: 8.6rem;
+				height: 6.866rem;
 				margin: 0 auto;
 				box-sizing: border-box;
 				padding-top: 0.4rem;
@@ -68,10 +68,26 @@
 				font-size: 0.48rem;
 				background: #ee2963;
 			}
+			/* 咨询按钮 */
+			.consult-btn-wrapper{
+				width: 100%;
+				height: 1.44rem;
+				max-width: 10rem;
+				position: fixed;
+				left: 0; right: 0;
+				bottom: 3.066rem;
+				margin: 0 auto;
+			}
+			.consult-btn-wrapper img{
+				width: 1.44rem;
+				height: 1.44rem;
+				float: right;
+				margin-right: 0.2rem;
+			}
 		</style>
 	</head>
 	<body>
-		
+
 		<div class="zcb-wrapper">
 			
 			<!-- 尽在职场保 -->
@@ -86,6 +102,12 @@
 			<a class="buy-btn" href="javascript:callpay();">立即购买</a>
 			
 		</div>
+
+		<!-- 咨询按钮 -->
+		<div class="consult-btn-wrapper">
+			<a href="http://kefu.zhichangbb.com"><img src="/assets/img/wechat/vip/video-consult-btn.png"/></a>
+		</div>
+
 		<script>
             wx.config({$conf});
             function onBridgeReady(){
