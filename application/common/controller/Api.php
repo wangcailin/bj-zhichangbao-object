@@ -14,7 +14,11 @@ class Api extends Controller
 
     public function _initialize()
     {
-        input('source') ? session('source', input('source')) : session('source', '无');
+        if (!session('source')){
+            input('source') ? session('source', input('source')) : session('source', '无');
+        }elseif(input('source')){
+            session('source', input('source'));
+        }
         $this->config = [
             'app_id' => 'wxa0afc75ebe2d5871',
             'secret' => '75cbdd6b7e9b58e90f1c5e8c8de802f9',
@@ -29,7 +33,7 @@ class Api extends Controller
             ],
             'oauth' => [
                 'scopes'   => ['snsapi_userinfo'],
-                'callback' => '/api/wechatbase/oauth_callback/source/'.input('source'),
+                'callback' => '/api/wechatbase/oauth_callback/source/'.session('source'),
             ]
         ];
         $this->app = Factory::officialAccount($this->config);
