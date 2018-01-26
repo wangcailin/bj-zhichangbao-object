@@ -197,3 +197,33 @@ body{
 	left: 0; right: 0;
 	margin: 0 auto;			
 }
+
+
+/*免费送会员*/
+.free-video-vip{
+	width: 9.466rem;
+	height: 2rem;
+	position: absolute;
+	top: 12.559rem;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	padding-bottom: 1.6rem;
+}
+.free-video-BG{
+	width: 100%;
+	height: 100%;
+}
+.free-video-btn{
+	position: absolute;
+	right: 0.64rem;
+	top: 0.346rem;
+	display: block;
+	width: 1.56rem;
+	height: 1.333rem;
+}
+.free-video-btn img{
+	width: 1.56rem;
+	height: 1.333rem;
+}
+
