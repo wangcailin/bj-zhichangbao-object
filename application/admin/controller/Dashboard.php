@@ -31,16 +31,26 @@ class Dashboard extends Backend
 
 
         $totaluser = model('User')->count();
+        $totalorder = model('Order')->count();
+        $totalorderamount = model('Order')->sum('amount');
+
+        $todayusersignup = model('User')->where('create_time', '>', strtotime(date('Y-m-d')))->count();
+        $todayuserlogin = model('User')->where('update_time', '>', strtotime(date('Y-m-d')))->count();
+
+        $todayorder = model('Order')->where('add_time', '>', strtotime(date('Y-m-d')))->count();
+        $unsettleorder = model('Order')->where('add_time', '>', strtotime(date('Y-m-d')))->whereXor('status', '<>', '1')->count();
+
+        $totalviews = file_get_contents('cnt.txt');
 
         $this->view->assign([
             'totaluser'        => $totaluser,
-            'totalviews'       => 219390,
-            'totalorder'       => 32143,
-            'totalorderamount' => 174800,
-            'todayuserlogin'   => 321,
-            'todayusersignup'  => 430,
-            'todayorder'       => 2324,
-            'unsettleorder'    => 132,
+            'totalviews'       => $totalviews,
+            'totalorder'       => $totalorder,
+            'totalorderamount' => $totalorderamount,
+            'todayuserlogin'   => $todayuserlogin,
+            'todayusersignup'  => $todayusersignup,
+            'todayorder'       => $todayorder,
+            'unsettleorder'    => $unsettleorder,
             'sevendnu'         => '80%',
             'sevendau'         => '32%',
             'paylist'          => $paylist,
