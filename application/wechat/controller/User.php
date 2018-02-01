@@ -48,7 +48,7 @@ class User extends Wechat
             $res = $this->model->where('open_id', $data['open_id'])->find();
             session('user_id', $res->id);
         }
-        header("Location:http://www.zhichangbb.com/wechat/index/index");
+        header("Location:".session('url'));
     }
 
     public function getAjaxUserInfo()

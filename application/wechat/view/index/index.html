@@ -1,172 +1,171 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		{include file="common/meta" /}
-	</head>
-	<body>
-		
-		<div class="zcb-wrapper">
-			
-			<!--首页banner-->
-			<div class="home-banner">
-				<a href="javascript:checkVip();"><img src="__CDN__/assets/img/wechat/bannerIMG@2x.jpg"/></a>
+
+<head>
+	{include file="common/meta" /}
+</head>
+
+<body>
+
+<div class="zcb-wrapper">
+
+	<!--首页轮播图-->
+	<div class="home-carousel swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<a href="#"><img src="__CDN__/assets/img/wechat/bannerIMG@2x.jpg" /></a>
 			</div>
-			<!--首页轮播图 暂未启用-->
-			<!--<div class="home-carousel swiper-container">
-			    <div class="swiper-wrapper">
-			        <div class="swiper-slide"><a href="#"><img src="img/bannerIMG@2x.jpg"/></a></div>
-			        <div class="swiper-slide"><a href="#"><img src="img/bannerIMG@2x.jpg"/></a></div>
-			        <div class="swiper-slide"><a href="#"><img src="img/bannerIMG@2x.jpg"/></a></div>
-			    </div>
-			    <div class="swiper-pagination"></div>
-			</div>-->
-			
-			<!--首页导航-->
-			<ul class="home-nav">
-				<li class="home-nav-item nav-zcb">
-					<a href="/wechat/zcb/index">
-						<img class="nav-zcb-icon" src="__CDN__/assets/img/wechat/nav-zcb@2x.png"/>
-						<p class="nav-zcb-title">职场保</p>
-					</a>
-				</li>
-				<li class="home-nav-item nav-vip">
-					<a href="/wechat/vip/index">
-						<img class="nav-vip-icon" src="__CDN__/assets/img/wechat/nav-vip@2x.png"/>
-						<p class="nav-vip-title">VIP会员</p>
-					</a>
-				</li>
-			</ul>
-			
-			<!--荣誉会员-->
-			<!--<div class="home-common-vip">-->
-				<!--<p class="common-vip-title">荣誉会员</p>-->
-				<!--<p class="common-vip-price"><span>9.9</span>元/季</p>-->
-				<!--<p class="common-vip-price-title">会员价格</p>-->
-				<!--<p class="common-vip-effective">生效 30天后</p>-->
-				<!--<a class="buy-btn" href="/wechat/vip/common" style="z-index: 100;">立即抢购</a>-->
-			<!--</div>-->
-			<!--荣誉会员-->
-			<div class="home-common-vip">
-				<p class="common-vip-title">包年荣誉会员</p>
-				<p class="common-vip-price"><span>39.6</span>元/年</p>
-				<p class="common-vip-price-title">会员价格</p>
-				<p class="common-vip-effective">生效 30天后</p>
-				<a class="buy-btn" href="javascript:checkVip();">立即抢购</a>
-			</div>
-			<!--免费送会员-->
-			<div class="free-video-vip">
-				<img class="free-video-BG" src="__CDN__/assets/img/wechat/active01/freeVideoVipBG.png"/>
-				<a class="free-video-btn" href="javascript:checkVip();"><img src="__CDN__/assets/img/wechat/active01/freeBtn.png"/></a>
+			<div class="swiper-slide">
+				<img src="__CDN__/assets/img/wechat/banner2IMG.png" />
 			</div>
 		</div>
+		<div class="swiper-pagination"></div>
+	</div>
 
-		{include file="common/menu" /}
+	<!--荣誉会员-->
+	<div class="home-common-vip">
+		<div class="common-vip-title"><p>荣誉会员</p><span class="common-vip-title-info">限时免费</span></div>
+		<p class="common-vip-price"><span>9.9</span>元/季</p>
+		<p class="common-vip-price-title">会员价格</p>
+		<p class="common-vip-effective">生效 30天后</p>
+		<a class="buy-btn" href="/wechat/active02/index">免费领取</a>
+	</div>
 
-		<!--送福利按钮-->
-		<div class="welfare-btn" onclick="javascript:checkVip();" style="display: none;">
-			<img src="__CDN__/assets/img/wechat/welfare-btn.png"/>
+	<!--包年荣誉会员-->
+	<div class="home-honor-vip">
+		<div class="honor-vip-title">
+			<p>包年荣誉会员</p>
+			<span class="honor-vip-title-info">热销</span>
 		</div>
+		<div class="honor-vip-price-wrapper">
+			<p class="honor-vip-price-num">39.6元</p>
+			<p class="honor-vip-price-title">会员价格</p>
+		</div>
+		<div class="honor-vip-days-wrapper">
+			<p class="honor-vip-days-num">365天</p>
+			<p class="honor-vip-days-title">时间</p>
+		</div>
+	</div>
 
-		<!--video VIP 弹窗-->
-		<!--<div class="home-ad-wrapper">-->
-			<!--<div class="home-ad">-->
-				<!--<a href="javascript:checkVip();" class="ad-get-btn">点击马上领取</a>-->
-				<!--<img src="__CDN__/assets/img/wechat/ad-close-btn@2x.png" class="ad-close-btn" />-->
-			<!--</div>-->
-		<!--</div>-->
-		{include file="common/footer" /}
-		<script type="text/javascript" src="__CDN__/assets/js/wechat/swiper.min.js" ></script>
-		<script type="text/javascript">
-            // $(function(){
-            //     tan();
-            // });
+	<!--免费送会员-->
+	<div class="free-video-vip">
+		<img class="free-video-BG" src="__CDN__/assets/img/wechat/freeVideoVipBG.png" />
+		<a class="free-video-btn" href="#"><img src="__CDN__/assets/img/wechat/freeBtn.png" /></a>
+	</div>
 
-            // function tan() {
-            //     $(".welfare-btn").fadeIn(200, function() {
-            //         $(this).css({"display": "none"});
-            //     });
-            //     $(".home-ad-wrapper").fadeIn(200, function() {
-            //         $(this).css({"display": "block"});
-            //     });
-            // }
-//			弹窗关闭按钮
-			$(".ad-close-btn").click(function() {
-				$(".home-ad-wrapper").fadeIn(200, function() {
-					$(this).css({"display": "none"});
-				});
-                $(".welfare-btn").fadeIn(200, function() {
-                    $(this).css({"display": "block"});
-                });
-			});
+	<!--首页导航-->
+	<ul class="home-nav">
+		<li class="home-nav-item nav-zcb">
+			<a href="#">
+				<img class="nav-zcb-icon" src="__CDN__/assets/img/wechat/nav-zcb@2x.png" />
+				<p class="nav-zcb-title">职场保</p>
+			</a>
+		</li>
+		<li class="home-nav-item nav-vip">
+			<a href="#">
+				<img class="nav-vip-icon" src="__CDN__/assets/img/wechat/nav-vip@2x.png" />
+				<p class="nav-vip-title">VIP会员</p>
+			</a>
+		</li>
+	</ul>
 
-			//首页轮播图ajax
-			function headerCarousel() {
-				$.ajax({
-				    url:'URL',
-				    type:'POST',
-				    data:{},
-				    timeout:5000,
-				    success:function(data){
-				       	var odata = eval("("+ data +")");
-				        if(odata.code === "ok") {
-				        	console.log("11");
-				        	$(".swiper-wrapper").html(carouselHtml(odata.data));
-				        	//初始化swiper
-				        	var mySwiper = new Swiper ('.swiper-container', {
-							    loop: true,
-							    pagination: {
-							   		el: '.swiper-pagination'
-							    }
-							});   
-				        }
-				    },
-				    error:function(xhr,textStatus){
-				        console.log('错误：'+textStatus);
-				    }
-				});
-			}
+</div>
 
-            //判断是否领取
-            function checkVip() {
-                $.ajax({
-                    url:'/wechat/user/checkVip',
-                    type:'POST',
-                    async:true,
-                    data:{},
-                    timeout:5000,
-                    success:function(data){
-                        if(data === "0") {
-                            window.location.href="/wechat/active01/vip_video";
-                        }else {
-                            alert("已经是会员不能领取！");
-                            window.location.href="/wechat/user/index";
+<!--送福利按钮-->
+<div class="welfare-btn">
+	<a href="javascript:checkVip();"><img src="__CDN__/assets/img/wechat/welfare-btn.png"/></a>
+</div>
+{include file="common/menu" /}
+{include file="common/footer" /}
+
+<script type="text/javascript" src="__CDN__/assets/js/wechat/swiper.min.js"></script>
+<script type="text/javascript">
+    //初始化swiper
+    var mySwiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: true,
+        pagination: {
+            el: '.swiper-pagination'
+        }
+    });
+
+    $(".ad-close-btn").click(function() {
+        $(".home-ad-wrapper").fadeIn(200, function() {
+            $(this).css({"display": "none"});
+        });
+        $(".welfare-btn").fadeIn(200, function() {
+            $(this).css({"display": "block"});
+        });
+    });
+
+    //首页轮播图ajax
+    function headerCarousel() {
+        $.ajax({
+            url:'URL',
+            type:'POST',
+            data:{},
+            timeout:5000,
+            success:function(data){
+                var odata = eval("("+ data +")");
+                if(odata.code === "ok") {
+                    console.log("11");
+                    $(".swiper-wrapper").html(carouselHtml(odata.data));
+                    //初始化swiper
+                    var mySwiper = new Swiper ('.swiper-container', {
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination'
                         }
-                    },
-                    error:function(xhr,textStatus){
-                        console.log('错误：'+textStatus);
-                    }
-                });
+                    });
+                }
+            },
+            error:function(xhr,textStatus){
+                console.log('错误：'+textStatus);
             }
-			
-			function carouselHtml(data) {
-				valueHtml = '';
-				for(var i=0; i<data.length; i++) {
-					valueHtml += '<div class="swiper-slide"><a href="'+ data[i].imgLink +'"><img src="'+ data[i].imgURL +'"/></a></div>';
-				}
-				return valueHtml;
-			}
+        });
+    }
 
-            wx.onMenuShareTimeline({
-                title: '职场保', // 分享标题
-                link: 'http://www.zhichangbb.com/wechat/index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: '', // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                },
-            });
-//			轮播图ajax，暂未启用
-			//headerCarousel();
-		</script>
-		
-	</body>
+    //判断是否领取
+    function checkVip() {
+        $.ajax({
+            url:'/wechat/user/checkVip',
+            type:'POST',
+            async:true,
+            data:{},
+            timeout:5000,
+            success:function(data){
+                if(data === "0") {
+                    window.location.href="/wechat/active01/vip_video";
+                }else {
+                    alert("已经是会员不能领取！");
+                    window.location.href="/wechat/user/index";
+                }
+            },
+            error:function(xhr,textStatus){
+                console.log('错误：'+textStatus);
+            }
+        });
+    }
+
+    function carouselHtml(data) {
+        valueHtml = '';
+        for(var i=0; i<data.length; i++) {
+            valueHtml += '<div class="swiper-slide"><a href="'+ data[i].imgLink +'"><img src="'+ data[i].imgURL +'"/></a></div>';
+        }
+        return valueHtml;
+    }
+
+    wx.onMenuShareTimeline({
+        title: '职场保', // 分享标题
+        link: 'http://www.zhichangbb.com/wechat/index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: '', // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+        },
+    });
+
+</script>
+
+</body>
+
 </html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>职场保</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="__CDN__/assets/css/wechat/mobileLP.css" />
+	</head>
+
+	<body>
+
+		<div class="zcb-wrapper">
+
+			<div class="mobileLP-header"><img src="__CDN__/assets/img/wechat/active02/mobileLP-header.jpg" /></div>
+
+			<div class="mobileLP-mobile-wrapper">
+				<!--输入手机号-->
+				<div class="mobileLP-mobile">
+					<img class="gift-icon" src="__CDN__/assets/img/wechat/active02/icon-home-gift@2x.png" />
+					<h2 class="mobile-title">输入兑换码成为荣誉会员</h2>
+					<div class="inputTel">
+						<input type="text" maxlength="11" name="telNum" class="inputTelNum" placeholder="请输入手机号" />
+						<span class="getCode">获取兑换码</span>
+					</div>
+					<input type="text" name="inputCode" class="inputCode" placeholder="请输入兑换码" />
+				</div>
+				
+				<a class="vip-exchange-btn" href="javascript: void(0);">立即兑换</a>
+			</div>
+
+			<div class="mobileLP-fee"><img src="__CDN__/assets/img/wechat/active02/mobileLP-fee.jpg" /></div>
+
+			<div class="mobileLP-rights"><img src="__CDN__/assets/img/wechat/active02/mobileLP-rights.jpg" /></div>
+
+		</div>
+
+		{include file="common/footer" /}
+		<!--<script type="text/javascript" src="js/clipboard.min.js" ></script>-->
+		<script type="text/javascript">
+			var myreg = /^[1][0-9]{10}$/;
+			
+			//点击"获取兑换码"
+			$(".getCode").click(function() {
+				//手机号格式检测
+				if(!myreg.test($(".inputTelNum").val())) {
+					alert("请输入正确的11位手机号");
+				}
+				//手机号检测通过
+				if(myreg.test($(".inputTelNum").val())) {
+				    var TelNum = $(".inputTelNum").val();
+                    $.ajax({
+                        url:'/wechat/active02/alisms',
+                        type:'POST', //GET
+                        async:true,    //或false,是否异步
+                        data:{mobile: TelNum},
+                        timeout:5000,
+                        success:function(data){
+                            if(data == '1') {
+								alert('获取兑换码成功！');
+                            }else {
+                                alert('获取兑换码失败！');
+							}
+                        },
+                        error:function(xhr,textStatus){
+                            console.log(textStatus);
+                        }
+                    });
+				}
+			});
+			
+			//点击"立即兑换"
+			$(".vip-exchange-btn").click(function() {
+				if(!myreg.test($(".inputTelNum").val())) {
+					alert("请输入正确的11位手机号");
+				}
+				//手机号检测通过
+				if(myreg.test($(".inputTelNum").val())) {
+					if($(".inputCode").val() == '' || $(".inputCode").val() == null){
+						alert("请输入兑换码");
+					} else {
+						var _redeemCode = $(".inputCode").val();
+						exchangeVIP(_redeemCode);
+					}
+				}
+			});
+			
+			function exchangeVIP(redeemCode){
+				$.ajax({
+				    url:'/wechat/active02/add_user_vip',
+				    type:'POST', //GET
+				    async:true,    //或false,是否异步
+				    data:{code: redeemCode},
+				    timeout:5000,
+				    success:function(data){
+				    	if(data.status == '1') {
+							alert('恭喜您兑换成功！');
+                            window.location.href="/wechat/user/index";
+                        }else{
+				    	    alert(data.msg);
+						}
+				    },
+				    error:function(xhr,textStatus){
+				        console.log(textStatus);
+				    }
+				});
+			}
+						
+		</script>
+
+	</body>
+
+</html>

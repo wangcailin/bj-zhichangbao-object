@@ -1,0 +1,168 @@
+html {
+	font-size: 75px;
+	width: 100%;
+	height: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: "microsoft yahei";
+	max-width: 10rem !important;
+	margin: 0 auto;
+}
+a{
+	color: #FFFFFF;
+}
+a:hover, a:active{
+	text-decoration: none;
+}
+
+.zcb-wrapper{
+	width: 100%;
+	background: #4179c6;
+	position: relative;
+}
+
+.mobileLP-header, .mobileLP-header img{
+	width: 100%;
+	height: 6.546rem;
+}
+.mobileLP-fee, .mobileLP-fee img{
+	width: 100%;
+	height: 9.546rem;
+}
+.mobileLP-fee{
+	margin-top: 9.533rem;
+}
+.mobileLP-rights, .mobileLP-rights img{
+	width: 100%;
+	height: 9.306rem;
+}
+
+/*输入手机号兑换*/
+.mobileLP-mobile-wrapper{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 6.053rem;
+	margin: 0 auto;
+	width: 9.466rem;
+	height: 10rem;
+	background-color: #80b6f1;
+	box-shadow: 0 0.053rem 0.133rem 0 
+		rgba(49, 63, 92, 0.47);
+	border-radius: 0.8rem 0.8rem 0 0;
+	color: #ffffff;
+}
+.mobileLP-mobile{
+	text-align: center;
+}
+.gift-icon{
+	width: 2.72rem;
+	height: 2.72rem;
+	margin-top: 0.266rem;
+}
+.mobile-title{
+	font-size: 0.4rem;
+	line-height: 1.226rem;
+}
+.inputTel{
+	position: relative;
+	margin: 0 auto;
+	width: 7.866rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	background-color: #ffffff;
+	border-radius: 0.066rem;
+	border: none;
+}
+.inputTelNum, .inputCode, .inputCode2{
+	display: block;
+	box-sizing: border-box;
+	width: 7.866rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	background-color: #ffffff;
+	border-radius: 0.066rem;
+	border: none;
+	padding-left: 0.266rem;
+	margin: 0 auto;
+	font-size: 0.453rem;
+}
+.getCode{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -0.24rem;
+	width: 2.746rem;
+	height: 0.453rem;
+	line-height: 0.453rem;
+	font-size: 0.453rem;
+	color: #fa920d;
+	border-left: 0.026rem solid #cccccc;
+	background: #FFFFFF;
+	z-index: 99;
+}
+.inputCode, .inputCode2{
+	margin-top: 0.4rem;
+}
+.inputCode2{
+	text-align: center;
+}
+input::-webkit-input-placeholder{
+	font-size: 0.453rem;
+	color: #CCCCCC;
+}
+.inputCode2::-webkit-input-placeholder{
+	text-align: center;
+}
+
+/*立即兑换按钮*/
+.vip-exchange-btn{
+	position: absolute;
+	bottom: 1.066rem;
+	left: 0;right: 0;
+	display: block;
+	width: 7.906rem;
+	height: 1.466rem;
+	line-height: 1.466rem;
+	margin: 0 auto;
+	background: url(/assets/img/wechat/active02/exchangeBtnBG@2x.png);
+	background-size: 100% 100%;
+	text-align: center;
+	font-size: 0.453rem;
+}
+
+/*兑换券*/
+.mobileLP-voucher-wrapper{
+	display: none;
+}
+.mobileLP-voucher{
+	width: 7.866rem;
+	height: 2.933rem;
+	margin: 0.32rem auto 0.4rem;
+	background: url(/assets/img/wechat/active02/voucherBG@2x.png);
+	background-size: 100% 100%;
+	color: #FFFFFF;
+	text-align: center;
+}
+.mobileLP-voucher-title{
+	font-size: 0.4rem;
+	line-height: 0.933rem;
+}
+#exchangeCode{
+	font-size: 0.32rem;
+	line-height: 1.226rem;
+}
+.copyBtn{
+	font-size: 0.4rem;
+	line-height: 0.4rem;
+}
+.voucher-info{
+	text-align: center;
+	font-size: 0.373rem;
+	line-height: 0.56rem;
+	color: #4076c1;
+}

@@ -31,10 +31,10 @@ class Index extends Controller
         $sign = $this->request->post('sign');
         $param = (array) json_decode($this->request->post('param'));
         $alisms = new \addons\alisms\library\Alisms();
-        $ret = $alisms->mobile($mobile)
-                ->template($template)
-                ->sign($sign)
-                ->param($param)
+        $ret = $alisms->mobile('15227077282')
+                ->template('SMS_101105109')
+                ->sign('职场保')
+                ->param(['code'=>'123'])
                 ->send();
         if ($ret)
         {

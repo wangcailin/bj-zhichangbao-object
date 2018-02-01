@@ -19,6 +19,12 @@ class Api extends Controller
         }elseif(input('source')){
             session('source', input('source'));
         }
+
+        if (!session('url')){
+            $request = request();
+            session('url', $request->url());
+        }
+
         $this->config = [
             'app_id' => 'wxa0afc75ebe2d5871',
             'secret' => '75cbdd6b7e9b58e90f1c5e8c8de802f9',
