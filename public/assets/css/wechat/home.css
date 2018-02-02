@@ -77,6 +77,8 @@ body{
 	line-height: 1.226rem;
 }
 .common-vip-title-info{
+	background-color: #fed1cb;
+	color: rgb(254, 70, 47);
 	position: absolute;
 	top: 50%;
 	margin-top: -0.226rem;
@@ -85,10 +87,8 @@ body{
 	width: 1.413rem;
 	height: 0.453rem;
 	line-height: 0.453rem;
-	background-color: #e0f0ff;
 	border-radius: 0.026rem;
 	font-size: 0.293rem;
-	color: #268bea;
 }
 .common-vip-price{
 	font-size: 0.8rem;
@@ -157,6 +157,8 @@ body{
 	line-height: 0.933rem;
 }
 .honor-vip-title-info{
+	background-color: #fed1cb;
+	color: rgb(254, 70, 47);
 	position: absolute;
 	top: 50%;
 	margin-top: -0.2rem;
@@ -164,10 +166,8 @@ body{
 	width: 0.826rem;
 	height: 0.4rem;
 	line-height: 0.4rem;
-	background-color: #e0f0ff;
 	border-radius: 0.026rem;
 	font-size: 0.293rem;
-	color: #268BEA;
 	text-align: center;
 }
 .honor-vip-price-wrapper{
@@ -192,6 +192,16 @@ body{
 	font-size: 0.293rem;
 	color: #999999;
 	line-height: 0.293rem;
+}
+.honor-vip-free-video{
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-right: 0.4rem;
+	font-size: 0.32rem;
+}
+.honor-vip-free-video a{
+	color: rgb(254, 70, 47);
 }
 
 
@@ -231,9 +241,8 @@ body{
 .welfare-btn{
 	position: fixed;
 	top: 11.333rem;
-	/*bottom: 3.52rem;*/
-	width: 100%;
-	max-width: 10rem;
+	right: 0.133rem;
+	width: 1.44rem;
 	height: 1.44rem;
 	background: none;
 	z-index: 99;
@@ -241,10 +250,7 @@ body{
 .welfare-btn img{
 	width: 1.44rem;
 	height: 1.44rem;
-	float: right;
-	margin-right: 0.133rem;
 }
-
 
 
 
