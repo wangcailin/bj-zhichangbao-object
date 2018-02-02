@@ -60,7 +60,7 @@ class Active02 extends Wechat
         }
 
         $CouponCode = model('CouponCode');
-        if (!$CouponCode->checkCode($code)){
+        if (! $codeObj = $CouponCode->checkCode($code)){
             $res['msg'] = '兑换码无效,请重新输入!';
             return json($res);
         }
@@ -84,7 +84,9 @@ class Active02 extends Wechat
         $vip_thing = 0;
         $end_time = strtotime("+30days");
         $vip_count = 5;
-        model('UserVip')->user_add_vip($order_info->user_id, $order_info->vid, $order_info->goods_name, $end_time, $vip_count, $vip_thing);
+        model('UserVip')->user_add_vip($user_id, 1, '荣誉会员', $end_time, $vip_count, $vip_thing);
+        $codeObj->status = 1;
+        $codeObj->save();
         $res['status'] = 1;
         return json($res);
     }
